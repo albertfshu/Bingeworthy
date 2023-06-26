@@ -1,8 +1,37 @@
 # volumes:
+volumes:
+  node-modules:
+    external: true
+  mongo-data:
+    external: true
 services:
+  mongo:
+    image: mongo:6
+    volumes:
+      - ./setup/mongodb:/docker-entrypoint-initdb.d
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: example_user
+      MONGO_INITDB_ROOT_PASSWORD: example_password
+
+  mongo-express:
+    build:
+      context: setup/mongo-express
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_ADMINUSERNAME: example_user
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example_password
+      WAIT_HOSTS: mongo:27017
+      WAIT_BEFORE: 5
+      WAIT_TIMEOUT: 60
   fastapi:
     environment:
       CORS_HOST: http://localhost:3000
+      MONGO_URL: mongodb://example_user:example_password@mongo/admin
+      SIGNING_KEY: 87fe4a3fcfb60092dbaeb854a196bc3d9b190aed7930c734749e85245de698420c25f8e6899c421b4494e99459e01058de5daa9d49584cd62ec975da9aea33da
     build:
       context: api
       dockerfile: Dockerfile.dev
