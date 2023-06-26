@@ -1,9 +1,8 @@
-# volumes:
 volumes:
-  node-modules:
-    external: true
   mongo-data:
-    external: true
+    driver: local
+  node-modules:
+    driver: local
 services:
   mongo:
     image: mongo:6
