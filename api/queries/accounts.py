@@ -27,8 +27,6 @@ class AccountQueries(Queries):
     COLLECTION = "accounts"
     def get(self, username: str) -> AccountOutWithPassword:
         props = self.collection.find_one({"username":username})
-        print(props)
-        print("=======")
         props["id"] = str(props["_id"])
         props["hashed_password"] = props["password"]
         return AccountOutWithPassword(**props)
