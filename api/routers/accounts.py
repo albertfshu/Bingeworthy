@@ -11,13 +11,13 @@ from authenticator import authenticator
 
 from pydantic import BaseModel
 
-from queries.accounts import (
+from models import (
     AccountIn,
     AccountOut,
-    AccountQueries,
     DuplicateAccountError,
 )
 
+from queries.accounts import AccountQueries
 
 class AccountForm(BaseModel):
     username: str
