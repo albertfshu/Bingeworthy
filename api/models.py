@@ -47,9 +47,23 @@ class CommentsIn(BaseModel):
 
 class CommentsOut(BaseModel):
     account_id: str
+    commenter_id: str
     comment: str
     date: datetime
 
+class CommentIn(BaseModel):
+    commentor_id: str
+    comment: str
+
+class Comments(BaseModel):
+    page_id: str
+    commentor_id: str
+    comment: str
+    post_date: datetime
+    edit_date: datetime
+
+class CommentList(BaseModel):
+    comment_list: List[Comments]
 
 class AccountDetailsOut (BaseModel):
     _id: str
