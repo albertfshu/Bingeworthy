@@ -39,21 +39,25 @@ class Watchlist(BaseModel):
     watchlist: List[WatchlistOut]
 
 
-class Comments(BaseModel):
+class CommentsIn(BaseModel):
+    account_id: str
+    comment: str
+    date: datetime
+
+
+class CommentsOut(BaseModel):
     account_id: str
     comment: str
     date: datetime
 
 
 class AccountDetailsOut (BaseModel):
-    id: str
+    _id: str
     bio: str
-    list_comments: List[Comments]
     date: datetime
 
 
 class AccountDetailsIn(BaseModel):
-    id: str
+    _id: str
     bio: str
-    list_comments: List[Comments]
     date: datetime

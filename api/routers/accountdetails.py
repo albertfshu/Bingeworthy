@@ -18,22 +18,29 @@ from models import (
 
 router = APIRouter()
 
-@router.post("/api/accounts/{username}", response_model=AccountDetailsOut)
+@router.post("/api/accounts/{id}", response_model=AccountDetailsOut)
 async def create_account_details(
-    username: str,
+    id: str,
     info: AccountDetailsIn,
     request: Request,
     response: Response,
-    accounts: AccountDetailsQueries = Depends(),
+    queries: AccountDetailsQueries = Depends(),
 ):
     try:
-        account = accounts.create(info, username)
+        query = queries.create(info, id)
     except DuplicateAccountError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Cannot create account details",
         )
-    return AccountDetailsIn(account=account, **info.dict())
+    return query
+
+@router.get("/api/accounts/{id}",  response_model=AccountDetailsOut)
+async def get_account_details(
+    id:str,
+    queries: AccountDetailsQueries = Depends()
+):
+    return queries.get(id=id)
 
 
 
