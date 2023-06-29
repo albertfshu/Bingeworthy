@@ -22,3 +22,4 @@ class AccountQueries(Queries):
             raise DuplicateAccountError()
         props["id"] = str(props["_id"])
         return AccountOut(**props)
+

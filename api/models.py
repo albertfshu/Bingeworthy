@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import List
 from jwtdown_fastapi.authentication import Token
+from datetime import date, datetime
 
 class DuplicateAccountError(ValueError):
     pass
@@ -26,11 +27,33 @@ class WatchlistIn(BaseModel):
     media_id: str
     name: str
 
+
 class WatchlistOut(BaseModel):
     id: str
     account_id: str
     media_id: str
     name: str
 
+
 class Watchlist(BaseModel):
     watchlist: List[WatchlistOut]
+
+
+class Comments(BaseModel):
+    account_id: str
+    comment: str
+    date: date
+
+
+class AccountDetailsOut (BaseModel):
+    id: str
+    bio: str
+    list_comments: List[Comments]
+    date: date
+
+
+class AccountDetailsIn(BaseModel):
+    id: str
+    bio: str
+    list_comments: List[Comments]
+    date: date
