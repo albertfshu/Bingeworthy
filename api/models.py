@@ -42,18 +42,18 @@ class Watchlist(BaseModel):
 class Comments(BaseModel):
     account_id: str
     comment: str
-    date: date
+    date: datetime
 
 
 class AccountDetailsOut (BaseModel):
     id: str
     bio: str
     list_comments: List[Comments]
-    date: date
+    date: datetime
 
 
 class AccountDetailsIn(BaseModel):
     id: str
     bio: str
     list_comments: List[Comments]
-    date: date
+    date: datetime

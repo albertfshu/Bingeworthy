@@ -10,18 +10,13 @@ class AccountDetailsQueries(Queries):
     COLLECTION = "account_details"
 
     def get(self, id: str) -> AccountDetailsOut:
-        props = self.collection.find_one({"_id": id})
-        props["id"] = str(props["_id"])
-        props["date"] = datetime.date(props["date"])
+        props = self.collection.find_one({"id": id})
         return AccountDetailsOut(**props)
 
     def create(self, info: AccountDetailsIn, id: str) -> AccountDetailsOut:
         props = info.dict()
-        props["_id"] = id
-        props["date"] = datetime.date(props["date"])
         try:
             self.collection.insert_one(props)
         except DuplicateKeyError:
             raise DuplicateAccountError()
-        props["id"] = str(props["_id"])
         return AccountDetailsOut(**props)
