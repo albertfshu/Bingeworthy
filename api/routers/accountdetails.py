@@ -42,8 +42,13 @@ async def get_account_details(
 ):
     return queries.get(id=id)
 
-
-
+@router.put("/api/accounts/{id}",  response_model=AccountDetailsOut)
+async def update_account_details(
+    id:str,
+    info: AccountDetailsIn,
+    queries: AccountDetailsQueries = Depends()
+):
+    return queries.update(info, id=id)
 
 
 # ## Update account details
