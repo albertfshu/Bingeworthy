@@ -7,3 +7,7 @@ Update: We finished it! The issue was how we passed back our data within Account
 As we finished authentication early, we brushed up on mongodb and postgres content in preparation for later.
 
 ## DAY 3 - Backend Watchlist (CRUD)
+We completed the watchlist backend based off of the favorites example and had a fairly easy time in doing so.
+
+## DAY 4 - Backend Comments (CRUD)
+We completed the comments backend based off of watchlist and a good number more tweaks. We ran into a few blockers such as not being able to iterate ObjectId but were fortunately able to solve through everything as a team.

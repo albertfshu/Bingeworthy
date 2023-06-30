@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from authenticator import authenticator
-from routers import accounts, watchlist, accountdetails,comments
+from routers import accounts, watchlist, accountdetails,comments, ratings
 
 
 app = FastAPI()
@@ -11,6 +11,7 @@ app.include_router(accounts.router, tags=['Accounts'])
 app.include_router(watchlist.router, tags=['Watchlist'])
 app.include_router(accountdetails.router, tags=["Account_Details"])
 app.include_router(comments.router,tags=["Comments"])
+app.include_router(ratings.router, tags=["Ratings"])
 
 app.add_middleware(
     CORSMiddleware,

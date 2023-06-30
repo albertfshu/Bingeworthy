@@ -38,25 +38,12 @@ class WatchlistOut(BaseModel):
 class Watchlist(BaseModel):
     watchlist: List[WatchlistOut]
 
-
-class CommentsIn(BaseModel):
-    account_id: str
-    comment: str
-    date: datetime
-
-
-class CommentsOut(BaseModel):
-    account_id: str
-    commenter_id: str
-    comment: str
-    date: datetime
-
 class CommentIn(BaseModel):
     commentor_id: str
     comment: str
 
 class Comments(BaseModel):
-    page_id: str
+    page_id: str #id starts with m, t, or p and then TMDB api id or user id
     commentor_id: str
     comment: str
     post_date: datetime
@@ -75,3 +62,19 @@ class AccountDetailsIn(BaseModel):
     _id: str
     bio: str
     date: datetime
+
+# class MediaDetails(BaseModel):
+#     _id: str #id starts with m or t and then TMDB api id
+# ->
+# pull up API info
+# check Comments
+# check Ratings
+
+
+class RatingOut(BaseModel):
+    media_id: str #id starts with m or t and then TMDB api id
+    user_id: str
+    value: int
+
+class RatingIn(BaseModel):
+    value: int
