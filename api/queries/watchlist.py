@@ -2,12 +2,13 @@ from models import WatchlistIn
 from bson.objectid import ObjectId
 from .client import Queries
 
+
 class WatchlistQueries(Queries):
     DB_NAME = "bingeworthy"
     COLLECTION = "watchlist"
 
     def create(self, watchlist_in: WatchlistIn, account_id:str):
-        watchlist= watchlist_in.dict()
+        watchlist = watchlist_in.dict()
         watchlist['account_id'] = account_id
         self.collection.insert_one(watchlist)
         watchlist['id'] = str(watchlist['_id'])

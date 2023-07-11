@@ -3,6 +3,9 @@ function Construct(props) {
     <div className="App">
       <header className="App-header">
         <h1>Under construction</h1>
+        <h1 class="text-3xl font-bold underline">
+        Hello world!
+      </h1>
         <h2>Coming on (or before)</h2>
         <h2>
           Module: {props.info.module} Week: {props.info.week} Day:{" "}
