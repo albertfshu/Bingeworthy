@@ -9,3 +9,10 @@ Completed three end-points for the router with authentication, which includes th
 *listing the watchlist
 *creating a new watchlist
 *deleting a watchlist.
+
+## Day 4 - 06/28/23
+
+## Day 5 - 06/28/23
+
+## Day 5 - 06/28/23
+Succesfully implemented Redux into our front-end! yay! Still going to have to go back and play around with TailwindCSS but I am excited to experiment with new features
