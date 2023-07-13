@@ -1,5 +1,5 @@
 import { useSignupMutation } from "./store/accountSlice";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import AlertError from './AlertError'
 
@@ -8,7 +8,7 @@ const SignUp = () => {
     const [signup] = useSignupMutation();
     const [errorMessage, setErrorMessage] = useState('');
     const [username, setUsername] = useState('')
-    const [name, setName] = useState('')
+    const [full_name, setfull_Name] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
@@ -18,7 +18,9 @@ const handleSubmit = (e) => {
         setErrorMessage('Password does not match confirmation')
         return;
     }
-    signup({username, name, password});
+    console.log("signup")
+    signup({username, full_name, password});
+    console.log("signup")
     navigate('/');
 };
 
@@ -34,8 +36,8 @@ const handleSubmit = (e) => {
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="name"
                 placeholder="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)} />
+                value={full_name}
+                onChange={(e) => setfull_Name(e.target.value)} />
 
                 <input
                 type="text"

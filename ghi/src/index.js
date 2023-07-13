@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ReactDOM from 'react-dom';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter } from 'react-router-dom';
 import SignUp from './SignUp';
+import Login from './Login';
+import Home from './Home';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Errorpage from './Errorpage'
+// import Errorpage from './Errorpage'
 
 import { store } from './store/store';
 import { Provider } from 'react-redux';
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <SignUp />
       },
+      {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/home',
+        element: <Home />
+      },
     ]
   }
 ]);
@@ -34,6 +44,8 @@ root.render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </Router>
     </Provider>

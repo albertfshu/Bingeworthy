@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const accountApi =  createApi({
     reducerPath: 'accountApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://localhost:3000'
+        baseUrl: 'http://localhost:8000'
     }),
     endpoints: (builder) => ({
         signup: builder.mutation({
@@ -32,11 +32,11 @@ export const accountApi =  createApi({
             invalidatesTags: ['Account']
         }),
         login: builder.mutation({
-            query: ({username, password, name}) => {
+            query: ({username, password, full_name}) => {
                 const body = new FormData();
                 body.append('username', username)
                 body.append('password', password)
-                body.append('name', name)
+                body.append('full_name', full_name)
                 return {
                     url: `/token`,
                     method: `POST`,
