@@ -12,7 +12,19 @@ Completed three end-points for the router with authentication, which includes th
 
 ## Day 4 - 06/28/23
 
-## Day 5 - 06/28/23
 
 ## Day 5 - 06/28/23
 Succesfully implemented Redux into our front-end! yay! Still going to have to go back and play around with TailwindCSS but I am excited to experiment with new features
+
+
+## DAY 6 - 7.10.23 - Review Redux
+
+## DAY 7 - 7.11.23 - Review Redux
+continued to individually review redux
+
+## DAY 8 - 7.12.23
+
+## DAY 9 - 7.13.23
+
+## DAY 10 - 7.14.23
+Unit tests written for accounts

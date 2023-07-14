@@ -17,3 +17,16 @@ split two variables movies and shows .
 * update
 * get list
 * specify user's ratings
+
+## DAY 6 - 7.10.23 - Review Redux
+individually reviewed redux to prepare for front end work
+
+## DAY 7 - 7.11.23 - Review Redux
+continued to individually review redux
+
+## DAY 8 - 7.12.23
+
+## DAY 9 - 7.13.23
+
+## DAY 10 - 7.14.23
+Unit tests written for accounts & comments
