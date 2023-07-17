@@ -3,20 +3,20 @@ import { useSelector } from "react-redux";
 import MovieCard from "./Moviecard";
 
 const MovieList = () => {
-  const searchCriteria = useSelector((state) => state.Search?.value);
+  const searchCriteria = useSelector((state) => state.search?.value);
   const { data, isLoading } = useGetPopularMoviesQuery({
     api_key: "0fd8a0e40883c8bc0578f44a534b1ed9",
   });
 
   console.log(data);
-  console.log(getattr(data["results"]));
+
   const filteredMovies = () => {
     if (searchCriteria) {
       return data.results.filter((movie) =>
         movie.original_title.includes(searchCriteria)
       );
     } else {
-      return [];
+      return data.results;
     }
   };
 
@@ -32,7 +32,11 @@ const MovieList = () => {
       <div className="row mt-3">
         {filteredMovies().map((movie) => (
           <>
-            <MovieCard key={movie.id} title={movie} movie_id={movie.id} />
+            <MovieCard
+              key={movie.id}
+              title={movie.original_title}
+              movie_id={movie.id}
+            />
             <p> moviecard</p>
           </>
         ))}
