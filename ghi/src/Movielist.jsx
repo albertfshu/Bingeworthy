@@ -16,10 +16,12 @@ const MovieList = () => {
 
   console.log(data);
 
+  const searchCriteriaToLowercase = searchCriteria.toLowerCase();
+
   const filteredMovies = () => {
     if (searchCriteria && data) {
       return data.results.filter((movie) =>
-        movie.original_title.includes(searchCriteria)
+        movie.original_title.toLowerCase().includes(searchCriteriaToLowercase)
       );
     } else {
       return data.results;
