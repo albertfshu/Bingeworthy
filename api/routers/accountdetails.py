@@ -6,8 +6,8 @@ from fastapi import (
     APIRouter,
     Request,
 )
-from jwtdown_fastapi.authentication import Token
-from authenticator import authenticator
+# from jwtdown_fastapi.authentication import Token
+# from authenticator import authenticator
 from queries.accountdetails import AccountDetailsQueries
 
 from models import (
@@ -17,6 +17,7 @@ from models import (
 )
 
 router = APIRouter()
+
 
 @router.post("/api/accounts/{id}", response_model=AccountDetailsOut)
 async def create_account_details(
@@ -35,16 +36,18 @@ async def create_account_details(
         )
     return query
 
+
 @router.get("/api/accounts/{id}",  response_model=AccountDetailsOut)
 async def get_account_details(
-    id:str,
+    id: str,
     queries: AccountDetailsQueries = Depends()
 ):
     return queries.get(id=id)
 
+
 @router.put("/api/accounts/{id}",  response_model=AccountDetailsOut)
 async def update_account_details(
-    id:str,
+    id: str,
     info: AccountDetailsIn,
     queries: AccountDetailsQueries = Depends()
 ):

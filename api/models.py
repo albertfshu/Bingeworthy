@@ -1,7 +1,8 @@
 from pydantic import BaseModel
 from typing import List
-from jwtdown_fastapi.authentication import Token
-from datetime import date, datetime
+# from jwtdown_fastapi.authentication import Token
+from datetime import datetime
+
 
 class DuplicateAccountError(ValueError):
     pass
@@ -38,19 +39,23 @@ class WatchlistOut(BaseModel):
 class Watchlist(BaseModel):
     watchlist: List[WatchlistOut]
 
+
 class CommentIn(BaseModel):
     commentor_id: str
     comment: str
 
+
 class Comments(BaseModel):
-    page_id: str #id starts with m, t, or p and then TMDB api id or user id
+    page_id: str  #id starts with m, t, or p and then TMDB api id or user id
     commentor_id: str
     comment: str
     post_date: datetime
     edit_date: datetime
 
+
 class CommentList(BaseModel):
     comment_list: List[Comments]
+
 
 class AccountDetailsOut (BaseModel):
     _id: str
@@ -72,9 +77,10 @@ class AccountDetailsIn(BaseModel):
 
 
 class RatingOut(BaseModel):
-    media_id: str #id starts with m or t and then TMDB api id
+    media_id: str  #id starts with m or t and then TMDB api id
     user_id: str
     value: int
+
 
 class RatingIn(BaseModel):
     value: int

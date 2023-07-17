@@ -1,7 +1,7 @@
 from models import Comments, CommentList, CommentIn
-from pydantic import BaseModel
+# from pydantic import BaseModel
 from .client import Queries
-from pymongo.errors import DuplicateKeyError
+# from pymongo.errors import DuplicateKeyError
 from bson.objectid import ObjectId
 import datetime
 
@@ -11,7 +11,7 @@ class CommentQueries(Queries):
     COLLECTION = "comments"
 
     def get(self, id: str, comment_id: str) -> Comments:
-        props = self.collection.find_one({"_id": ObjectId(comment_id)}) #page_id = id? causes a none result
+        props = self.collection.find_one({"_id": ObjectId(comment_id)})  #page_id = id? causes a none result
         return props
 
     def get_all(self, id: str) -> CommentList:
@@ -33,14 +33,14 @@ class CommentQueries(Queries):
         self.collection.insert_one(props)
         return Comments(**props)
 
-    def update(self,info: CommentIn, id:str) -> Comments:
-        print({"$set":info.dict()})
+    def update(self, info: CommentIn, id: str) -> Comments:
+        print({"$set": info.dict()})
         props = info.dict()
         props["edit_date"] = datetime.datetime.now()
-        self.collection.update_one({"_id":ObjectId(id)},{"$set":props})
+        self.collection.update_one({"_id": ObjectId(id)}, {"$set": props})
         details = self.collection.find_one({"_id": ObjectId(id)})
         return details
 
-    def delete(self, id:str):
+    def delete(self, id: str):
         result = self.collection.delete_one({'_id': ObjectId(id)})
         return result.deleted_count > 0

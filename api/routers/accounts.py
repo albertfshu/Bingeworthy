@@ -19,6 +19,7 @@ from models import (
 
 from queries.accounts import AccountQueries
 
+
 class AccountForm(BaseModel):
     username: str
     password: str

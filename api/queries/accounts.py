@@ -1,13 +1,15 @@
 from models import AccountIn, AccountOut, AccountOutWithPassword, DuplicateAccountError
-from pydantic import BaseModel
+# from pydantic import BaseModel
 from .client import Queries
 from pymongo.errors import DuplicateKeyError
+
 
 class AccountQueries(Queries):
     DB_NAME = "bingeworthy"
     COLLECTION = "accounts"
+
     def get(self, username: str) -> AccountOutWithPassword:
-        props = self.collection.find_one({"username":username})
+        props = self.collection.find_one({"username": username})
         props["id"] = str(props["_id"])
         props["hashed_password"] = props["password"]
         return AccountOutWithPassword(**props)
@@ -22,4 +24,3 @@ class AccountQueries(Queries):
             raise DuplicateAccountError()
         props["id"] = str(props["_id"])
         return AccountOut(**props)
-

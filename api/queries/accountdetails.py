@@ -1,8 +1,8 @@
 from models import AccountDetailsIn, AccountDetailsOut, DuplicateAccountError
-from pydantic import BaseModel
+# from pydantic import BaseModel
 from .client import Queries
 from pymongo.errors import DuplicateKeyError
-import datetime
+# import datetime
 
 
 class AccountDetailsQueries(Queries):
@@ -23,8 +23,8 @@ class AccountDetailsQueries(Queries):
             raise DuplicateAccountError()
         return AccountDetailsOut(**props)
 
-    def update(self,info: AccountDetailsIn, id:str) -> AccountDetailsOut:
-        print({"$set":info.dict()})
-        self.collection.update_one({"_id":id},{"$set":info.dict()})
+    def update(self, info: AccountDetailsIn, id: str) -> AccountDetailsOut:
+        print({"$set": info.dict()})
+        self.collection.update_one({"_id": id}, {"$set": info.dict()})
         details = self.collection.find_one({"_id": id})
         return details

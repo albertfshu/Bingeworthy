@@ -6,18 +6,19 @@ from fastapi import (
     APIRouter,
     Request,
 )
-from jwtdown_fastapi.authentication import Token
-from authenticator import authenticator
+# from jwtdown_fastapi.authentication import Token
+# from authenticator import authenticator
 from queries.comments import CommentQueries
 
 from models import (
     Comments,
     CommentIn,
-    CommentList,
+    # CommentList,
     DuplicateAccountError,
 )
 
 router = APIRouter()
+
 
 @router.post("/api/accounts/{id}/comments", response_model=Comments)
 async def create_comment(
@@ -36,12 +37,14 @@ async def create_comment(
         )
     return query
 
+
 @router.get("/api/accounts/{id}/comments")
 async def get_page_comments(
   id: str,
   queries: CommentQueries = Depends(),
 ):
     return queries.get_all(id)
+
 
 @router.get("/api/accounts/{id}/comments/{comment_id}", response_model=Comments)
 async def get_comment(
@@ -50,6 +53,7 @@ async def get_comment(
     queries: CommentQueries = Depends()
 ):
     return queries.get(id, comment_id)
+
 
 @router.put('/api/accounts/{id}/comments/{comment_id}', response_model=Comments)
 async def update_comment(
