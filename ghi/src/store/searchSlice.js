@@ -21,6 +21,6 @@ export const searchSlice = createSlice({
     }
 })
 
-export const { reset, search } = movieSearchSlice.actions;
+export const { reset, filter } = searchSlice.actions;
 
-export default movieSearchSlice.reducer;
+export default searchSlice.reducer;

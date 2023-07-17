@@ -17,15 +17,18 @@ const Nav = () => {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         {/* <li className="nav-item">
                             <NavLink to={'/'} className={'nav-link'}>Home</NavLink>
-                        </li>
+                        </li> */}
                         {account && <li className="nav-item">
-                            <NavLink to={'/favorites'} className={'nav-link'}>Favorites</NavLink>
-                        </li>} */}
+                            <NavLink to={'/search'} className={'nav-link'}>Search</NavLink>
+                        </li>}
                         {!account && <li className="nav-item">
                             <NavLink to={'/login'} className={'nav-link'}>Login</NavLink>
                         </li>}
                         {!account && <li className="nav-item">
                             <NavLink to={'/signup'} className={'nav-link'}>Sign Up</NavLink>
+                        </li>}
+                        {!account && <li className="nav-item">
+                            <NavLink to={'/movielist'} className={'nav-link'}>Movie list</NavLink>
                         </li>}
                     </ul>
                     {account && (

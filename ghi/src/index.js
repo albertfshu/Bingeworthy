@@ -5,6 +5,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import SignUp from './SignUp';
 import Login from './Login';
 import Home from './Home';
+import Search from './Search';
+import MovieList from './Movielist';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
         path: '/home',
         element: <Home />
       },
+      {
+        path: '/search',
+        element: <Search />
+      },
+      {
+        path: '/movielist',
+        element: <MovieList />
+      }
     ]
   }
 ]);
@@ -46,6 +56,8 @@ root.render(
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/movielist" element={<MovieList />} />
         </Routes>
       </Router>
     </Provider>
