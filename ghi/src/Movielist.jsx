@@ -1,4 +1,7 @@
-import { useGetPopularMoviesQuery } from "./store/apiSlice";
+import {
+  useGetPopularMoviesQuery,
+  useSearchMoviesQuery,
+} from "./store/apiSlice";
 import { useSelector } from "react-redux";
 import MovieCard from "./Moviecard";
 
@@ -8,10 +11,13 @@ const MovieList = () => {
     api_key: "0fd8a0e40883c8bc0578f44a534b1ed9",
   });
 
+  //   const [searchData, searchResult] = useSearchMoviesQuery();
+  //   searchData(searchCriteria);
+
   console.log(data);
 
   const filteredMovies = () => {
-    if (searchCriteria) {
+    if (searchCriteria && data) {
       return data.results.filter((movie) =>
         movie.original_title.includes(searchCriteria)
       );
@@ -29,18 +35,14 @@ const MovieList = () => {
           {searchCriteria} - SEARCH TERM GOES HERE{" "}
         </small>
       </h1>
-      <div className="row mt-3">
+      <div className="grid grid-cols-4 gap-8">
         {filteredMovies().map((movie) => (
-          <>
-            <MovieCard
-              key={movie.id}
-              title={movie.original_title}
-              movie_id={movie.id}
-            />
-            <p> moviecard</p>
-          </>
+          <MovieCard
+            key={movie.id}
+            title={movie.original_title}
+            movie_id={movie.id}
+          />
         ))}
-        <MovieCard key="1" title="testDefault" movie_id="1" />
       </div>
     </div>
   );

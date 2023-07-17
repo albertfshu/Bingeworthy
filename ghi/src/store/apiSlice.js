@@ -55,7 +55,8 @@ export const movieApi = createApi({
     }),
 
     searchMovies: builder.query({
-      query: (searchbarinput) => `/search/multi?query=${searchbarinput}`,
+      query: (searchbarinput) =>
+        `/search/multi?api_key=0fd8a0e40883c8bc0578f44a534b1ed9&query=${searchbarinput}`,
       transformResponse: (response) => response.movie,
     }),
 

@@ -1,52 +1,52 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter } from 'react-router-dom';
-import SignUp from './SignUp';
-import Login from './Login';
-import Home from './Home';
-import Search from './Search';
-import MovieList from './Movielist';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter } from "react-router-dom";
+import SignUp from "./SignUp";
+import Login from "./Login";
+import Home from "./Home";
+import Search from "./Search";
+import MovieList from "./Movielist";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 // import Errorpage from './Errorpage'
 
-import { store } from './store/store';
-import { Provider } from 'react-redux';
+import { store } from "./store/store";
+import { Provider } from "react-redux";
 
 const domain = /https:\/\/[^/]+/;
-const basename = process.env.PUBLIC_URL.replace(domain, '');
+const basename = process.env.PUBLIC_URL.replace(domain, "");
 
 const router = createBrowserRouter([
   {
     element: <App />,
     children: [
       {
-        path: '/signup',
-        element: <SignUp />
+        path: "/signup",
+        element: <SignUp />,
       },
       {
-        path: '/login',
-        element: <Login />
+        path: "/login",
+        element: <Login />,
       },
       {
-        path: '/home',
-        element: <Home />
+        path: "/home",
+        element: <Home />,
       },
-      {
-        path: '/search',
-        element: <Search />
-      },
-      {
-        path: '/movielist',
-        element: <MovieList />
-      }
-    ]
-  }
+      // {
+      //   path: '/search',
+      //   element: <Search />
+      // },
+      // {
+      //   path: '/movielist',
+      //   element: <MovieList />
+      // }
+    ],
+  },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -63,7 +63,6 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
