@@ -1,7 +1,8 @@
 import { useLoginMutation } from "./store/accountSlice";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import AlertError from "./AlertError";
+import SignUp from "./SignUp";
 
 
 const Login = () => {
@@ -61,6 +62,12 @@ const Login = () => {
                         Submit
                     </button>
                 </form>
+                <p className="mt-4 text-center text-gray-500 text-sm">
+                    Don't have an account?{" "}
+                    <Link to="/signup" className="underline">
+                        Sign up here
+                    </Link>
+                </p>
             </div>
         </div>
     );
