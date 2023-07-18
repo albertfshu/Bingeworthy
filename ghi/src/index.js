@@ -12,6 +12,7 @@ import Login from "./Login";
 import Home from "./Home";
 import Search from "./Search";
 import MovieDetail from "./MovieDetail";
+import TVDetail from "./TVDetail";
 import MovieList from "./Movielist";
 import ErrorNotification from "./ErrorNotification";
 import "./index.css";
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/movie/:movie_id",
         element: <MovieDetail />,
+      },
+      {
+        path: "/tv/:tv_id",
+        element: <TVDetail />,
       },
     ],
   },

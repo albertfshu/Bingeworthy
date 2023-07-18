@@ -1,21 +1,17 @@
 import { useParams, Link } from "react-router-dom";
 import {
     useGetTVDetailsQuery,
-    useGetTVProvidersQuery,
 } from "./store/apiSlice";
 import { useGetAccountQuery } from "./store/accountSlice";
-import Providers from "./Providers";
+import TVSourceProviders from "./TVSourceProviders";
 
 const TVDetail = () => {
     const { tv_id } = useParams();
     const { data: account } = useGetAccountQuery();
-    const { data, isLoading } = useGetTVDetailsQuery(movie_id);
+    const { data, isLoading } = useGetTVDetailsQuery(tv_id);
 
-    if (isLoading || providerIsLoading) return <div> Loading... </div>;
-    else {
-        // console.log(data);
-        console.log(providerData); // above
-    }
+    if (isLoading) return <div> Loading... </div>;
+    console.log(data)
 
     //   implement watchlist function
     return (
@@ -25,19 +21,20 @@ const TVDetail = () => {
                     <div>
                         <div className="w-50">
                             <img
-                                width="50"
+                                width="200"
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                             ></img>
                         </div>
                         <button>Add to Watchlist</button>
-                        <Providers />
+                        <TVSourceProviders />
                     </div>
                 </div>
                 <div id="col2" className="max-w-4xl">
-                    <h2 className="text-2xl">{data.original_title}</h2>
+                    <h2 className="text-2xl">{data.original_name}</h2>
                     {/* <h5>rating</h5> */}
                     <h5 className="inline">{data.release_date}</h5>
-                    <h5 className="inline pl-6">{data.runtime}min</h5>
+                    <h5 className="inline pl-6">{data.number_of_seasons} seasons</h5>
+                    <h5 className="inline pl-6">{data.number_of_episodes} episodes</h5>
                     <div>{data.overview}</div>
                 </div>
             </div>

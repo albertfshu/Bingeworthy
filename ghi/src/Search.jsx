@@ -12,6 +12,7 @@ const Search = () => {
     dispatch(filter(searchCriteria));
   };
 
+
   return (
     <>
       <form className="row" onSubmit={handleSubmit}>
