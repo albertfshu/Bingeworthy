@@ -3,25 +3,22 @@ import {
     useSearchTVQuery,
 } from "./store/apiSlice";
 import { useSelector } from "react-redux"
-import MovieCard from "./MovieCard";
+import TVCard from "./TVCard";
 
-const TVlist = () => {
+const TVList = () => {
     const searchCriteria = useSelector((state) => state.search?.value);
     const { data, isLoading } = useGetPopularTVQuery();
     const { data: search, isSearchLoading } = useSearchTVQuery(searchCriteria);
-
-    useEffect(() => {
-        { data: search, isSearchLoading } = useSearchTVQuery(searchCriteria);
-    })
-    console.log(data);
+    console.log(search);
 
     const searchCriteriaToLowercase = searchCriteria.toLowerCase();
 
     const filteredMovies = () => {
-        if (searchCriteria && data) {
-            return data.results.filter((movie) =>
-                movie.original_title.toLowerCase().includes(searchCriteriaToLowercase)
-            );
+        if (searchCriteria && search) {
+            // return data.results.filter((movie) =>
+            //   movie.original_title.toLowerCase().includes(searchCriteriaToLowercase)
+            // )
+            return search.results;
         } else {
             return data.results;
         }
@@ -38,9 +35,9 @@ const TVlist = () => {
             </h1>
             <div className="grid grid-cols-4 gap-8">
                 {filteredMovies().map((movie) => (
-                    <MovieCard
+                    <TVCard
                         key={movie.id}
-                        title={movie.original_title}
+                        title={movie.name}
                         movie_id={movie.id}
                     />
                 ))}
@@ -48,3 +45,4 @@ const TVlist = () => {
         </div>
     )
 }
+export default TVList;

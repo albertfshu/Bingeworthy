@@ -1,12 +1,13 @@
 import Search from "./Search";
 import MovieList from "./Movielist";
-import Nav from "./Nav";
+import TVList from "./TVList";
 
 const Home = () => {
   return (
     <>
       <Search />
       <MovieList />
+      <TVList />
     </>
   );
 };

@@ -21,7 +21,7 @@ const MovieDetail = () => {
                     <div>
                         <div className="w-50">
                             <img
-                                width="50"
+                                width="200"
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                             ></img>
                         </div>

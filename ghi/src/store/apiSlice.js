@@ -18,12 +18,12 @@ export const movieApi = createApi({
     }),
 
     getPopularTV: builder.query({
-      query: () => "/tv/popular",
+      query: () => "/tv/popular?api_key=0fd8a0e40883c8bc0578f44a534b1ed9",
       providesTags: [{ type: "TV", id: "LIST" }],
     }),
 
     getTVDetails: builder.query({
-      query: (tv_id) => `/tv/${tv_id}`,
+      query: (tv_id) => `/tv/${tv_id}?api_key=0fd8a0e40883c8bc0578f44a534b1ed9`,
       providesTags: (result, error, id) => [{ type: "TV", id }],
     }),
 
@@ -70,13 +70,20 @@ export const movieApi = createApi({
     }),
 
     searchTV: builder.query({
-      query: (searchbarinput) => `/search/multi?query=${searchbarinput}`,
-      transformResponse: (response) => response.tv,
+      query: (searchbarinput) =>
+        `/search/tv?api_key=0fd8a0e40883c8bc0578f44a534b1ed9&query=${searchbarinput}`,
+      // transformResponse: (response) => response.tv,
     }),
 
     getMovieProviders: builder.query({
       query: (movie_id) =>
         `/movie/${movie_id}/watch/providers?api_key=0fd8a0e40883c8bc0578f44a534b1ed9`,
+      providesTags: (result, error, id) => [{ type: "Providers", id }],
+    }),
+
+    getTVProviders: builder.query({
+      query: (tv_id) =>
+        `/tv/${tv_id}/watch/providers?api_key=0fd8a0e40883c8bc0578f44a534b1ed9`,
       providesTags: (result, error, id) => [{ type: "Providers", id }],
     }),
   }),
