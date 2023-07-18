@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AlertError from "./AlertError";
 
+
 const Login = () => {
     const navigate = useNavigate();
     const [login, loginResult] = useLoginMutation();
@@ -24,8 +25,8 @@ const Login = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-700">
-            <div className="w-150">
+        <div className="flex items-center justify-center min-h-screen bg-gray-800">
+            <div className="w-80">
                 <h1 className="text-white text-3xl font-bold mb-4">Login</h1>
                 {errorMessage && <AlertError>{errorMessage}</AlertError>}
                 <form onSubmit={handleSubmit}>
