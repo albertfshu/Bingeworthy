@@ -28,3 +28,5 @@ continued to individually review redux
 
 ## DAY 10 - 7.14.23
 Unit tests written for accounts
+
+## DAY 11 - 7.17.23

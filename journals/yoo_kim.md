@@ -29,4 +29,7 @@ continued to individually review redux
 ## DAY 9 - 7.13.23
 
 ## DAY 10 - 7.14.23
-Unit tests written for accounts & comments
+Unit tests written for accounts & comments -- needs more work
+
+## DAY 11 - 7.17.23
+worked on unit tests and worked on parsing the 3rd party api to the search results on the movie list
