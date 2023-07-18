@@ -1,12 +1,19 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  RouterProvider,
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter } from "react-router-dom";
 import SignUp from "./SignUp";
 import Login from "./Login";
 import Home from "./Home";
 import Search from "./Search";
+import MovieDetail from "./MovieDetail";
 import MovieList from "./Movielist";
+import ErrorNotification from "./ErrorNotification";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -21,6 +28,7 @@ const basename = process.env.PUBLIC_URL.replace(domain, "");
 const router = createBrowserRouter([
   {
     element: <App />,
+    errorElement: <ErrorNotification />,
     children: [
       {
         path: "/signup",
@@ -31,17 +39,13 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/home",
+        path: "/",
         element: <Home />,
       },
-      // {
-      //   path: '/search',
-      //   element: <Search />
-      // },
-      // {
-      //   path: '/movielist',
-      //   element: <MovieList />
-      // }
+      {
+        path: "/movie/:movie_id",
+        element: <MovieDetail />,
+      },
     ],
   },
 ]);
@@ -50,7 +54,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
+      <RouterProvider router={router} />
+      {/* <Router>
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/signup" element={<SignUp />} />
@@ -58,8 +63,9 @@ root.render(
           <Route path="/home" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/movielist" element={<MovieList />} />
+          <Route path="/movie/:movie_id" element={<MovieDetail />} />
         </Routes>
-      </Router>
+      </Router> */}
     </Provider>
   </React.StrictMode>
 );

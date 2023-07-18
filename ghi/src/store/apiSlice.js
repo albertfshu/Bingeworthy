@@ -12,7 +12,8 @@ export const movieApi = createApi({
     }),
 
     getMovieDetails: builder.query({
-      query: (movie_id) => `/movie/${movie_id}`,
+      query: (movie_id) =>
+        `/movie/${movie_id}?api_key=0fd8a0e40883c8bc0578f44a534b1ed9`,
       providesTags: (result, error, id) => [{ type: "Movie", id }],
     }),
 
@@ -72,6 +73,12 @@ export const movieApi = createApi({
       query: (searchbarinput) => `/search/multi?query=${searchbarinput}`,
       transformResponse: (response) => response.tv,
     }),
+
+    getMovieProviders: builder.query({
+      query: (movie_id) =>
+        `/movie/${movie_id}/watch/providers?api_key=0fd8a0e40883c8bc0578f44a534b1ed9`,
+      providesTags: (result, error, id) => [{ type: "Providers", id }],
+    }),
   }),
 });
 
@@ -90,4 +97,6 @@ export const {
   useGetAllFavoritesQuery,
   useDeleteFavoriteMutation,
   useCreateFavoriteMutation,
+  useGetMovieProvidersQuery,
+  useGetTVProvidersQuery,
 } = movieApi;

@@ -1,8 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useGetMovieProvidersQuery } from "./store/apiSlice";
-import { useGetAccountQuery } from "./store/accountSlice";
 
-const Providers = () => {
+const SourceProviders = () => {
   const { movie_id } = useParams();
   const { data, isLoading } = useGetMovieProvidersQuery(movie_id); //if providerData named data instead it works, how fix.
 
@@ -11,7 +10,6 @@ const Providers = () => {
     console.log(data);
   }
 
-  //   implement watchlist function
   return (
     <div id="providers">
       <p className="text-xl">Providers</p>
@@ -41,4 +39,4 @@ const Providers = () => {
   );
 };
 
-export default Providers;
+export default SourceProviders;
