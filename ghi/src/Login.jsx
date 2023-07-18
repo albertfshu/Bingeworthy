@@ -57,7 +57,7 @@ const Login = () => {
                     </div>
                     <button
                         type="submit"
-                        className="w-full border bg-cyan-700 text-white font-semibold py-2 rounded"
+                        className="w-full border bg-red-700 text-white font-semibold py-2 rounded"
                     >
                         Submit
                     </button>
