@@ -7,22 +7,20 @@ import MovieCard from "./Moviecard";
 
 const MovieList = () => {
   const searchCriteria = useSelector((state) => state.search?.value);
-  const { data, isLoading } = useGetPopularMoviesQuery({
-    api_key: "0fd8a0e40883c8bc0578f44a534b1ed9",
-  });
-
-  //   const [searchData, searchResult] = useSearchMoviesQuery();
-  //   searchData(searchCriteria);
+  const { data, isLoading } = useGetPopularMoviesQuery();
+  const { data: search, isLoading: isSearchLoading } = useSearchMoviesQuery(searchCriteria)
 
   console.log(data);
+  console.log(search);
 
   const searchCriteriaToLowercase = searchCriteria.toLowerCase();
 
   const filteredMovies = () => {
-    if (searchCriteria && data) {
-      return data.results.filter((movie) =>
-        movie.original_title.toLowerCase().includes(searchCriteriaToLowercase)
-      );
+    if (searchCriteria) {
+      // return data.results.filter((movie) =>
+      //   movie.original_title.toLowerCase().includes(searchCriteriaToLowercase)
+      // )
+      return search.results;
     } else {
       return data.results;
     }
@@ -38,13 +36,14 @@ const MovieList = () => {
         </small>
       </h1>
       <div className="grid grid-cols-4 gap-8">
-        {filteredMovies().map((movie) => (
-          <MovieCard
-            key={movie.id}
-            title={movie.original_title}
-            movie_id={movie.id}
-          />
-        ))}
+        {
+          filteredMovies().map((movie) => (
+            <MovieCard
+              key={movie.id}
+              title={movie.original_title}
+              movie_id={movie.id}
+            />
+          ))}
       </div>
     </div>
   );
