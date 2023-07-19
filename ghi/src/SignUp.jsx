@@ -25,7 +25,7 @@ const SignUp = () => {
     };
 
     return (
-        <div className="bg-black min-h-screen flex flex-col items-center justify-center relative">
+        <div className="bg-gray-800 min-h-screen flex flex-col items-center justify-center relative">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div className="w-100 z-10 pb-4 max-w-sm">
                     <img src="https://i.imgur.com/u34lKkt.png" className="h-65 w-full mx-auto relative" alt="Bingeworthy Logo" />
