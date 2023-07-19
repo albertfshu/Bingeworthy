@@ -3,10 +3,11 @@ import { useGetMovieProvidersQuery } from "./store/apiSlice";
 
 const SourceProviders = () => {
   const { movie_id } = useParams();
-  const { data, isLoading } = useGetMovieProvidersQuery(movie_id); //if providerData named data instead it works, how fix.
+  // console.log(movie_id)
+  const { data, isLoading } = useGetMovieProvidersQuery(movie_id);
   if (isLoading) return <div> Loading... </div>;
   else {
-    console.log(data);
+    // console.log(data);
   }
 
   if (data.results.US) {

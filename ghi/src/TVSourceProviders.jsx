@@ -15,18 +15,45 @@ const TVSourceProviders = () => {
             <div id="providers" className="my-8">
                 <p className="text-xl">Providers</p>
                 <div>US providers</div>
-                <div>Streaming On</div>
-                {data.results.US.flatrate.map((provider) => (
-                    <img
-                        src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
-                        width="40"
-                        alt={provider.provider_name}
-                        key={provider.provider_name}
-                        title={provider.provider_name}
-                        className="inline"
-                    ></img>
-                ))}
-
+                {(data.results.US.flatrate == undefined)
+                    ? <p>Flatrate Unavailable</p>
+                    : data.results.US.flatrate.map((provider) => (
+                        <img
+                            src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
+                            width="40"
+                            alt={provider.provider_name}
+                            key={provider.provider_name}
+                            title={provider.provider_name}
+                            className="inline"
+                        ></img>
+                    ))}
+                <br></br>
+                {(data.results.US.ads == undefined)
+                    ? <p>Ads Unavailable</p>
+                    : data.results.US.ads.map((provider) => (
+                        <img
+                            src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
+                            width="40"
+                            alt={provider.provider_name}
+                            key={provider.provider_name}
+                            title={provider.provider_name}
+                            className="inline"
+                        ></img>
+                    )
+                    )}
+                <br></br>
+                {(data.results.US.buy == undefined)
+                    ? <p>Buy Unavailable</p>
+                    : data.results.US.buy.map((provider) => (
+                        <img
+                            src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
+                            width="40"
+                            alt={provider.provider_name}
+                            key={provider.provider_name}
+                            title={provider.provider_name}
+                            className="inline"
+                        ></img>
+                    ))}
                 <div className="text-sm">data from JustWatch</div>
             </div >
         );

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ReviewCard = ({ title, data }) => {
   return (
-    <div className="mx-auto tile bg-teal-500" key={movie_id}>
+    <div className="mx-auto tile bg-teal-500">
       <h5 className="font-bold text-gray-200">
         {title[0].toUpperCase() + title.slice(1)}
       </h5>

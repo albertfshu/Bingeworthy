@@ -45,13 +45,6 @@ const TVDetail = () => {
                 {account && <h3> Add Review</h3>}
             </div>
             <div>
-                {/*
-            <div className="">
-            reviews().map((r) => (
-                <ReviewCard key={something} name={something} data={r.data}/>
-            ))
-
-        */}
             </div>
         </div>
     );

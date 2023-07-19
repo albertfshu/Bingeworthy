@@ -2,9 +2,7 @@ from fastapi import (
     Depends,
     HTTPException,
     status,
-    Response,
     APIRouter,
-    Request,
 )
 # from jwtdown_fastapi.authentication import Token
 # from authenticator import authenticator
@@ -20,12 +18,10 @@ from models import (
 router = APIRouter()
 
 
-@router.post("/api/accounts/{id}/comments", response_model=Comments)
+@router.post("/api/comments/{page_id}", response_model=Comments)
 async def create_comment(
     id: str,
     info: CommentIn,
-    request: Request,
-    response: Response,
     queries: CommentQueries = Depends(),
 ):
     try:
@@ -38,15 +34,15 @@ async def create_comment(
     return query
 
 
-@router.get("/api/accounts/{id}/comments")
+@router.get("/api/comments/{page_id}")
 async def get_page_comments(
   id: str,
   queries: CommentQueries = Depends(),
 ):
-    return queries.get_all(id)
+    return {"comments": queries.get_all(id)}
 
 
-@router.get("/api/accounts/{id}/comments/{comment_id}", response_model=Comments)
+@router.get("/api/comments/{page_id}/{comment_id}", response_model=Comments)
 async def get_comment(
     id: str,
     comment_id: str,
@@ -55,7 +51,7 @@ async def get_comment(
     return queries.get(id, comment_id)
 
 
-@router.put('/api/accounts/{id}/comments/{comment_id}', response_model=Comments)
+@router.put('/api/comments/{page_id}/{comment_id}', response_model=Comments)
 async def update_comment(
     id: str,
     info: CommentIn,
@@ -67,12 +63,12 @@ async def update_comment(
     except DuplicateAccountError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Cannot create account details",
+            detail="Cannot update comment details",
         )
     return query
 
 
-@router.delete('/api/accounts/{id}/comments/{comment_id}')
+@router.delete('/api/comments/{page_id}/{comment_id}')
 async def delete_comment(
     comment_id: str,
     queries: CommentQueries = Depends()

@@ -4,6 +4,7 @@ import {
 } from "./store/apiSlice";
 import { useGetAccountQuery } from "./store/accountSlice";
 import SourceProviders from "./SourceProviders";
+import Reviews from "./Reviews";
 
 const MovieDetail = () => {
     const { movie_id } = useParams();
@@ -15,7 +16,7 @@ const MovieDetail = () => {
     //   implement watchlist function
 
     return (
-        <div className="w-full p-8">
+        <div className="w-4/5 sm:w-full p-8 mx-auto">
             <div className="grid grid-cols-[200px,1fr] gap-8 object-center">
                 <div id="col1" className="max-w-xs">
                     <div>
@@ -39,18 +40,8 @@ const MovieDetail = () => {
                     <div>{data.overview}</div>
                 </div>
             </div>
-            <div>
-                <h1 className="mt-8"> Reviews </h1>
-                {account && <h3> Add Review</h3>}
-            </div>
-            <div>
-                {/*
-            <div className="">
-            reviews().map((r) => (
-                <ReviewCard key={something} name={something} data={r.data}/>
-            ))
-
-        */}
+            <div className="w-4/5 mx-auto">
+                <Reviews />
             </div>
         </div>
     );
