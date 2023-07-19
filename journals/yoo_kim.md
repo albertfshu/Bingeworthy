@@ -33,3 +33,7 @@ Unit tests written for accounts & comments -- needs more work
 
 ## DAY 11 - 7.17.23
 worked on unit tests and worked on parsing the 3rd party api to the search results on the movie list
+
+## DAY 12 - 7.18.23
+finished login and signup css to match figma
+added search bar to nav - not connected to search results
