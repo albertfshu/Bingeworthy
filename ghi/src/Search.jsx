@@ -1,17 +1,29 @@
 import { reset, filter } from "./store/searchSlice";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 const Search = () => {
-  const [searchCriteria, setSearchCriteria] = useState("");
+  let { searchParam } = useParams();
+  const [searchCriteria, setSearchCriteria] = useState(searchParam);
   const dispatch = useDispatch();
+  if (searchParam) {
+    dispatch(filter(searchCriteria))
+    console.log("test")
+  }
+
+
+  // if (searchParam) {
+  //   console.log(searchParam)
+  //   setSearchCriteria(searchParam)
+  //   searchParam = null
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted", searchCriteria);
     dispatch(filter(searchCriteria));
   };
-
 
   return (
     <>
@@ -37,7 +49,7 @@ const Search = () => {
               setSearchCriteria("");
             }}
           >
-            Reset {searchCriteria}
+            Reset
           </button>
         </div>
       </form>

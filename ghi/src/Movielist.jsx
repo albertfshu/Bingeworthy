@@ -26,14 +26,12 @@ const MovieList = () => {
     }
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading || isSearchLoading) return <div>Loading...</div>;
   return (
     <div className="mt-3">
-      <h1>
+      <h2 className="text-2xl font-bold text-gray-200"> Searching for {searchCriteria} </h2>
+      <h1 className="text-gray-200">
         Movie List{" "}
-        <small className="text-body-secondary">
-          {searchCriteria} - SEARCH TERM GOES HERE{" "}
-        </small>
       </h1>
       <div className="grid grid-cols-4 gap-8">
         {
