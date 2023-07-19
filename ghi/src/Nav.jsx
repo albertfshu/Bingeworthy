@@ -1,11 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import { useGetAccountQuery, useLogoutMutation, useLoginMutation } from "./store/accountSlice";
 import React from "react";
+import { useState } from "react";
 
 const Nav = () => {
     const { data: account } = useGetAccountQuery();
     const [logout] = useLogoutMutation();
     const [login] = useLoginMutation();
+    const [searchQuery, setSearchQuery] = useState("");
 
     const handleLogout = () => {
         logout()
@@ -15,6 +17,11 @@ const Nav = () => {
     const handleLogin = () => {
         login()
         window.location.href = './login';
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        // window.location.href = `./search`;
     }
 
     return (
@@ -62,9 +69,27 @@ const Nav = () => {
                         <li>
                             <NavLink to={'/movielist'} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Movie List</NavLink>
                         </li>
-                        {account && <li>
-                            <NavLink onClick={handleLogout} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Sign Out</NavLink>
-                        </li>}
+                        <li className="relative flex items-center">
+                            <form onSubmit={handleSearch} className="flex">
+                                <input
+                                    type="text"
+                                    placeholder="search"
+                                    className="w-60 py-2 pl-2 pr-10 h-6 text-left py-1 px-1 text-black bg-white rounded border border-gray-300 text-sm justified-center"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                />
+                                <button
+                                    type="submit"
+                                    className="h-6 text-center py-1 px-1 text-white bg-cyan-700 rounded border border-gray-300 text-xs absolute right-0 top-0"
+                                >
+                                    Search
+                                </button>
+                            </form>
+                        </li>
+                        {account &&
+                            <li>
+                                <NavLink onClick={handleLogout} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Sign Out</NavLink>
+                            </li>}
                         {!account && <li>
                             <NavLink onClick={handleLogin} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Sign In</NavLink>
                         </li>}
