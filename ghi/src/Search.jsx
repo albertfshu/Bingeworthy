@@ -9,7 +9,6 @@ const Search = () => {
   const dispatch = useDispatch();
   if (searchParam) {
     dispatch(filter(searchCriteria))
-    console.log("test")
   }
 
 
