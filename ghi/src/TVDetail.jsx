@@ -15,13 +15,13 @@ const TVDetail = () => {
 
     //   implement watchlist function
     return (
-        <div className="max-w-[80%]">
-            <div className="grid grid-flow-col auto-cols-min gap-2 object-center">
+        <div className="w-full p-8">
+            <div className="grid grid-cols-[200px,1fr] gap-8 object-center">
                 <div id="col1" className="max-w-xs">
                     <div>
-                        <div className="w-50">
+                        <div >
                             <img
-                                width="200"
+                                className="w-200"
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                             ></img>
                         </div>
@@ -29,12 +29,14 @@ const TVDetail = () => {
                         <TVSourceProviders />
                     </div>
                 </div>
-                <div id="col2" className="max-w-4xl">
-                    <h2 className="text-2xl">{data.original_name}</h2>
+                <div id="col2" className="w-full">
+                    <h2 className="text-4xl">{data.original_name}</h2>
+                    <div className="my-3">
+                        <h5 className="inline">{data.first_air_date}</h5>
+                        <h5 className="inline pl-6">{data.number_of_seasons} seasons</h5>
+                        <h5 className="inline pl-6">{data.number_of_episodes} episodes</h5>
+                    </div>
                     {/* <h5>rating</h5> */}
-                    <h5 className="inline">{data.release_date}</h5>
-                    <h5 className="inline pl-6">{data.number_of_seasons} seasons</h5>
-                    <h5 className="inline pl-6">{data.number_of_episodes} episodes</h5>
                     <div>{data.overview}</div>
                 </div>
             </div>

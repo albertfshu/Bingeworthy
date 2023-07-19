@@ -29,9 +29,6 @@ const MovieList = () => {
   }
   const filteredMovies = () => {
     if (searchCriteria) {
-      // return data.results.filter((movie) =>
-      //   movie.original_title.toLowerCase().includes(searchCriteriaToLowercase)
-      // )
       return search.results;
     } else {
       return data.results;
@@ -41,11 +38,11 @@ const MovieList = () => {
   if (isLoading || isSearchLoading) return <div>Loading...</div>;
   return (
     <div className="mt-3">
-      <p className="text-2xl font-bold text-gray-200">
+      <p className="text-2xl font-bold text-gray-200 my-3 ml-5">
         {searchCriteria} - Movie List - Page {pageCounter}
       </p>
       <div className="grid grid-cols-[1fr,8fr,1fr] ">
-        <div className="text-white"><button onClick={handlePageDown}>leftArrow</button></div>
+        <div><button className={"text-white hover:text-white/25 text-8xl my-auto w-full h-full"} onClick={handlePageDown}>◄</button></div>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
           {
             filteredMovies().map((movie) => (
@@ -56,7 +53,7 @@ const MovieList = () => {
               />
             ))}
         </div>
-        <div className="text-white"><button onClick={handlePageUp}>rightarrow</button></div>
+        <div><button className={"text-white hover:text-white/25 text-8xl self-center w-full h-full"} onClick={handlePageUp}>►</button></div>
       </div>
     </div>
   );

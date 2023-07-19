@@ -33,7 +33,7 @@ function App() {
     <div>
       <Nav />
       <ErrorNotification error={error} />
-      <div>
+      <div className="min-h-screen bg-gray-800 text-white">
         <Outlet />
       </div>
     </div>
