@@ -1,43 +1,41 @@
 import React from "react";
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import AlertError from './AlertError';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { useGetAccountQuery } from "./store/accountSlice";
+import { useState, } from "react";
+import { useDispatch } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+// import { useGetAccountQuery } from "./store/accountSlice";
 import { useGetAccountDetailsQuery, useUpdateAccountDetailsMutation } from "./store/accountDetailsSlice";
 import AlertError from "./AlertError";
 
 const UserProfile = () => {
-    const [user, setUser] = useState('')
-    const [users, setUsers] = useState([])
-    const dispatch = useDispatch()
-    const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
-    const { data: accountDetailsData, isLoading: isAccountDetailsLoading, error: accountDetailsError } = useGetAccountDetailsQuery(accountData.id);
+    // const dispatch = useDispatch()
+    const { userId } = useParams();
+
+    const { data: accountDetailsData } = useGetAccountDetailsQuery(userId);
     const [updateAccountDetails, isLoading: isUpdating, error: updateError] = useUpdateAccountDetailsMutation();
-    const [bio, setBio] = usestate(accountDetailsData?.bio || "");
+    const [bio, setBio] = useState(accountDetailsData?.bio || "");
     const [profileImage, setProfileImage] = useState(accountDetailsData?.profileImage || "")
+    // const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
     // const {updateAccountDetails, { }}
 
-    useEffect(() => {
-        if (accountData?.id) {
-            dispatch(useGetAccountDetailsQuery(accountData.id));
-        }
-    }, [dispatch, accountData])
+    // useEffect(() => {
+    //     if (userId) {
+    //         dispatch(useGetAccountDetailsQuery(userId));
+    //     }
+    // }, [dispatch, userId]);
 
     const handleUpdateDetails = (e) => {
         e.preventDefault();
         const updatedDetails = {
             bio,
             profileImage,
-        }
-        updateAccountDetails({ id: accountData.id, ...updatedDetails })
-    }
+        };
+        updateAccountDetails({ id: userId, ...updatedDetails });
+    };
 
-    if (isAccountLoading || isAccountDetailsLoading) {
+    if (accountDetailsData?.isLoading) {
         return <div> Account Loading... </div>
     }
-    if (accountError || accountDetailsError) {
+    if (accountDetailsData?.error) {
         return <AlertError message="Error getting user data" />
     }
 
@@ -49,14 +47,14 @@ const UserProfile = () => {
                 <img
                     src={accountDetailsData?.profileImage || "default-profile-image.jpg"}
                     // Need to make one - default-profile-image
-                    alt="Profile Image"
+                    alt="Profile"
                     style={{ width: "125px", height: "125px" }}
                 />
-                <p>Member since: {new Date(accountData.date).toLocaleDateString()}</p>
+                <p>Member since: {new Date(accountDetailsData.date).toLocaleDateString()}</p>
             </div>
 
             <h2>Account Information</h2>
-            <p>Username: {accountData.username}</p>
+            <p>Username: {accountDetailsData.username}</p>
 
             {accountDetailsData && (
                 <>
@@ -85,16 +83,16 @@ const UserProfile = () => {
 
             <ul>
                 <li>
-                    <Link to={`/comments/${accountData.id}`}>Comments</Link>
+                    <Link to={`/comments/${userId}`}>Comments</Link>
                 </li>
                 <li>
-                    <Link to={`/watchlist/${accountData.id}`}>WatchList</Link>
+                    <Link to={`/watchlist/${userId}`}>WatchList</Link>
                 </li>
                 <li>
-                    <Link to={`/favorites/${accountData.id}`}>Favorites</Link>
+                    <Link to={`/favorites/${userId}`}>Favorites</Link>
                 </li>
                 <li>
-                    <Link to={`/reviews/${accountData.id}`}>Reviews</Link>
+                    <Link to={`/reviews/${userId}`}>Reviews</Link>
                 </li>
             </ul>
 
@@ -110,11 +108,11 @@ const UserProfile = () => {
                     <label htmlFor="profileImage">Profile Image URL:</label>
                     <input type="text" id="profileImage" value={profileImage} onChange={(e) => setProfileImage(e.target.value)} />
                 </div>
-                <button type="submit" disabled={isUpdating}>
-                    {isUpdating ? "Updating..." : "Update"}
+                <button type="submit" className="w-full text-center py-3 rounded bg-black text-white hover:bg-gray-700 border">
+                    Update
                 </button>
             </form>
-            {updateError && <AlertError message="Error updating account details." />}
+            {updateError && <AlertError message="Error updating account details" />}
         </div>
     );
 };
