@@ -61,12 +61,14 @@ class AccountDetailsOut (BaseModel):
     _id: str
     bio: str
     date: datetime
+    profile_image: str
 
 
 class AccountDetailsIn(BaseModel):
     _id: str
     bio: str
     date: datetime
+    profile_image: str
 
 # class MediaDetails(BaseModel):
 #     _id: str #id starts with m or t and then TMDB api id
