@@ -16,7 +16,6 @@ const Reviews = () => {
   if (account == null) {
     account = false
   }
-  // console.log(account)
   console.log(showComments)
   let page_id = movie_id
 
@@ -28,18 +27,20 @@ const Reviews = () => {
   }
 
   const handleSubmit = (e) => {
-    console.log("anything ?")
-    console.log(comment)
     let query = {
       page_id: page_id, body: {
-        "commentor_id": account.account.id,
+        "commentor_id": account.account.username,
         "comment": comment,
       }
     }
     postComment(query)
   }
-  // console.log(account)
-  if (isCommentsLoading) return (<div>loading...</div>);
+
+  const handleDate = (isoString) => {
+    return ((new Date(isoString).toLocaleDateString()) + " " + (new Date(isoString).toLocaleTimeString()));
+  };
+
+  if (isCommentsLoading) { return (<div>loading...</div>) };
   return (
     <>
       <div className="grid grid-cols-[1fr,200px]">
@@ -65,9 +66,6 @@ const Reviews = () => {
 
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-semibold">New Review</h3>
-                  {(edit)
-                    ? <h3 className="text-3xl font-semibold">New Review</h3>
-                    : <h3 className="text-3xl font-semibold">Edit Review</h3>}
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
@@ -124,7 +122,7 @@ const Reviews = () => {
                   <img className="rounded-full bg-color-black h-12 my-auto" src="https://cdn.discordapp.com/emojis/1091215748338307173.webp?size=96&quality=lossless" />
                   <div className="ml-6">
                     <p className="text-2xl">{r.commentor_id}</p>
-                    <p>{r.post_date}</p>
+                    <p>{handleDate(r.post_date)}</p>
                   </div>
                 </div>
                 {r.commentor_id == account.account.id
@@ -141,7 +139,7 @@ const Reviews = () => {
               <div className="mx-6 my-5">
                 <p>{r.comment}</p>
                 <div className="ml-auto h-[min-content]">
-                  {r.edit_date !== r.post_date && <p>if edited then edited: EDIT DATE</p>}
+                  {r.edit_date !== r.post_date && <p>edited {r.edit_date}</p>}
                 </div>
               </div>
             </div>
