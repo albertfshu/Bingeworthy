@@ -1,27 +1,29 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-// import { useGetAccountQuery } from "./store/accountSlice";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import AlertError from './AlertError';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useGetAccountQuery } from "./store/accountSlice";
 import { useGetAccountDetailsQuery, useUpdateAccountDetailsMutation } from "./store/accountDetailsSlice";
 import AlertError from "./AlertError";
 
 const UserProfile = () => {
+    const [user, setUser] = useState('')
+    const [users, setUsers] = useState([])
     const dispatch = useDispatch()
-    const { userId } = useParams();
-
-    const { data: accountDetailsData, isLoading: isAccountDetailsLoading, error: accountDetailsError } = useGetAccountDetailsQuery(userId);
+    const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
+    const { data: accountDetailsData, isLoading: isAccountDetailsLoading, error: accountDetailsError } = useGetAccountDetailsQuery(accountData.id);
     const [updateAccountDetails, isLoading: isUpdating, error: updateError] = useUpdateAccountDetailsMutation();
-    const [bio, setBio] = useState(accountDetailsData?.bio || "");
+    const [bio, setBio] = usestate(accountDetailsData?.bio || "");
     const [profileImage, setProfileImage] = useState(accountDetailsData?.profileImage || "")
-    // const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
     // const {updateAccountDetails, { }}
 
     useEffect(() => {
-        if (userId) {
-            dispatch(useGetAccountDetailsQuery(userId));
+        if (accountData?.id) {
+            dispatch(useGetAccountDetailsQuery(accountData.id));
         }
-    }, [dispatch, userId])
+    }, [dispatch, accountData])
 
     const handleUpdateDetails = (e) => {
         e.preventDefault();
@@ -29,7 +31,7 @@ const UserProfile = () => {
             bio,
             profileImage,
         }
-        updateAccountDetails({ id: userId, ...updatedDetails })
+        updateAccountDetails({ id: accountData.id, ...updatedDetails })
     }
 
     if (isAccountLoading || isAccountDetailsLoading) {
@@ -50,7 +52,7 @@ const UserProfile = () => {
                     alt="Profile Image"
                     style={{ width: "125px", height: "125px" }}
                 />
-                <p>Member since: {new Date(accountDetailsData.date).toLocaleDateString()}</p>
+                <p>Member since: {new Date(accountData.date).toLocaleDateString()}</p>
             </div>
 
             <h2>Account Information</h2>
@@ -83,16 +85,16 @@ const UserProfile = () => {
 
             <ul>
                 <li>
-                    <Link to={`/comments/${userId}`}>Comments</Link>
+                    <Link to={`/comments/${accountData.id}`}>Comments</Link>
                 </li>
                 <li>
-                    <Link to={`/watchlist/${userId}`}>WatchList</Link>
+                    <Link to={`/watchlist/${accountData.id}`}>WatchList</Link>
                 </li>
                 <li>
-                    <Link to={`/favorites/${userId}`}>Favorites</Link>
+                    <Link to={`/favorites/${accountData.id}`}>Favorites</Link>
                 </li>
                 <li>
-                    <Link to={`/reviews/${userId}`}>Reviews</Link>
+                    <Link to={`/reviews/${accountData.id}`}>Reviews</Link>
                 </li>
             </ul>
 
@@ -108,11 +110,11 @@ const UserProfile = () => {
                     <label htmlFor="profileImage">Profile Image URL:</label>
                     <input type="text" id="profileImage" value={profileImage} onChange={(e) => setProfileImage(e.target.value)} />
                 </div>
-                <button type="submit" className="w-full text-center py-3 rounded bg-black text-white hover:bg-gray-700 border">
-                    Update
+                <button type="submit" disabled={isUpdating}>
+                    {isUpdating ? "Updating..." : "Update"}
                 </button>
             </form>
-            {updateError && <AlertError message="Error updating account details" />}
+            {updateError && <AlertError message="Error updating account details." />}
         </div>
     );
 };

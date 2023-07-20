@@ -13,9 +13,8 @@ const TVList = () => {
     let page = "&page=" + pageCounter;
     let fullSearch = searchCriteria + page;
     const { data: search, isSearchLoading } = useSearchTVQuery(fullSearch);
-    console.log(search);
+    console.log(searchCriteria);
 
-    const searchCriteriaToLowercase = searchCriteria.toLowerCase();
 
 
     const handlePageUp = () => {
@@ -42,9 +41,12 @@ const TVList = () => {
     if (isLoading || isSearchLoading) return <div>Loading...</div>;
     return (
         <div className="mt-3">
-            <p className="text-2xl font-bold text-gray-200 my-3 ml-5">
-                {searchCriteria} - TV List - Page {pageCounter}
-            </p>
+            <div className="text-2xl font-bold text-gray-200 my-3 ml-5">
+                {(searchCriteria)
+                    ? <p>{searchCriteria[0]} - TV List - Page {pageCounter}</p>
+                    : <p>Top 20 Popular TV Shows</p>
+                }
+            </div>
             <div className="grid grid-cols-[1fr,8fr,1fr] ">
                 <div><button className={"text-white hover:text-white/25 text-8xl my-auto w-full h-full"} onClick={handlePageDown}>◄</button></div>
                 <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
@@ -53,7 +55,7 @@ const TVList = () => {
                             <TVCard
                                 key={tv.id}
                                 title={tv.original_name}
-                                tv_id={tv.id}
+                                media_id={tv.id}
                             />
                         ))}
                 </div>

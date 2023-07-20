@@ -4,6 +4,7 @@ import {
 } from "./store/apiSlice";
 import { useGetAccountQuery } from "./store/accountSlice";
 import TVSourceProviders from "./TVSourceProviders";
+import Reviews from "./Reviews";
 
 const TVDetail = () => {
     const { tv_id } = useParams();
@@ -40,11 +41,8 @@ const TVDetail = () => {
                     <div>{data.overview}</div>
                 </div>
             </div>
-            <div>
-                <h1 className="mt-8"> Reviews </h1>
-                {account && <h3> Add Review</h3>}
-            </div>
-            <div>
+            <div className="w-4/5 mx-auto">
+                <Reviews />
             </div>
         </div>
     );

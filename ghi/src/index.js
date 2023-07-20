@@ -18,6 +18,7 @@ import ErrorNotification from "./ErrorNotification";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import UserProfile from "./Userprofile";
 // import Errorpage from './Errorpage'
 
 import { store } from "./store/store";
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/tv/:tv_id",
         element: <TVDetail />,
+      },
+      {
+        path: "/profile/",
+        element: <UserProfile />,
       },
     ],
   },

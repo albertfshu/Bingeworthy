@@ -86,6 +86,10 @@ export const movieApi = createApi({
         `/tv/${tv_id}/watch/providers?api_key=0fd8a0e40883c8bc0578f44a534b1ed9`,
       providesTags: (result, error, id) => [{ type: "Providers", id }],
     }),
+    getLanguages: builder.query({
+      query: () =>
+        ` https://api.themoviedb.org/3/configuration/languages?api_key=0fd8a0e40883c8bc0578f44a534b1ed9`,
+    }),
   }),
 });
 
@@ -98,12 +102,10 @@ export const {
   useGetMovieDetailsQuery,
   useGetPopularTVQuery,
   useGetTVDetailsQuery,
-  useGetAccountQuery,
-  useLogoutMutation,
-  useLoginMutation,
   useGetAllFavoritesQuery,
   useDeleteFavoriteMutation,
   useCreateFavoriteMutation,
   useGetMovieProvidersQuery,
   useGetTVProvidersQuery,
+  useGetLanguagesQuery,
 } = movieApi;

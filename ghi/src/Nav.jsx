@@ -11,12 +11,12 @@ const Nav = () => {
 
     const handleLogout = () => {
         logout()
-        window.location.href = './login';
+        window.location.href = '/login';
     }
 
     const handleLogin = () => {
         login()
-        window.location.href = './login';
+        window.location.href = '/login';
     }
 
     const handleSearch = (e) => {

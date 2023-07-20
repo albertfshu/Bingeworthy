@@ -15,8 +15,6 @@ const MovieList = () => {
   const { data: search, isLoading: isSearchLoading } = useSearchMoviesQuery(fullSearch)
   console.log(search);
 
-  const searchCriteriaToLowercase = searchCriteria.toLowerCase();
-
   const handlePageUp = () => {
     if (pageCounter < search.total_pages)
       setPageCounter(pageCounter + 1);
@@ -38,9 +36,12 @@ const MovieList = () => {
   if (isLoading || isSearchLoading) return <div>Loading...</div>;
   return (
     <div className="mt-3">
-      <p className="text-2xl font-bold text-gray-200 my-3 ml-5">
-        {searchCriteria} - Movie List - Page {pageCounter}
-      </p>
+      <div className="text-2xl font-bold text-gray-200 my-3 ml-5">
+        {(searchCriteria)
+          ? <p>{searchCriteria[0]} - Movie List - Page {pageCounter}</p>
+          : <p>Top 20 Popular Movie Shows</p>
+        }
+      </div>
       <div className="grid grid-cols-[1fr,8fr,1fr] ">
         <div><button className={"text-white hover:text-white/25 text-8xl my-auto w-full h-full"} onClick={handlePageDown}>◄</button></div>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
@@ -49,7 +50,7 @@ const MovieList = () => {
               <MovieCard
                 key={movie.id}
                 title={movie.original_title}
-                movie_id={movie.id}
+                media_id={movie.id}
               />
             ))}
         </div>
