@@ -112,8 +112,7 @@ const UserProfile = () => {
                     <label htmlFor="profileImage">Profile Image URL:</label>
                     <input type="text" id="profileImage" value={profileImage} onChange={(e) => setProfileImage(e.target.value)} />
                 </div>
-                <button type="submit" disabled={isUpdating}>
-                    {isUpdating ? "Updating..." : "Update"}
+                <button type="submit">
                 </button>
             </form>
         </div>
