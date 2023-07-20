@@ -16,8 +16,9 @@ export const watchlistSlice = createApi({
 
     addToWatchlist: builder.mutation({
       query: ({ account_id, media_id }) => ({
-        url: `/api/accounts/${account_id}/watchlist?media_id=${media_id}`,
+        url: `/api/accounts/${account_id}/watchlist`,
         method: "POST",
+        body: {media_id},
         credentials: "include",
       }),
       invalidatesTags: ["Watchlist"],
