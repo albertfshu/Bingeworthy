@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         element: <TVDetail />,
       },
       {
-        path: "/profile/",
+        path: "/profile/:userId",
         element: <UserProfile />,
       },
     ],

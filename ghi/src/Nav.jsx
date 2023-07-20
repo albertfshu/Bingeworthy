@@ -8,7 +8,7 @@ const Nav = () => {
     const [logout] = useLogoutMutation();
     const [login] = useLoginMutation();
     const [searchQuery, setSearchQuery] = useState("");
-
+    console.log(account)
     const handleLogout = () => {
         logout()
         window.location.href = '/login';

@@ -10,8 +10,8 @@ const UserProfile = () => {
     // const dispatch = useDispatch()
     const { userId } = useParams();
 
-    const { data: accountDetailsData } = useGetAccountDetailsQuery(userId);
-    const [updateAccountDetails, isLoading: isUpdating, error: updateError] = useUpdateAccountDetailsMutation();
+    const { data: accountDetailsData, isLoading: isAccountDetailsLoading } = useGetAccountDetailsQuery(userId);
+    const [updateAccountDetails, isLoading: isUpdating] = useUpdateAccountDetailsMutation();
     const [bio, setBio] = useState(accountDetailsData?.bio || "");
     const [profileImage, setProfileImage] = useState(accountDetailsData?.profileImage || "")
     // const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
@@ -32,14 +32,14 @@ const UserProfile = () => {
         updateAccountDetails({ id: userId, ...updatedDetails });
     };
 
-    if (accountDetailsData?.isLoading) {
+    if (isAccountDetailsLoading) {
         return <div> Account Loading... </div>
     }
     if (accountDetailsData?.error) {
         return <AlertError message="Error getting user data" />
     }
 
-
+    console.log(accountDetailsData)
     return (
         <div>
             <h1>User Profile</h1>
@@ -112,7 +112,7 @@ const UserProfile = () => {
                     Update
                 </button>
             </form>
-            {updateError && <AlertError message="Error updating account details" />}
+            {/* {updateError && <AlertError message="Error updating account details" />} */}
         </div>
     );
 };

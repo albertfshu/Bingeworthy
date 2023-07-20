@@ -7,11 +7,11 @@ export const accountDetailsApi = createApi({
   }),
   endpoints: (builder) => ({
     getAccountDetails: builder.query({
-      query: (accountId) => "/api/account-details/${accountId}",
+      query: (accountId) => `/api/accounts/${accountId}`,
     }),
     updateAccountDetails: builder.mutation({
       query: ({ id, ...data }) => ({
-        url: "/api/account-details/${id}",
+        url: `/api/accounts/${id}`,
         method: "PUT",
         body: data,
       }),
