@@ -9,19 +9,21 @@ import { useGetAccountDetailsQuery, useUpdateAccountDetailsMutation } from "./st
 import AlertError from "./AlertError";
 
 const UserProfile = () => {
-    const [user, setUser] = useState('')
-    const [users, setUsers] = useState([])
+    // const [user, setUser] = useState('')
+    // const [users, setUsers] = useState([])
     const dispatch = useDispatch()
-    const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
-    const { data: accountDetailsData, isLoading: isAccountDetailsLoading, error: accountDetailsError } = useGetAccountDetailsQuery(accountData.id);
+    const { userId } = useParams();
+
+    // const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
+    const { data: accountDetailsData, isLoading: isAccountDetailsLoading, error: accountDetailsError } = useGetAccountDetailsQuery(userId);
     const [updateAccountDetails, isLoading: isUpdating, error: updateError] = useUpdateAccountDetailsMutation();
     const [bio, setBio] = usestate(accountDetailsData?.bio || "");
     const [profileImage, setProfileImage] = useState(accountDetailsData?.profileImage || "")
     // const {updateAccountDetails, { }}
 
     useEffect(() => {
-        if (accountData?.id) {
-            dispatch(useGetAccountDetailsQuery(accountData.id));
+        if (userId) {
+            dispatch(useGetAccountDetailsQuery(userId));
         }
     }, [dispatch, accountData])
 
@@ -85,16 +87,16 @@ const UserProfile = () => {
 
             <ul>
                 <li>
-                    <Link to={`/comments/${accountData.id}`}>Comments</Link>
+                    <Link to={`/comments/${userId}`}>Comments</Link>
                 </li>
                 <li>
-                    <Link to={`/watchlist/${accountData.id}`}>WatchList</Link>
+                    <Link to={`/watchlist/${userId}`}>WatchList</Link>
                 </li>
                 <li>
-                    <Link to={`/favorites/${accountData.id}`}>Favorites</Link>
+                    <Link to={`/favorites/${userId}`}>Favorites</Link>
                 </li>
                 <li>
-                    <Link to={`/reviews/${accountData.id}`}>Reviews</Link>
+                    <Link to={`/reviews/${userId}`}>Reviews</Link>
                 </li>
             </ul>
 
@@ -114,7 +116,6 @@ const UserProfile = () => {
                     {isUpdating ? "Updating..." : "Update"}
                 </button>
             </form>
-            {updateError && <AlertError message="Error updating account details." />}
         </div>
     );
 };
