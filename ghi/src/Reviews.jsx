@@ -1,25 +1,44 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import { useGetAccountQuery } from "./store/accountSlice";
-import { useGetCommentsQuery, useCreateCommentMutation } from "./store/dataSlice";
+import { useGetCommentsQuery, useCreateCommentMutation, useDeleteCommentMutation } from "./store/dataSlice";
 import ReviewCard from "./ReviewCard";
 
 const Reviews = () => {
   const { movie_id } = useParams();
   const { data: showComments, isLoading: isCommentsLoading } = useGetCommentsQuery(movie_id)
+  const [deleteComment] = useDeleteCommentMutation();
   const [postComment] = useCreateCommentMutation();
-  const { data: account } = useGetAccountQuery();
+  let { data: account } = useGetAccountQuery();
   const [showModal, setShowModal] = useState(false);
+  const edit = false;
   const [comment, setComment] = useState("");
+  if (account == null) {
+    account = false
+  }
   // console.log(account)
   console.log(showComments)
+  let page_id = movie_id
+
+  const handleDelete = (e) => {
+    console.log(e.target.value)
+    let comment_id = e.target.value;
+    let query = { page_id: page_id, comment_id: comment_id }
+    deleteComment(query)
+  }
+
   const handleSubmit = (e) => {
-    e.preventDefault();
     console.log("anything ?")
     console.log(comment)
-    postComment(comment, movie_id, account)
+    let query = {
+      page_id: page_id, body: {
+        "commentor_id": account.account.id,
+        "comment": comment,
+      }
+    }
+    postComment(query)
   }
-  console.log(account)
+  // console.log(account)
   if (isCommentsLoading) return (<div>loading...</div>);
   return (
     <>
@@ -29,7 +48,10 @@ const Reviews = () => {
           <button
             className="inline bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="button"
-            onClick={() => setShowModal(true)}
+            onClick={() => {
+              setShowModal(true);
+              edit = false;
+            }}
           >
             Add Review
           </button>}
@@ -43,11 +65,14 @@ const Reviews = () => {
 
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-semibold">New Review</h3>
+                  {(edit)
+                    ? <h3 className="text-3xl font-semibold">New Review</h3>
+                    : <h3 className="text-3xl font-semibold">Edit Review</h3>}
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span className="bg-transparent text-black  h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
@@ -74,15 +99,18 @@ const Reviews = () => {
                     <button
                       className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
-                      onClick={() => setShowModal(false)}
+                      onClick={() => {
+                        setShowModal(false);
+                        handleSubmit();
+                      }}
                     >
                       Submit
                     </button>
                   </div>
                 </form>
               </div>
-            </div>
-          </div>
+            </div >
+          </div >
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
@@ -96,13 +124,16 @@ const Reviews = () => {
                   <img className="rounded-full bg-color-black h-12 my-auto" src="https://cdn.discordapp.com/emojis/1091215748338307173.webp?size=96&quality=lossless" />
                   <div className="ml-6">
                     <p className="text-2xl">{r.commentor_id}</p>
-                    <p>{Date(r.post_date)}</p>
+                    <p>{r.post_date}</p>
                   </div>
                 </div>
                 {r.commentor_id == account.account.id
                   && <>
-                    <button className="m-1 mr-1 bg-red-100">Edit</button>
-                    <button className="m-1 bg-red-100">Delete</button>
+                    <button className="m-1 mr-1 bg-red-100" onClick={() => {
+                      setShowModal(true);
+                      edit = true;
+                    }}>Edit</button>
+                    <button className="m-1 bg-red-100" value={r._id} onClick={handleDelete}>Delete</button>
                   </>
                 }
               </div>
@@ -115,30 +146,6 @@ const Reviews = () => {
               </div>
             </div>
           ))}
-        </div>
-
-
-        <div id="testReviewCard" className="bg-yellow-100 w-full p-3 text-black">
-          <div id="cardheader" className="bg-white w-full p-3 text-black grid grid-cols-[1fr,100px,100px]">
-            <div className="grid grid-cols-[auto_1fr]">
-              <img className="rounded-full bg-color-black h-12 my-auto" src="https://cdn.discordapp.com/emojis/1091215748338307173.webp?size=96&quality=lossless" />
-              <div className="ml-6">
-                <p className="text-2xl">USERNAME GOES HERE</p>
-                <p>Creation Date</p>
-              </div>
-            </div>
-            <button className="m-1 mr-1 bg-red-100">Edit</button>
-            <button className="m-1 bg-red-100">Delete</button>
-          </div>
-          <div className="bg-black w-7/8 h-[1px] mx-auto"></div>
-          <div className="mx-6 my-5">
-            <p>CONTENT
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            </p>
-            <div className="ml-auto h-[min-content]">
-              <p>if edited then edited: EDIT DATE</p>
-            </div>
-          </div>
         </div>
       </div >
     </>

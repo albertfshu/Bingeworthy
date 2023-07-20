@@ -24,19 +24,25 @@ export const dataApi = createApi({
       providesTags: ["Rating"],
     }),
     createComment: builder.mutation({
-      query: (body, page_id) => ({
-        url: `/api/comments/${page_id}`,
+      query: (query) => ({
+        url: `/api/comments/${query.page_id}`,
         method: "POST",
-        body,
+        body: query.body,
         credentials: "include",
       }),
       invalidatesTags: ["Comment"],
     }),
     getComments: builder.query({
       query: (page_id) => ({
-        url: `/api/comments/{page_id}?id=${page_id}`,
+        url: `/api/comments/${page_id}`,
       }),
       providesTags: ["Comment"],
+    }),
+    deleteComment: builder.mutation({
+      query: (query) => ({
+        url: `/api/comments/${query.page_id}/${query.comment_id}`,
+        method: "DELETE",
+      }),
     }),
   }),
 });
@@ -46,4 +52,5 @@ export const {
   useGetRatingQuery,
   useCreateCommentMutation,
   useGetCommentsQuery,
+  useDeleteCommentMutation,
 } = dataApi;

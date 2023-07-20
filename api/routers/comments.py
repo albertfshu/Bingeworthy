@@ -20,26 +20,26 @@ router = APIRouter()
 
 @router.post("/api/comments/{page_id}", response_model=Comments)
 async def create_comment(
-    id: str,
+    page_id: str,
     info: CommentIn,
     queries: CommentQueries = Depends(),
 ):
     try:
-        query = queries.create(info, page_id=id)
+        query = queries.create(info, page_id)
     except DuplicateAccountError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Cannot create account details",
+            detail="Cannot create comment",
         )
     return query
 
 
 @router.get("/api/comments/{page_id}")
 async def get_page_comments(
-  id: str,
+  page_id: str,
   queries: CommentQueries = Depends(),
 ):
-    return {"comments": queries.get_all(id)}
+    return {"comments": queries.get_all(page_id)}
 
 
 @router.get("/api/comments/{page_id}/{comment_id}", response_model=Comments)
