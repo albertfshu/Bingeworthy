@@ -1,31 +1,27 @@
 import React from "react";
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import AlertError from './AlertError';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { useGetAccountQuery } from "./store/accountSlice";
+import { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+// import { useGetAccountQuery } from "./store/accountSlice";
 import { useGetAccountDetailsQuery, useUpdateAccountDetailsMutation } from "./store/accountDetailsSlice";
 import AlertError from "./AlertError";
 
 const UserProfile = () => {
-    // const [user, setUser] = useState('')
-    // const [users, setUsers] = useState([])
     const dispatch = useDispatch()
     const { userId } = useParams();
 
-    // const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
     const { data: accountDetailsData, isLoading: isAccountDetailsLoading, error: accountDetailsError } = useGetAccountDetailsQuery(userId);
     const [updateAccountDetails, isLoading: isUpdating, error: updateError] = useUpdateAccountDetailsMutation();
-    const [bio, setBio] = usestate(accountDetailsData?.bio || "");
+    const [bio, setBio] = useState(accountDetailsData?.bio || "");
     const [profileImage, setProfileImage] = useState(accountDetailsData?.profileImage || "")
+    // const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
     // const {updateAccountDetails, { }}
 
     useEffect(() => {
         if (userId) {
             dispatch(useGetAccountDetailsQuery(userId));
         }
-    }, [dispatch, accountData])
+    }, [dispatch, userId])
 
     const handleUpdateDetails = (e) => {
         e.preventDefault();
@@ -33,7 +29,7 @@ const UserProfile = () => {
             bio,
             profileImage,
         }
-        updateAccountDetails({ id: accountData.id, ...updatedDetails })
+        updateAccountDetails({ id: userId, ...updatedDetails })
     }
 
     if (isAccountLoading || isAccountDetailsLoading) {
@@ -54,7 +50,7 @@ const UserProfile = () => {
                     alt="Profile Image"
                     style={{ width: "125px", height: "125px" }}
                 />
-                <p>Member since: {new Date(accountData.date).toLocaleDateString()}</p>
+                <p>Member since: {new Date(accountDetailsData.date).toLocaleDateString()}</p>
             </div>
 
             <h2>Account Information</h2>
@@ -112,9 +108,11 @@ const UserProfile = () => {
                     <label htmlFor="profileImage">Profile Image URL:</label>
                     <input type="text" id="profileImage" value={profileImage} onChange={(e) => setProfileImage(e.target.value)} />
                 </div>
-                <button type="submit">
+                <button type="submit" className="w-full text-center py-3 rounded bg-black text-white hover:bg-gray-700 border">
+                    Update
                 </button>
             </form>
+            {updateError && <AlertError message="Error updating account details" />}
         </div>
     );
 };
