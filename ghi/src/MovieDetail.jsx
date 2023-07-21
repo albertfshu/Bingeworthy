@@ -5,6 +5,8 @@ import {
 import { useGetAccountQuery } from "./store/accountSlice";
 import SourceProviders from "./SourceProviders";
 import Reviews from "./Reviews";
+// import WatchlistButton from "./WatchlistButton"
+import MovieCard from "./Moviecard";
 
 const MovieDetail = () => {
     const { movie_id } = useParams();
@@ -26,8 +28,8 @@ const MovieDetail = () => {
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                             ></img>
                         </div>
-                        <button>Add to Watchlist</button>
-                        <SourceProviders />
+                        {/* fix the account_id  */}
+                        {/* <WatchlistButton account_id={account_id} media_id={media_id} /> */}
                     </div>
                 </div>
                 <div id="col2" className="w-full">
