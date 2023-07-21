@@ -13,10 +13,17 @@ const MovieDetail = () => {
     const { data: account } = useGetAccountQuery();
     const { data, isLoading } = useGetMovieDetailsQuery(movie_id);
 
-    if (isLoading) return <div> Loading... </div>;
+
+
+    // const FormattedDate = (dateString) => {
+    //     const options = { year: "numeric", month: "long", day: "numeric" };
+    //     return new Date(dateString).toLocaleDateString(undefined, options);
+
+    // };
+    // const ReleaseDate = FormattedDate(data.release_date);
 
     //   implement watchlist function
-
+    if (isLoading) return <div> Loading... </div>;
     return (
         <div className="w-4/5 sm:w-full p-8 mx-auto">
             <div className="grid grid-cols-[200px,1fr] gap-8 object-center">
@@ -36,7 +43,7 @@ const MovieDetail = () => {
                     <h2 className="text-2xl">{data.original_title}</h2>
                     {/* <h5>rating</h5> */}
                     <div className="my-3">
-                        <h5 className="inline">{data.release_date}</h5>
+                        <h5 className="inline">{data.release_date} </h5>
                         <h5 className="inline pl-6">{data.runtime}min</h5>
                     </div>
                     <div>{data.overview}</div>

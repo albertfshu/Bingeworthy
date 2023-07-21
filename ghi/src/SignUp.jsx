@@ -2,6 +2,8 @@ import { useSignupMutation } from "./store/accountSlice";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import AlertError from './AlertError'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -78,6 +80,12 @@ const SignUp = () => {
                             className="w-full text-center py-3 rounded bg-black text-white hover:bg-gray-700 border"
                         >Create Account</button>
                     </form>
+                    <p className="mt-4 text-center text-white text-sm">
+                        Already have an account?{" "}
+                        <Link to="/login" className="underline">
+                            Login here
+                        </Link>
+                    </p>
                 </div>
             </div>
         </div>
