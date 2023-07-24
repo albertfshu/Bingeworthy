@@ -20,6 +20,10 @@ const Search = () => {
     setChecked(!checked);
   }
 
+  useEffect(() => {
+    dispatch(filter([searchCriteria]))
+  }, [])
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted", searchCriteria);

@@ -12,7 +12,6 @@ const WatchlistButton = (props) => {
     const { data: watchlistData, isLoading } = useGetUserWatchlistQuery(props.account_id);
 
     useEffect(() => {
-        console.log('PLEASE')
         if (watchlistData) {
             setWatchlist(
                 watchlistData.watchlist.find((media) => media.media_id === props.media_id) || null

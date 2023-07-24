@@ -8,6 +8,7 @@ export const accountDetailsApi = createApi({
   endpoints: (builder) => ({
     getAccountDetails: builder.query({
       query: (accountId) => `/api/accounts/${accountId}`,
+      invalidatesTags: ["AccountDetails"],
     }),
     updateAccountDetails: builder.mutation({
       query: ({ id, ...data }) => ({
@@ -15,6 +16,7 @@ export const accountDetailsApi = createApi({
         method: "PUT",
         body: data,
       }),
+      invalidatesTags: ["AccountDetails"],
     }),
   }),
 });

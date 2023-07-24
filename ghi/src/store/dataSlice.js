@@ -52,6 +52,7 @@ export const dataApi = createApi({
         url: `/api/comments/${query.page_id}/${query.comment_id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["Comment"],
     }),
   }),
 });
