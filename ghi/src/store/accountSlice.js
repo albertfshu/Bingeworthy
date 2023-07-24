@@ -46,6 +46,15 @@ export const accountApi = createApi({
       },
       invalidatesTags: ["Account"],
     }),
+    createDetails: builder.mutation({
+      query: (query) => ({
+        url: `/api/accounts/${query.username}`,
+        method: "POST",
+        body: query.body,
+        credentials: "include",
+      }),
+      invalidatesTag: ["AccountDetails"],
+    }),
   }),
 });
 
@@ -54,4 +63,5 @@ export const {
   useLoginMutation,
   useLogoutMutation,
   useGetAccountQuery,
+  useCreateDetailsMutation,
 } = accountApi;

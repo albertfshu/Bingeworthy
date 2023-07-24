@@ -13,6 +13,11 @@ const Reviews = () => {
   const [showModal, setShowModal] = useState(false);
   const edit = false;
   const [comment, setComment] = useState("");
+
+  const [editCommentContent, setEditCommentContent] = useState("");
+
+
+
   if (account == null) {
     account = false
   }
@@ -40,6 +45,19 @@ const Reviews = () => {
     return ((new Date(isoString).toLocaleDateString()) + " " + (new Date(isoString).toLocaleTimeString()));
   };
 
+
+  const handleEdit = (commentId, commentContent) => {
+    setEditCommentID(commentId);
+    setEditCommentContent(commentContent);
+    setShowModal(true);
+  }
+
+  const handleEditSubmit = () => {
+
+    setShowModal(false)
+  }
+
+
   if (isCommentsLoading) { return (<div>loading...</div>) };
   return (
     <>
@@ -51,6 +69,9 @@ const Reviews = () => {
             type="button"
             onClick={() => {
               setShowModal(true);
+              setEditCommentContent("");
+              setEditCommentID(null);
+
               edit = false;
             }}
           >
@@ -65,7 +86,7 @@ const Reviews = () => {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-600 outline-none focus:outline-none">
 
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">New Review</h3>
+                  <h3 className="text-3xl font-semibold">{editCommentID ? "Edit Comment" : "New Comment"}New Review</h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
@@ -76,13 +97,13 @@ const Reviews = () => {
                   </button>
                 </div>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleEditSubmit}>
                   <div className="relative p-6 flex-auto">
                     <textarea
                       className="w-full p-2 border border-cyan-700 rounded text-black h-60"
                       id="Login__username"
-                      value={comment}
-                      onChange={(e) => setComment(e.target.value)}
+                      value={editCommentContent}
+                      onChange={(e) => setEditCommentContent(e.target.value)}
                     />
                   </div>
 
@@ -96,7 +117,7 @@ const Reviews = () => {
                     </button>
                     <button
                       className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                      type="button"
+                      type="submit"
                       onClick={() => {
                         setShowModal(false);
                         handleSubmit();
@@ -125,11 +146,10 @@ const Reviews = () => {
                     <p>{handleDate(r.post_date)}</p>
                   </div>
                 </div>
-                {r.commentor_id == account.account.id
+                {r.commentor_id == account.account.username
                   && <>
                     <button className="m-1 mr-1 bg-red-100" onClick={() => {
-                      setShowModal(true);
-                      edit = true;
+                      handleEdit(r._id, r.comment)
                     }}>Edit</button>
                     <button className="m-1 bg-red-100" value={r._id} onClick={handleDelete}>Delete</button>
                   </>

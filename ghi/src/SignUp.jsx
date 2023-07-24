@@ -1,4 +1,4 @@
-import { useSignupMutation } from "./store/accountSlice";
+import { useSignupMutation, useCreateDetailsMutation } from "./store/accountSlice";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import AlertError from './AlertError'
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 const SignUp = () => {
     const navigate = useNavigate()
     const [signup] = useSignupMutation();
+    const [createDetails] = useCreateDetailsMutation();
     const [errorMessage, setErrorMessage] = useState('');
     const [username, setUsername] = useState('')
     const [full_name, setfull_Name] = useState('')
@@ -22,8 +23,10 @@ const SignUp = () => {
         }
         console.log("signup")
         signup({ username, full_name, password });
+        createDetails({ username, body: { "bio": "", "date": Date.now(), "profile_image": "" } })
+
         console.log("signup")
-        navigate('/');
+        // navigate('/');
     };
 
     return (

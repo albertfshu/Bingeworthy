@@ -16,6 +16,7 @@ from models import (
     DuplicateAccountError,
 )
 
+
 router = APIRouter()
 
 

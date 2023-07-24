@@ -41,7 +41,7 @@ const Login = () => {
                         </label> */}
                         <input
                             type="text"
-                            className="w-full p-2 border border-cyan-700 rounded"
+                            className="w-full p-2 border border-cyan-700 rounded text-black"
                             id="Login__username"
                             placeholder="username"
                             value={username}
@@ -54,7 +54,7 @@ const Login = () => {
                         </label> */}
                         <input
                             type="password"
-                            className="w-full p-2 border border-cyan-700 rounded"
+                            className="w-full p-2 border border-cyan-700 rounded text-black"
                             id="Login__password"
                             placeholder="password"
                             value={password}

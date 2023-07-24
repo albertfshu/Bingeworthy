@@ -5,6 +5,7 @@ import { dataApi } from "./dataSlice";
 import { accountDetailsApi } from "./accountDetailsSlice";
 import searchReducer from "./searchSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import { watchlistApi } from "./watchlistSlice";
 
 export const store = configureStore({
   reducer: {
@@ -13,13 +14,15 @@ export const store = configureStore({
     [accountApi.reducerPath]: accountApi.reducer,
     [dataApi.reducerPath]: dataApi.reducer,
     [accountDetailsApi.reducerPath]: accountDetailsApi.reducer,
+    [watchlistApi.reducerPath]: watchlistApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       movieApi.middleware,
       accountApi.middleware,
       dataApi.middleware,
-      accountDetailsApi.middleware
+      accountDetailsApi.middleware,
+      watchlistApi.middleware
     ),
 });
 

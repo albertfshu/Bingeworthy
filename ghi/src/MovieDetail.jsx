@@ -5,16 +5,16 @@ import {
 import { useGetAccountQuery } from "./store/accountSlice";
 import SourceProviders from "./SourceProviders";
 import Reviews from "./Reviews";
-// import WatchlistButton from "./WatchlistButton"
+import WatchlistButton from "./WatchlistButton"
 import MovieCard from "./Moviecard";
 
 
 const MovieDetail = () => {
     const { movie_id } = useParams();
-    const { data: account } = useGetAccountQuery();
+    const { data: account, isLoading: accountLoading } = useGetAccountQuery();
     const { data, isLoading } = useGetMovieDetailsQuery(movie_id);
 
-    if (isLoading) return <div> Loading... </div>;
+    if (isLoading || accountLoading) return <div> Loading... </div>;
 
     const ReleaseDate = new Date(data.release_date).toLocaleDateString("en-US", {
         year: "numeric",
@@ -36,7 +36,7 @@ const MovieDetail = () => {
                         </div>
                         <SourceProviders />
                         {/* fix the account_id  */}
-                        {/* <WatchlistButton account_id={account_id} media_id={media_id} /> */}
+                        <WatchlistButton account_id={account.account.id} media_id={movie_id} />
                     </div>
                 </div>
                 <div id="col2" className="w-full">
