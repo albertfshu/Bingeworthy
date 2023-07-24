@@ -16,7 +16,6 @@ const TVList = () => {
     console.log(searchCriteria);
 
 
-
     const handlePageUp = () => {
         if (pageCounter < search.total_pages)
             setPageCounter(pageCounter + 1);
@@ -29,9 +28,6 @@ const TVList = () => {
     }
     const filteredMovies = () => {
         if (searchCriteria && search) {
-            // return data.results.filter((movie) =>
-            //   movie.original_title.toLowerCase().includes(searchCriteriaToLowercase)
-            // )
             return search.results;
         } else {
             return data.results;
@@ -39,6 +35,9 @@ const TVList = () => {
     };
 
     if (isLoading || isSearchLoading) return <div>Loading...</div>;
+
+    // const showButtons = searchCriteria && search && search.results.length > 20;
+
     return (
         <div className="mt-3">
             <div className="text-2xl font-bold text-gray-200 my-3 ml-5">
