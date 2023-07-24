@@ -15,6 +15,7 @@ const Reviews = () => {
   const [comment, setComment] = useState("");
   const [editCommentID, setEditCommentID] = useState("");
   const [editCommentContent, setEditCommentContent] = useState("");
+  const [updateComment] = useUpdateCommentMutation();
 
 
 
