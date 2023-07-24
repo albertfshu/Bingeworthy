@@ -13,7 +13,7 @@ const Reviews = () => {
   const [showModal, setShowModal] = useState(false);
   const edit = false;
   const [comment, setComment] = useState("");
-
+  const [editCommentID, setEditCommentID] = useState("");
   const [editCommentContent, setEditCommentContent] = useState("");
 
 
