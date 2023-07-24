@@ -6,20 +6,17 @@ const MovieCard = ({ title, media_id, poster }) => {
 
   if (poster) {
   return (
-    <div className="w-60 mx-auto tile bg-gray-600 p-3">
+    <div className="w-60 mx-auto tile bg-gray-800 p-3 text-center" key={MovieCard}>
+      <Link to={`/movie/${media_id}`}>
       <img
-      className="shadow-md h-60 mx-autp"
+      className="shadow-md h-60 mx-auto"
         src={`https://image.tmdb.org/t/p/original${poster}`}
         alt={title}
         />
       <h5 className="font-bold text-gray-200 mt-3">
         {title[0].toUpperCase() + title.slice(1)}
       </h5>
-      <Link
-       to={`/movie/${media_id}`} className="text-center block mt-2 text-sm text-white hover:text-teal-700"
-       >
-        Details
-        </Link>
+      </Link>
     </div>
   );
 } else {
