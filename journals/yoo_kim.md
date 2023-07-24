@@ -37,3 +37,9 @@ worked on unit tests and worked on parsing the 3rd party api to the search resul
 ## DAY 12 - 7.18.23
 finished login and signup css to match figma
 added search bar to nav - not connected to search results
+
+
+## DAY 13 - 7.19.23
+tested how to connect the search bar in the nav to reflect the search bar in the home.jsx page
+
+## DAY 14 - 7.20.23

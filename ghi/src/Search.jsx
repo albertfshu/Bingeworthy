@@ -1,5 +1,5 @@
 import { reset, filter } from "./store/searchSlice";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useGetLanguagesQuery } from "./store/apiSlice";
@@ -11,6 +11,8 @@ const Search = () => {
   const [checked, setChecked] = useState(false)
   const [searchCriteria, setSearchCriteria] = useState(searchParam);
   const { data, isLoading } = useGetLanguagesQuery();
+
+
 
   const dispatch = useDispatch();
 
@@ -47,6 +49,7 @@ const Search = () => {
     setLanguage("");
     setChecked(false);
   }
+
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -111,7 +114,7 @@ const Search = () => {
           </div>
           <div><div className="my-3">
             <label htmlFor="adult" className="text-2xl">
-              Include Adult?
+              Include 18+?
             </label>
             <input
               id="adult"
