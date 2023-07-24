@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import { useGetAccountQuery } from "./store/accountSlice";
-import { useGetCommentsQuery, useCreateCommentMutation, useDeleteCommentMutation } from "./store/dataSlice";
+import { useGetCommentsQuery, useCreateCommentMutation, useDeleteCommentMutation, useUpdateCommentMutation } from "./store/dataSlice";
 import ReviewCard from "./ReviewCard";
 
 const Reviews = () => {
@@ -13,7 +13,7 @@ const Reviews = () => {
   const [showModal, setShowModal] = useState(false);
   const edit = false;
   const [comment, setComment] = useState("");
-  const [editCommentID, setEditCommentID] = useState("");
+  const [editCommentID, setEditCommentID] = useState(null);
   const [editCommentContent, setEditCommentContent] = useState("");
 
 
@@ -31,15 +31,39 @@ const Reviews = () => {
     deleteComment(query)
   }
 
-  const handleSubmit = (e) => {
-    let query = {
-      page_id: page_id, body: {
-        "commentor_id": account.account.username,
-        "comment": comment,
-      }
+  // const handleSubmit = (e) => {
+  //   let query = {
+  //     page_id: page_id, body: {
+  //       "commentor_id": account.account.username,
+  //       "comment": comment,
+  //     }
+  //   }
+  //   postComment(query)
+  // }
+
+  const handleSubmit = () => {
+    if (editCommentID) {
+      let query = {
+        page_id: page_id,
+        comment_id: editCommentID,
+        body: {
+          "commentor_id": account.account.username,
+          "comment": editCommentContent,
+        },
+      };
+      updateComment(query);
+    } else {
+      let query = {
+        page_id: page_id,
+        body: {
+          "commentor_id": account.account.username,
+          "comment": comment,
+        },
+      };
+      postComment(query);
     }
-    postComment(query)
-  }
+    setShowModal(false);
+  };
 
   const handleDate = (isoString) => {
     return ((new Date(isoString).toLocaleDateString()) + " " + (new Date(isoString).toLocaleTimeString()));
