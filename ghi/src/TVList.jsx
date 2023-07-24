@@ -13,7 +13,7 @@ const TVList = () => {
     let page = "&page=" + pageCounter;
     let fullSearch = searchCriteria + page;
     const { data: search, isSearchLoading } = useSearchTVQuery(fullSearch);
-    console.log(searchCriteria);
+    console.log(search);
 
 
     const handlePageUp = () => {
@@ -27,7 +27,10 @@ const TVList = () => {
             setPageCounter(pageCounter - 1);
     }
     const filteredMovies = () => {
-        if (searchCriteria && search) {
+        if (searchCriteria != '') {
+            if (search == undefined) {
+                return data.results
+            }
             return search.results;
         } else {
             return data.results;
@@ -41,7 +44,7 @@ const TVList = () => {
     return (
         <div className="mt-3">
             <div className="text-2xl font-bold text-gray-200 my-3 ml-5">
-                {(searchCriteria)
+                {(searchCriteria != '')
                     ? <p>{searchCriteria[0]} - TV List - Page {pageCounter}</p>
                     : <p className="bold-font text-white text-center">Top 20 Popular TV Shows</p>
                 }
