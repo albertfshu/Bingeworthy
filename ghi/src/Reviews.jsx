@@ -46,7 +46,7 @@ const Reviews = () => {
   };
 
 
-  const handleEdit = (commentdId, commentContent) => {
+  const handleEdit = (commentId, commentContent) => {
     setEditCommentID(commentId);
     setEditCommentContent(commentContent);
     setShowModal(true);
@@ -70,6 +70,7 @@ const Reviews = () => {
             onClick={() => {
               setShowModal(true);
               setEditCommentContent("");
+              setEditCommentID(null);
 
               edit = false;
             }}
@@ -85,7 +86,7 @@ const Reviews = () => {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-600 outline-none focus:outline-none">
 
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">New Review</h3>
+                  <h3 className="text-3xl font-semibold">{editCommentID ? "Edit Comment" : "New Comment"}New Review</h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
@@ -102,7 +103,7 @@ const Reviews = () => {
                       className="w-full p-2 border border-cyan-700 rounded text-black h-60"
                       id="Login__username"
                       value={editCommentContent}
-                      onChange={(e) => setEditComment(e.target.value)}
+                      onChange={(e) => setEditCommentContent(e.target.value)}
                     />
                   </div>
 
@@ -116,7 +117,7 @@ const Reviews = () => {
                     </button>
                     <button
                       className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                      type="button"
+                      type="submit"
                       onClick={() => {
                         setShowModal(false);
                         handleSubmit();
