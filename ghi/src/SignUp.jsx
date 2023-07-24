@@ -31,7 +31,7 @@ const SignUp = () => {
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div className="w-100 z-10 pb-4 max-w-sm">
                     <img src="https://i.imgur.com/u34lKkt.png" className="h-65 w-full mx-auto relative" alt="Bingeworthy Logo" />
-                    <h1 className="text-white text-2xl font-bold mb-4 text-center mt-4"> Create Account </h1>
+                    <h1 className="text-white text-3xl regular-font mb-4 text-center mt-4">Create Account </h1>
                 </div>
                 <div className="bg-cyan-700 px-6 py-8 rounded shadow-md text-black w-full">
                     {/* <h1 className="mb-8 text-3xl text-center">Sign-Up</h1> */}
@@ -75,10 +75,9 @@ const SignUp = () => {
                             }}
                         />
 
-                        <button
-                            type="submit"
-                            className="w-full text-center py-3 rounded bg-black text-white hover:bg-gray-700 border"
-                        >Create Account</button>
+                        <button type="submit" className="w-full text-center py-3 rounded bg-black text-white hover:bg-gray-700 border">
+                            Create Account
+                        </button>
                     </form>
                     <p className="mt-4 text-center text-white text-sm">
                         Already have an account?{" "}

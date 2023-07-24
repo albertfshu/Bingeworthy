@@ -29,32 +29,34 @@ const Login = () => {
         <div className="flex items-center justify-center min-h-screen bg-gray-800">
             <div className="w-80">
                 <img src="https://i.imgur.com/u34lKkt.png" className="h-400 w-200 mr-3" alt="Bingeworthy Logo" />
-                <h1 style={{ color: "gray", fontSize: "19px", fontStyle: "italic", textAlign: "center", fontFamily: "ariel" }} className="mb-4">
+                <h1 className="cursive-font text-center text-xl text-gray-300">
                     Sit back, Relax, and find your next binge
                 </h1>
                 {/* <h1 className="text-white text-2xl font-bold mb-4">Login</h1> */}
                 {errorMessage && <AlertError>{errorMessage}</AlertError>}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        <label htmlFor="Login__username" className="text-white">
+                        {/* <label htmlFor="Login__username" className="text-white">
                             Username
-                        </label>
+                        </label> */}
                         <input
                             type="text"
                             className="w-full p-2 border border-cyan-700 rounded"
                             id="Login__username"
+                            placeholder="username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="Login__password" className="text-white">
+                        {/* <label htmlFor="Login__password" className="text-white">
                             Password
-                        </label>
+                        </label> */}
                         <input
                             type="password"
                             className="w-full p-2 border border-cyan-700 rounded"
                             id="Login__password"
+                            placeholder="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -66,8 +68,8 @@ const Login = () => {
                         Login
                     </button>
                 </form>
-                <p className="mt-4 text-center text-gray-500 text-sm">
-                    Don't have an account?{" "}
+                <p className="mt-4 text-center text-gray-300 text-sm">
+                    New to Bingeworthy?{" "}
                     <Link to="/signup" className="underline">
                         Sign up here
                     </Link>

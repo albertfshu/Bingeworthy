@@ -1,3 +1,9 @@
+@import url('https://fonts.cdnfonts.com/css/punchliner');
+@import url('https://fonts.cdnfonts.com/css/specialisation');
+@import url('https://fonts.cdnfonts.com/css/iqos');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@700&family=Pacifico&display=swap');
+
 .App {
   text-align: center;
 }
@@ -11,4 +17,24 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.sans-font {
+  font-family: 'Punchliner', sans-serif;
+}
+
+.fun-font {
+  font-family: 'Specialisation', sans-serif;
+}
+
+.regular-font {
+  font-family: 'IQOS', sans-serif;
+}
+
+.bold-font {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.cursive-font {
+  font-family: 'Caveat', cursive;
 }
