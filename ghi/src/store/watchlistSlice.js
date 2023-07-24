@@ -1,24 +1,24 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const watchlistSlice = createApi({
-    reducerPath: "accountApi",
-    baseQuery: fetchBaseQuery({
+export const watchlistApi = createApi({
+  reducerPath: "watchlistApi",
+  baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:8000",
   }),
-    endpoints: (builder) => ({
-        getAllWatchlist: builder.query({
-            query: (account_id) => ({
-                url: `/api/accounts/${account_id}/watchlist`,
-                credentials: 'include'
-            }),
-            invalidatesTags: ['Watchlist']
-        }),
+  endpoints: (builder) => ({
+    getUserWatchlist: builder.query({
+      query: (account_id) => ({
+        url: `/api/accounts/${account_id}/watchlist`,
+        credentials: "include",
+      }),
+      invalidatesTags: ["Watchlist"],
+    }),
 
     addToWatchlist: builder.mutation({
       query: ({ account_id, media_id }) => ({
         url: `/api/accounts/${account_id}/watchlist`,
         method: "POST",
-        body: {media_id},
+        body: { media_id },
         credentials: "include",
       }),
       invalidatesTags: ["Watchlist"],
@@ -36,5 +36,7 @@ export const watchlistSlice = createApi({
 });
 
 export const {
-   useGetAllWatchlistQuery, useAddToWatchlistMutation, useRemoveFromWatchlistMutation
-  } = watchlistSlice
+  useGetUserWatchlistQuery,
+  useAddToWatchlistMutation,
+  useRemoveFromWatchlistMutation,
+} = watchlistApi;

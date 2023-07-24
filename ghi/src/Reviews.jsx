@@ -125,7 +125,7 @@ const Reviews = () => {
                     <p>{handleDate(r.post_date)}</p>
                   </div>
                 </div>
-                {r.commentor_id == account.account.id
+                {r.commentor_id == account.account.username
                   && <>
                     <button className="m-1 mr-1 bg-red-100" onClick={() => {
                       setShowModal(true);

@@ -26,14 +26,12 @@ class AccountOutWithPassword(AccountOut):
 
 class WatchlistIn(BaseModel):
     media_id: str
-    name: str
 
 
 class WatchlistOut(BaseModel):
     id: str
     account_id: str
     media_id: str
-    name: str
 
 
 class Watchlist(BaseModel):
@@ -67,7 +65,6 @@ class AccountDetailsOut (BaseModel):
 class AccountDetailsIn(BaseModel):
     _id: str
     bio: str
-    date: datetime
     profile_image: str
 
 # class MediaDetails(BaseModel):

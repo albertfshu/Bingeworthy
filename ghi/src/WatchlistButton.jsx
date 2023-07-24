@@ -1,38 +1,40 @@
 import { useEffect, useState } from 'react';
 import {
-    useGetAllWatchlistQuery,
+    useGetUserWatchlistQuery,
     useAddToWatchlistMutation,
     useRemoveFromWatchlistMutation,
 } from "./store/watchlistSlice";
 
-const WatchlistButton = ({ account_id, media_id }) => {
+const WatchlistButton = (props) => {
     const [watchlist, setWatchlist] = useState(null);
     const [deleteFromWatchlist] = useRemoveFromWatchlistMutation();
     const [addToWatchlist] = useAddToWatchlistMutation();
-    const { data: watchlistData, isLoading } = useGetAllWatchlistQuery();
+    const { data: watchlistData, isLoading } = useGetUserWatchlistQuery(props.account_id);
 
     useEffect(() => {
-        console.log("watchlistData:", watchlistData);
+        console.log('PLEASE')
         if (watchlistData) {
             setWatchlist(
-                watchlistData.find((media) => media.media_id === media_id) || null
+                watchlistData.watchlist.find((media) => media.media_id === props.media_id) || null
             );
         }
-    }, [media_id]);
+        console.log(watchlist)
+    });
 
     const handleAddToWatchlist = () => {
-        addToWatchlist({ account_id: account_id, media_id: media_id });
+        addToWatchlist({ account_id: props.account_id, media_id: props.media_id });
     };
 
     const handleRemoveFromWatchlist = () => {
         if (watchlist) {
-            deleteFromWatchlist({ account_id: account_id, watchlist_id: watchlist.watchlist_id });
-        } 
+            deleteFromWatchlist({ account_id: props.account_id, watchlist_id: watchlist.id });
+        }
     };
 
-    if (isLoading) { return <div>Loading...</div> }
 
-
+    if (isLoading) return (<div>is loading...</div>);
+    console.log(props)
+    console.log(watchlistData)
     return (
         <>
             {!watchlist && (
