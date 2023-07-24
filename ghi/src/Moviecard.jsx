@@ -1,17 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const MovieCard = ({ title, media_id }) => {
-  const imageUrl = `https://api.themoviedb.org/3/movie/${media_id}/images`;
+const MovieCard = ({ title, media_id, poster }) => {
 
+
+  if (poster) {
   return (
-    <div className="w-5/6 mx-auto tile bg-teal-500 p-3" key={media_id}>
-      <h5 className="font-bold text-gray-200">
+    <div className="w-60 mx-auto tile bg-gray-600 p-3">
+      <img
+      className="shadow-md h-60 mx-autp"
+        src={`https://image.tmdb.org/t/p/original${poster}`}
+        alt={title}
+        />
+      <h5 className="font-bold text-gray-200 mt-3">
         {title[0].toUpperCase() + title.slice(1)}
       </h5>
-      <Link to={`/movie/${media_id}`}>Details</Link>
+      <Link
+       to={`/movie/${media_id}`} className="text-center block mt-2 text-sm text-white hover:text-teal-700"
+       >
+        Details
+        </Link>
     </div>
   );
+} else {
+    // placeholder if there is no poster
+    return (
+      <div className="w-60 mx-auto bg-gray-800 rounded-md p-4">
+        <div className="shadow-md h-60 mx-auto bg-gray-600"></div>
+        <h5 className="font-bold text-gray-200 mt-3">
+          {title[0].toUpperCase() + title.slice(1)}
+        </h5>
+        <Link
+          to={`/movie/${media_id}`}
+          className="block mt-2 text-sm text-white hover:text-teal-700"
+        >
+          Details
+        </Link>
+      </div>
+    );
+  }
 };
 
 export default MovieCard;

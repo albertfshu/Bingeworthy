@@ -58,7 +58,7 @@ const Search = () => {
             <input
               className="form-control form-control-lg w-full text-2xl text-black"
               type="text"
-              placeholder=" Search"
+              placeholder=" Search for a movie, tv show...."
               value={searchCriteria}
               onChange={(e) => setSearchCriteria(e.target.value)}
               required

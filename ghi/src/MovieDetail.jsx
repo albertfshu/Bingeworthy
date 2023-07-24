@@ -34,6 +34,7 @@ const MovieDetail = () => {
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                             ></img>
                         </div>
+                        <SourceProviders />
                         {/* fix the account_id  */}
                         {/* <WatchlistButton account_id={account_id} media_id={media_id} /> */}
                     </div>

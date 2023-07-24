@@ -1,16 +1,44 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const TVCard = ({ title, media_id }) => {
+const TVCard = ({ title, media_id, poster }) => {
 
-  return (
-    <div className="w-5/6 mx-auto tile bg-red-500 p-3" key={media_id}>
-      <h5 className="font-bold text-gray-200">
-        {title[0].toUpperCase() + title.slice(1)}
-      </h5>
-      <Link to={`/tv/${media_id}`}>Details</Link>
-    </div>
-  );
+  if (poster) {
+    return (
+      <div className="w-60 mx-auto bg-gray-500 rounded-md p-4"key={TVCard}>
+        <img
+          className="shadow-md h-60 mx-auto"
+          src={`https://image.tmdb.org/t/p/original${poster}`}
+          alt={title}
+        />
+        <h5 className="font-bold text-gray-200 mt-3">
+          {title[0].toUpperCase() + title.slice(1)}
+        </h5>
+        <Link
+          to={`/tv/${media_id}`}
+          className="block mt-2 text-sm text-white hover:text-teal-700"
+        >
+          Details
+        </Link>
+      </div>
+    );
+  } else {
+    // placeholder if there is no poster
+    return (
+      <div className="w-60 mx-auto bg-gray-800 rounded-md p-4">
+        <div className="shadow-md h-60 mx-auto bg-gray-600"></div>
+        <h5 className="font-bold text-gray-200 mt-3">
+          {title[0].toUpperCase() + title.slice(1)}
+        </h5>
+        <Link
+          to={`/tv/${media_id}`}
+          className="block mt-2 text-sm text-white hover:text-teal-700"
+        >
+          Details
+        </Link>
+      </div>
+    );
+  }
 };
 
 export default TVCard;

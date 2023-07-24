@@ -56,6 +56,7 @@ const TVList = () => {
                                 key={tv.id}
                                 title={tv.original_name}
                                 media_id={tv.id}
+                                poster={tv.poster_path}
                             />
                         ))}
                 </div>
