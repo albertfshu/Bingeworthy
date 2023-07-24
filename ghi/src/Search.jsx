@@ -47,10 +47,10 @@ const Search = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-[1fr,minmax(200px,200px)] mx-12 py-6" >
+        <div className="grid grid-cols-[1fr,minmax(100px,200px)] mx-12 py-6" >
           <div>
             <input
-              className="form-control form-control-lg w-full text-4xl text-black"
+              className="form-control form-control-lg w-full text-2xl text-black"
               type="text"
               placeholder=" Search"
               value={searchCriteria}

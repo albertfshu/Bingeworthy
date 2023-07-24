@@ -44,7 +44,7 @@ const TVList = () => {
             <div className="text-2xl font-bold text-gray-200 my-3 ml-5">
                 {(searchCriteria)
                     ? <p>{searchCriteria[0]} - TV List - Page {pageCounter}</p>
-                    : <p>Top 20 Popular TV Shows</p>
+                    : <p className="bold-font text-white text-center">Top 20 Popular TV Shows</p>
                 }
             </div>
             <div className="grid grid-cols-[1fr,8fr,1fr] ">
