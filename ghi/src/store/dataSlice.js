@@ -38,6 +38,15 @@ export const dataApi = createApi({
       }),
       providesTags: ["Comment"],
     }),
+    updateComment: builder.mutation({
+      query: (query) => ({
+        url: `/api/comments/${query.page_id}/${query.comment_id}`,
+        method: "PUT",
+        body: query.body,
+        credentials: "include",
+      }),
+      invalidatesTags: ["Comment"],
+    }),
     deleteComment: builder.mutation({
       query: (query) => ({
         url: `/api/comments/${query.page_id}/${query.comment_id}`,
@@ -53,4 +62,5 @@ export const {
   useCreateCommentMutation,
   useGetCommentsQuery,
   useDeleteCommentMutation,
+  useUpdateCommentMutation,
 } = dataApi;
