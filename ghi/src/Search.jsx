@@ -24,8 +24,7 @@ const Search = () => {
     let dispatchStr = searchCriteria;
     if (searchCriteria == undefined) {
       dispatchStr = ""
-    }
-    else {
+    } else {
       if (year !== "") {
         dispatchStr += "&year=" + year
       }
@@ -39,8 +38,15 @@ const Search = () => {
 
     console.log(dispatchStr)
     dispatch(filter([searchCriteria, dispatchStr]));
+    resetSearch();
   };
 
+  const resetSearch = () => {
+    setSearchCriteria("");
+    setYear("");
+    setLanguage("");
+    setChecked(false);
+  }
 
   if (isLoading) return <div>Loading...</div>;
 
