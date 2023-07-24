@@ -13,6 +13,11 @@ const Reviews = () => {
   const [showModal, setShowModal] = useState(false);
   const edit = false;
   const [comment, setComment] = useState("");
+
+  const [editCommentContent, setEditCommentContent] = useState("");
+
+
+
   if (account == null) {
     account = false
   }
@@ -40,6 +45,19 @@ const Reviews = () => {
     return ((new Date(isoString).toLocaleDateString()) + " " + (new Date(isoString).toLocaleTimeString()));
   };
 
+
+  const handleEdit = (commentdId, commentContent) => {
+    setEditCommentID(commentId);
+    setEditCommentContent(commentContent);
+    setShowModal(true);
+  }
+
+  const handleEditSubmit = () => {
+
+    setShowModal(false)
+  }
+
+
   if (isCommentsLoading) { return (<div>loading...</div>) };
   return (
     <>
@@ -51,6 +69,8 @@ const Reviews = () => {
             type="button"
             onClick={() => {
               setShowModal(true);
+              setEditCommentContent("");
+
               edit = false;
             }}
           >
@@ -76,13 +96,13 @@ const Reviews = () => {
                   </button>
                 </div>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleEditSubmit}>
                   <div className="relative p-6 flex-auto">
                     <textarea
                       className="w-full p-2 border border-cyan-700 rounded text-black h-60"
                       id="Login__username"
-                      value={comment}
-                      onChange={(e) => setComment(e.target.value)}
+                      value={editCommentContent}
+                      onChange={(e) => setEditComment(e.target.value)}
                     />
                   </div>
 
@@ -128,8 +148,7 @@ const Reviews = () => {
                 {r.commentor_id == account.account.username
                   && <>
                     <button className="m-1 mr-1 bg-red-100" onClick={() => {
-                      setShowModal(true);
-                      edit = true;
+                      handleEdit(r._id, r.comment)
                     }}>Edit</button>
                     <button className="m-1 bg-red-100" value={r._id} onClick={handleDelete}>Delete</button>
                   </>
