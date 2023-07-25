@@ -1,7 +1,9 @@
 import { useGetAccountDetailsQuery } from "./store/accountDetailsSlice";
 import { useLogoutMutation } from "./store/accountSlice";
 import React, { useState, useEffect } from "react";
-
+import {
+    Link
+} from "react-router-dom";
 const AccountNavModule = (props) => {
 
     const { data, isLoading } = useGetAccountDetailsQuery(props.account_id);
@@ -29,29 +31,29 @@ const AccountNavModule = (props) => {
             {showProfileMenu && (
                 <ul className="absolute top-8 right-0 z-10 bg-white border border-gray-100 rounded shadow-md dark:bg-gray-800">
                     <li>
-                        <a
-                            href="#"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        <Link
+                            to={`/profile/${props.account_id}`}
+                            className="block px-4 py-2 text-sm text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             Profile
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a
-                            href="#"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        <Link
+                            to={`/profile/${props.account_id}/Watchlist`}
+                            className="block px-4 py-2 text-sm text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             Watchlist
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a
-                            href="/login"
+                        <Link
+                            to="/login"
                             onClick={handleLogout}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            className="block px-4 py-2 text-sm text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             Sign Out
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             )}

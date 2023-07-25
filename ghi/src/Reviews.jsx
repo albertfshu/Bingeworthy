@@ -175,11 +175,11 @@ const Reviews = () => {
                 <div className="grid grid-cols-[auto_1fr]">
                   <img className="rounded-full bg-color-black h-12 my-auto" src="https://cdn.discordapp.com/emojis/1091215748338307173.webp?size=96&quality=lossless" />
                   <div className="ml-6">
-                    <p className="text-2xl">{r.commentor_id}</p>
+                    <Link to={`/profile/${r.commentor_id}`}><p className="hover:text-[#fec0c0] text-2xl">{r.commentor_id}</p></Link>
                     <p>{handleDate(r.post_date)}</p>
                   </div>
                 </div>
-                {r.commentor_id == account.account.username
+                {r.commentor_id == account.account?.username
                   && <>
                     <button className="m-1 mr-1 bg-red-100" onClick={() => {
                       handleEdit(r._id, r.comment)

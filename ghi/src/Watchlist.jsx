@@ -1,13 +1,17 @@
 import React from "react";
-import { useGetAllWatchlistQuery } from "./store/watchlistSlice";
-
+import { useGetUserWatchlistQuery } from "./store/watchlistSlice";
+import MovieCard from "./Moviecard";
+import { useParams } from "react-router-dom";
 const Watchlist = () => {
-    const { data, isLoading } = useGetAllWatchlistQuery();
+    const { account_id } = useParams
+    const { data, isLoading } = useGetUserWatchlistQuery(account_id);
 
     if (isLoading) return <div>Loading...</div>
+
+    console.log(data)
     return (
-        <div className="row mt-3">
-            {data.map(movie => <MovieCard key={movie.id} title={movie.original_title} movie_id={movie.id} />)}
+        <div className="pt-3">
+            {data.watchlist.map(movie => <MovieCard key={movie.id} title={"placeholder"} movie_id={"placeholder"} />)}
         </div>
     )
 }
