@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useGetAccountQuery, useLogoutMutation, useLoginMutation } from "./store/accountSlice";
 import React, { useState } from "react";
 import Search from "./Search";
+import AccountNavModule from "./AccountNavModule";
 
 const Nav = () => {
     const { data: account, isLoading } = useGetAccountQuery();
@@ -9,7 +10,6 @@ const Nav = () => {
     const [logout] = useLogoutMutation();
     const [login] = useLoginMutation();
     const [searchQuery, setSearchQuery] = useState("");
-    console.log(account)
 
 
     const handleLogout = () => {
@@ -63,43 +63,44 @@ const Nav = () => {
                             </form>
                         </li>
                         {account ? (
-                            <li className="relative flex items-center">
-                                <img
-                                    src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg"
-                                    alt="Profile"
-                                    className="cursor-pointer block h-8 w-8 rounded-full hover:bg-gray-100"
-                                    onClick={() => setShowProfileMenu(!showProfileMenu)}
-                                />
-                                {showProfileMenu && (
-                                    <ul className="absolute top-8 right-0 z-10 bg-white border border-gray-100 rounded shadow-md dark:bg-gray-800">
-                                        <li>
-                                            <a
-                                                href="#"
-                                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
-                                            >
-                                                Profile
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="#"
-                                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
-                                            >
-                                                Watchlist
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="./login"
-                                                onClick={handleLogout}
-                                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
-                                            >
-                                                Sign Out
-                                            </a>
-                                        </li>
-                                    </ul>
-                                )}
-                            </li>
+                            <AccountNavModule account_id={account.account.id} />
+                            // <li className="relative flex items-center">
+                            //     <img
+                            //         src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg"
+                            //         alt="Profile"
+                            //         className="cursor-pointer block h-8 w-8 rounded-full hover:bg-gray-100"
+                            //         onClick={() => setShowProfileMenu(!showProfileMenu)}
+                            //     />
+                            //     {showProfileMenu && (
+                            //         <ul className="absolute top-8 right-0 z-10 bg-white border border-gray-100 rounded shadow-md dark:bg-gray-800">
+                            //             <li>
+                            //                 <a
+                            //                     href="#"
+                            //                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            //                 >
+                            //                     Profile
+                            //                 </a>
+                            //             </li>
+                            //             <li>
+                            //                 <a
+                            //                     href="#"
+                            //                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            //                 >
+                            //                     Watchlist
+                            //                 </a>
+                            //             </li>
+                            //             <li>
+                            //                 <a
+                            //                     href="/login"
+                            //                     onClick={handleLogout}
+                            //                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            //                 >
+                            //                     Sign Out
+                            //                 </a>
+                            //             </li>
+                            //         </ul>
+                            //     )}
+                            // </li>
                         ) : (
                             <li>
                                 <NavLink
@@ -118,37 +119,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-
-
-
-
-
-        //         <div className="collapse navbar-collapse" id="navbarNav">
-        //             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        //                 {/* <li className="nav-item">
-        //                     <NavLink to={'/'} className={'nav-link'}>Home</NavLink>
-        //                 </li> */}
-        //                 {account && <li className="nav-item">
-        //                     <NavLink to={'/search'} className={'nav-link'}>Search</NavLink>
-        //                 </li>}
-        //                 {!account && <li className="nav-item">
-        //                     <NavLink to={'/login'} className={'nav-link'}>Login</NavLink>
-        //                 </li>}
-        //                 {!account && <li className="nav-item">
-        //                     <NavLink
-        //                     to={'/signup'}
-        //                     className={'nav-link'}>Sign Up</NavLink>
-        //                 </li>}
-        //                 {!account && <li className="nav-item">
-        //                     <NavLink to={'/movielist'} className={'nav-link'}>Movie list</NavLink>
-        //                 </li>}
-        //             </ul>
-        //             {account && (
-        //                 <button className="btn btn-outline-danger" onClick={logout}>
-        //                     Logout
-        //                 </button>
-        //             )}
-        //         </div>
-        //     </div>
-        // </nav>
