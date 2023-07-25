@@ -8,6 +8,10 @@ const MovieList = () => {
   const { data, isLoading } = useGetPopularMoviesQuery();
   const { data: search, isLoading: isSearchLoading } = useSearchMoviesQuery(searchCriteria);
 
+
+  console.log(data)
+  console.log(search)
+
   const [pageCounter, setPageCounter] = useState(1);
   const moviesPerPage = 20;
   const totalMovies = searchCriteria ? (search?.total_results || 0) : (data?.total_results || 0);
@@ -28,10 +32,13 @@ const MovieList = () => {
   };
 
   const filteredMovies = () => {
-    if (searchCriteria) {
-      return search?.results || [];
+    if (searchCriteria != '') {
+      if (search == undefined) {
+        return data.results;
+      }
+      return search.results;
     } else {
-      return data?.results || [];
+      return data.results;
     }
   };
 
