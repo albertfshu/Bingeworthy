@@ -34,8 +34,8 @@ const TVList = () => {
     };
 
     const filteredTVShows = () => {
-        if (searchCriteria !== '') {
-            if (search === undefined) {
+        if (searchCriteria != '') {
+            if (search == undefined) {
                 return data.results;
             }
             return search.results;
@@ -43,7 +43,7 @@ const TVList = () => {
             return data.results;
         }
     };
-
+    console.log(data?.results)
     if (isLoading || isSearchLoading) return <div>Loading...</div>;
 
     const loopedTVShows = [...filteredTVShows(), ...filteredTVShows(), ...filteredTVShows()];
@@ -61,7 +61,7 @@ const TVList = () => {
                     {loopedTVShows.map((tv) => (
                         <div key={tv.id} className="tv-card w-1/10 px-2">
                             <TVCard
-                                title={tv.original_title}
+                                title={tv.original_name}
                                 media_id={tv.id}
                                 poster={tv.poster_path}
                             />

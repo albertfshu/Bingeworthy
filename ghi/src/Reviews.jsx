@@ -5,8 +5,8 @@ import { useGetCommentsQuery, useCreateCommentMutation, useDeleteCommentMutation
 import ReviewCard from "./ReviewCard";
 
 const Reviews = () => {
-  const { movie_id } = useParams();
-  const { data: showComments, isLoading: isCommentsLoading } = useGetCommentsQuery(movie_id)
+  const { page_id } = useParams();
+  const { data: showComments, isLoading: isCommentsLoading } = useGetCommentsQuery(page_id)
   const [deleteComment] = useDeleteCommentMutation();
   const [postComment] = useCreateCommentMutation();
   let { data: account } = useGetAccountQuery();
@@ -22,7 +22,6 @@ const Reviews = () => {
     account = false
   }
   console.log(showComments)
-  let page_id = movie_id
 
   const handleDelete = (e) => {
     console.log(e.target.value)
