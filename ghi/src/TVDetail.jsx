@@ -5,6 +5,8 @@ import {
 import { useGetAccountQuery } from "./store/accountSlice";
 import TVSourceProviders from "./TVSourceProviders";
 import Reviews from "./Reviews";
+import Rating from "./Rating";
+
 
 const TVDetail = () => {
     const { tv_id } = useParams();
@@ -31,13 +33,20 @@ const TVDetail = () => {
                     </div>
                 </div>
                 <div id="col2" className="w-full">
-                    <h2 className="text-4xl">{data.original_name}</h2>
-                    <div className="my-3">
-                        <h5 className="inline">{data.first_air_date}</h5>
-                        <h5 className="inline pl-6">{data.number_of_seasons} seasons</h5>
-                        <h5 className="inline pl-6">{data.number_of_episodes} episodes</h5>
+                    <div className="grid grid-cols-[1fr,200px]">
+                        <div>
+                            <h2 className="text-4xl">{data.original_name}</h2>
+                            <div className="my-3">
+                                <h5 className="inline">{data.first_air_date}</h5>
+                                <h5 className="inline pl-6">{data.number_of_seasons} seasons</h5>
+                                <h5 className="inline pl-6">{data.number_of_episodes} episodes</h5>
+                            </div>
+                        </div>
+                        <div>
+                            <Rating page_id={tv_id} />
+                        </div>
+                        {/* <h5>rating</h5> */}
                     </div>
-                    {/* <h5>rating</h5> */}
                     <div>{data.overview}</div>
                 </div>
             </div>

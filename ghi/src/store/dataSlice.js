@@ -8,22 +8,27 @@ export const dataApi = createApi({
   endpoints: (builder) => ({
     createRating: builder.mutation({
       query: (query) => ({
-        url: `/api/rating/${query.page_id}/`,
+        url: `/api/rating/${query.page_id}`,
         method: "POST",
         body: query.body,
-        credentials: "include",
       }),
       invalidatesTags: ["Rating"],
     }),
     getRating: builder.query({
       query: (page_id) => ({
-        url: `/api/rating/${page_id}/`,
+        url: `/api/rating/${page_id}`,
+      }),
+      providesTags: ["Rating"],
+    }),
+    getUserRating: builder.query({
+      query: (page_id) => ({
+        url: `/api/accounts/${page_id}/ratings`,
       }),
       providesTags: ["Rating"],
     }),
     updateRating: builder.mutation({
       query: (query) => ({
-        url: `/api/rating/${query.page_id}/`,
+        url: `/api/rating/${query.page_id}/${query.body.user_id}`,
         method: "PUT",
         body: query.body,
         credentials: "include",
@@ -67,6 +72,7 @@ export const dataApi = createApi({
 export const {
   useCreateRatingMutation,
   useGetRatingQuery,
+  useGetUserRatingQuery,
   useUpdateRatingMutation,
   useCreateCommentMutation,
   useGetCommentsQuery,

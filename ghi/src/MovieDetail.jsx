@@ -51,14 +51,14 @@ const MovieDetail = () => {
                             </div>
                         </div>
                         <div>
-                            <Rating />
+                            <Rating page_id={movie_id} />
                         </div>
                     </div>
                     <div>{data.overview}</div>
                 </div>
             </div>
             <div className="w-4/5 mx-auto">
-                <Reviews />
+                <Reviews page_id={movie_id} />
             </div>
         </div>
     );
