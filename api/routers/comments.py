@@ -53,7 +53,6 @@ async def get_comment(
 
 @router.put('/api/comments/{page_id}/{comment_id}', response_model=Comments)
 async def update_comment(
-    id: str,
     info: CommentIn,
     comment_id: str,
     queries: CommentQueries = Depends(),

@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import { useGetAccountQuery } from "./store/accountSlice";
-import { useGetCommentsQuery, useCreateCommentMutation, useDeleteCommentMutation } from "./store/dataSlice";
+import { useGetCommentsQuery, useCreateCommentMutation, useDeleteCommentMutation, useUpdateCommentMutation } from "./store/dataSlice";
 import ReviewCard from "./ReviewCard";
 
 const Reviews = () => {
@@ -12,9 +12,8 @@ const Reviews = () => {
   let { data: account } = useGetAccountQuery();
   const [showModal, setShowModal] = useState(false);
   const edit = false;
-  const [comment, setComment] = useState("");
-  const [editCommentID, setEditCommentID] = useState("");
-  const [editCommentContent, setEditCommentContent] = useState("");
+  const [editCommentID, setEditCommentID] = useState(null);
+  const [commentContent, setCommentContent] = useState("");
   const [updateComment] = useUpdateCommentMutation();
 
 
@@ -32,16 +31,46 @@ const Reviews = () => {
     deleteComment(query)
   }
 
-  const handleSubmit = (e) => {
-    console.log(comment)
-    let query = {
-      page_id: page_id, body: {
-        "commentor_id": account.account.username,
-        "comment": comment,
-      }
+  // const handleSubmit = (e) => {
+  //   let query = {
+  //     page_id: page_id, body: {
+  //       "commentor_id": account.account.username,
+  //       "comment": comment,
+  //     }
+  //   }
+  //   postComment(query)
+  // }
+
+  const handleSubmit = () => {
+    console.log(
+      "handleSubmit"
+    )
+    if (editCommentID) {
+      console.log(commentContent)
+      let query = {
+        page_id: page_id,
+        comment_id: editCommentID,
+        body: {
+          "commentor_id": account.account.username,
+          "comment": commentContent,
+        },
+      };
+      console.log(query);
+      console.log(query.body);
+      updateComment(query);
+    } else {
+      console.log(commentContent)
+      let query = {
+        page_id: page_id,
+        body: {
+          "commentor_id": account.account.username,
+          "comment": commentContent,
+        },
+      };
+      postComment(query);
     }
-    postComment(query)
-  }
+    setShowModal(false);
+  };
 
   const handleDate = (isoString) => {
     return ((new Date(isoString).toLocaleDateString()) + " " + (new Date(isoString).toLocaleTimeString()));
@@ -49,8 +78,10 @@ const Reviews = () => {
 
 
   const handleEdit = (commentId, commentContent) => {
+    console.log("handleEdit");
+    console.log(commentContent)
     setEditCommentID(commentId);
-    setEditCommentContent(commentContent);
+    setCommentContent(commentContent);
     setShowModal(true);
   }
 
@@ -71,7 +102,7 @@ const Reviews = () => {
             type="button"
             onClick={() => {
               setShowModal(true);
-              setEditCommentContent("");
+              setCommentContent("");
               setEditCommentID(null);
 
               edit = false;
@@ -104,8 +135,8 @@ const Reviews = () => {
                     <textarea
                       className="w-full p-2 border border-cyan-700 rounded text-black h-60"
                       id="Login__username"
-                      value={editCommentContent}
-                      onChange={(e) => setEditCommentContent(e.target.value)}
+                      value={commentContent}
+                      onChange={(e) => setCommentContent(e.target.value)}
                     />
                   </div>
 
