@@ -2,34 +2,41 @@ import {
     useGetPopularTVQuery,
     useSearchTVQuery,
 } from "./store/apiSlice";
-import { useSelector } from "react-redux"
-import { useState } from "react";
+import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import TVCard from "./TVCard";
 
 const TVList = () => {
     const searchCriteria = useSelector((state) => state.search?.value);
     const { data, isLoading } = useGetPopularTVQuery();
-    let [pageCounter, setPageCounter] = useState(1);
-    let page = "&page=" + pageCounter;
-    let fullSearch = searchCriteria + page;
-    const { data: search, isSearchLoading } = useSearchTVQuery(fullSearch);
-    console.log(search);
+    const { data: search, isLoading: isSearchLoading } = useSearchTVQuery(searchCriteria);
 
+    console.log(data)
+    console.log(search)
+
+    const [pageCounter, setPageCounter] = useState(1);
+    const showsPerPage = 20;
+    const totalTVShows = searchCriteria ? (search?.total_results || 0) : (data?.total_results || 0);
+    const totalPages = Math.ceil(totalTVShows / showsPerPage);
 
     const handlePageUp = () => {
-        if (pageCounter < search.total_pages)
-            setPageCounter(pageCounter + 1);
-        console.log(pageCounter)
-    }
+        setPageCounter((prevPage) => (prevPage % totalPages) + 5);
+    };
 
     const handlePageDown = () => {
-        if (pageCounter > 1)
-            setPageCounter(pageCounter - 1);
-    }
-    const filteredMovies = () => {
-        if (searchCriteria != '') {
-            if (search == undefined) {
-                return data.results
+        setPageCounter((prevPage) => {
+            if (prevPage === 5) {
+                return totalPages;
+            } else {
+                return prevPage - 5;
+            }
+        });
+    };
+
+    const filteredTVShows = () => {
+        if (searchCriteria !== '') {
+            if (search === undefined) {
+                return data.results;
             }
             return search.results;
         } else {
@@ -39,32 +46,60 @@ const TVList = () => {
 
     if (isLoading || isSearchLoading) return <div>Loading...</div>;
 
-    // const showButtons = searchCriteria && search && search.results.length > 20;
+    const loopedTVShows = [...filteredTVShows(), ...filteredTVShows(), ...filteredTVShows()];
 
     return (
-        <div className="mt-3">
-            <div className="text-2xl font-bold text-gray-200 my-3 ml-5">
-                {(searchCriteria != '')
-                    ? <p>{searchCriteria[0]} - TV List - Page {pageCounter}</p>
-                    : <p className="bold-font text-white text-center">Top 20 Popular TV Shows</p>
-                }
-            </div>
-            <div className="grid grid-cols-[1fr,8fr,1fr] ">
-                <div><button className={"text-white hover:text-white/25 text-8xl my-auto w-full h-full"} onClick={handlePageDown}>◄</button></div>
-                <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
-                    {
-                        filteredMovies().map((tv) => (
+        <div className="movie-list mt-10 mb-10 bg-cyan-800 w-full rounded-lg relative">
+            <div className="movie-card-wrapper max-w-8xl mx-auto overflow-hidden">
+                <div className="text-2xl text-white my-3 ml-5 text-center" style={{ fontFamily: "Impact" }}>TOP 20 POPULAR TV SHOWS</div>
+                <div
+                    className="movie-card-slide-container flex transition-transform ease-in-out w-auto"
+                    style={{
+                        transform: `translateX(-${(pageCounter - 1) * (100 / (showsPerPage * 8))}%)`,
+                    }}
+                >
+                    {loopedTVShows.map((tv) => (
+                        <div key={tv.id} className="tv-card w-1/10 px-2">
                             <TVCard
-                                key={tv.id}
-                                title={tv.original_name}
+                                title={tv.original_title}
                                 media_id={tv.id}
                                 poster={tv.poster_path}
                             />
-                        ))}
+                        </div>
+                    ))}
                 </div>
-                <div><button className={"text-white hover:text-white/25 text-8xl self-center w-full h-full"} onClick={handlePageUp}>►</button></div>
             </div>
+            <button
+                className={`navigation-arrow arrow-left left-0 top-7 transform -translate-y-1/2 absolute text-white ${pageCounter === 1 ? "hidden" : ""}`}
+                onClick={handlePageDown}
+                style={{
+                    width: "30px", // Adjust the width as needed
+                    height: "30px", // Adjust the height as needed
+                    backgroundImage: "url('https://i.imgur.com/Og4W6uT.png')",
+                    backgroundSize: "100% 100%",
+                    backgroundRepeat: "no-repeat",
+                }}
+            >
+            </button>
+            <button
+                className="navigation-arrow arrow-right right-0 top-7 transform -translate-y-1/2 absolute text-white"
+                onClick={handlePageUp}
+                style={{
+                    width: "30px", // Adjust the width as needed
+                    height: "30px", // Adjust the height as needed
+                    backgroundImage: "url('https://i.imgur.com/lDzZt5K.png')",
+                    backgroundSize: "100% 100%",
+                    backgroundRepeat: "no-repeat",
+                }}
+            >
+            </button>
+            {/* Additional div for the border-like bottom */}
+            <div
+                className="absolute w-full bottom-0 left-0 bg-cyan-800"
+                style={{ height: "8px" }} // Adjust the height as needed
+            ></div>
         </div>
-    )
-}
+    );
+};
+
 export default TVList;

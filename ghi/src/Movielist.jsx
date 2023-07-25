@@ -18,15 +18,15 @@ const MovieList = () => {
   const totalPages = Math.ceil(totalMovies / moviesPerPage);
 
   const handlePageUp = () => {
-    setPageCounter((prevPage) => (prevPage % totalPages) + 5);
+    setPageCounter((prevPage) => (prevPage % totalPages) + 1);
   };
 
   const handlePageDown = () => {
     setPageCounter((prevPage) => {
-      if (prevPage === 5) {
+      if (prevPage === 1) {
         return totalPages;
       } else {
-        return prevPage - 5;
+        return prevPage - 1;
       }
     });
   };
