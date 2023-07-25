@@ -11,7 +11,7 @@ export const watchlistApi = createApi({
         url: `/api/accounts/${account_id}/watchlist`,
         credentials: "include",
       }),
-      invalidatesTags: ["Watchlist"],
+      providesTags: ["Watchlist"],
     }),
 
     addToWatchlist: builder.mutation({

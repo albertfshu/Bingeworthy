@@ -32,6 +32,7 @@ const Reviews = () => {
   }
 
   const handleSubmit = (e) => {
+    console.log(comment)
     let query = {
       page_id: page_id, body: {
         "commentor_id": account.account.username,
