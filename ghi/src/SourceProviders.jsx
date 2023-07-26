@@ -12,7 +12,7 @@ const SourceProviders = () => {
 
   if (data.results.US) {
     return (
-      <div id="providers" className="border rounded bg-cyan-700 pl-1 my-4">
+      <div id="providers" className="border rounded bg-cyan-700 pl-1 my-3">
         <p className="text-xl font-bold text-gray-200 mr-2 text-center ml-1">Providers</p>
         <div className="text-gray-200 text-center text-xs mr-2 italic border-b ml-1">US providers</div>
         <div className="text-gray-200 font-bold text-xl ml-1">Buy</div>
@@ -48,13 +48,12 @@ const SourceProviders = () => {
   }
   else {
     return (
-      <div id="providers">
-        <p className="text-xl">Providers</p>
-        <div>US providers</div>
-        <p> Unavailable </p>
+      <div id="providers" className="my-4 border rounded my-1 pl-1">
+        <p className="text-xl font-bold text-gray-200 mr-2 text-center  ml-1">Providers</p>
+        <div className="text-gray-200 text-center text-xs mr-2 italic border-b ml-1">US providers</div>
+        <p className="text-black italic"> Unavailable </p>
         <div className="text-sm">data from JustWatch</div>
       </div>
-
     )
   }
 };
