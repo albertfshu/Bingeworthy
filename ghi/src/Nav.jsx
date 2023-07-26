@@ -46,7 +46,7 @@ const Nav = () => {
                 <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
                     <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-black rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li className="relative flex items-center">
-                            <form onSubmit={handleSearch} className="flex">
+                            <form onSubmit={handleSearch} className="flex pt-1">
                                 <input
                                     type="text"
                                     placeholder="search..."
@@ -56,7 +56,7 @@ const Nav = () => {
                                 />
                                 <button
                                     type="submit"
-                                    className="h-6 text-center py-1 px-1 text-white bg-cyan-700 rounded border border-gray-300 text-xs absolute right-0 top-1"
+                                    className="h-6 text-center py-1 px-1 text-white bg-cyan-700 rounded border border-gray-300 text-xs absolute right-0 top1.5"
                                 >
                                     Search
                                 </button>

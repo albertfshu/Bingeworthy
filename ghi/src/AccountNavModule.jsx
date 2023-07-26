@@ -25,7 +25,7 @@ const AccountNavModule = (props) => {
                     : "https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg"
                 }
                 alt="Profile"
-                className="cursor-pointer block h-8 w-8 rounded-full hover:bg-gray-100"
+                className="cursor-pointer block h-8 w-8 rounded-full hover:bg-gray-100 right-2"
                 onClick={() => setShowProfileMenu(!showProfileMenu)}
             />
             {showProfileMenu && (
