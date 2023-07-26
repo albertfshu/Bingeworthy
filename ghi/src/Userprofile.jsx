@@ -91,7 +91,6 @@ const UserProfile = () => {
                                 <p>{accountDetailsData.bio}</p>
                             </>
                         )}
-                        <div>STATS</div>
 
                     </div>
                     <Reviews page_id={userId} />
