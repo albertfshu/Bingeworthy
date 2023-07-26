@@ -38,7 +38,11 @@ Fixed the watchlist routers so they are assigned to a users ID value.
 Worked on the watchlist button
 
 ## DAY idk - 7.24.23
-Included poster paths so that the images are displayed for both movies and TV shows. Wrapped the images in a link to their respective details page. Learned how to use tailwindCSS by implementing custom fonts in the App.css file. 
+Today I Included poster paths so that the images are displayed for both movies and TV shows in the Homepage. I did this by wrapping the images in a link that leads to their respective details page. I also learned how to use tailwindCSS by importing and implementing custom fonts in a CSS file. As a result I was able to customize some of the fonts we used in our page.
 
 ## DAY idk - 7.25.23
-Implementing watchlist button to the TV details and Movie details page.
+I completed the watchlist button today which handles deleting and adding both movies and TV shows to a watchlist. It was necessary to implement a watchlist button to the TV details and Movie details page.
+
+## DAY idk - 7.26.23
+
+Today I continued working on creating the watchlist page to feature both TV shows and Movies. I faced a challenge where I was able to add tv shows and movies to the watchlist, but the watchlist wouldn't render the items in it. This happened because both TV shows and Movies were associated with the same media id when adding them, but since the TMDB API we are using has different paths for poster by media type, we had to implement a solution by adding Tid and Mid to associate if the media was a movie or tv show so the posters could render properly. After making these changes, the watchlist page now shows both the TV shows and Movies that are added by a user to their respective watchlist page.
