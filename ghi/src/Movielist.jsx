@@ -14,7 +14,7 @@ const MovieList = () => {
 
   const [pageCounter, setPageCounter] = useState(1);
   const moviesPerPage = 7;
-  const totalLoopedMovies = moviesPerPage * 6;
+  const totalLoopedMovies = 1000;
   const totalMovies = searchCriteria ? (search?.total_results || 0) : (data?.total_results || 0);
   const totalPages = Math.ceil(totalMovies / moviesPerPage);
 
@@ -40,7 +40,12 @@ const MovieList = () => {
   if (isLoading || isSearchLoading) return <div>Loading...</div>;
 
   // Additional copies of movie posters to create seamless loop
-  const loopedMovies = [...filteredMovies(), ...filteredMovies(), ...filteredMovies()];
+  const loopedMovies = [];
+  let loopCounter = 0;
+  while (loopCounter * filteredMovies().length < totalLoopedMovies) {
+    loopedMovies.push(...filteredMovies());
+    loopCounter++;
+  }
 
   return (
     <div className="movie-list mt-10 mb-10 bg-cyan-800 w-full rounded-lg relative">
@@ -49,7 +54,7 @@ const MovieList = () => {
         <div
           className="movie-card-slide-container flex transition-transform ease-in-out w-auto"
           style={{
-            transform: `translateX(-${(pageCounter - 1 * 100 / totalLoopedMovies)}%)`,
+            transform: `translateX(-${(pageCounter - 1) * (100 / moviesPerPage * 2)}%)`,
           }}
         >
           {loopedMovies.map((movie, index) => (
