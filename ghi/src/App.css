@@ -38,3 +38,10 @@
 .cursive-font {
   font-family: 'Caveat', cursive;
 }
+
+.watchlist-heading {
+  padding: 25px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 2.5rem
+}

@@ -4,7 +4,7 @@ import { useGetMovieDetailsQuery } from "./store/apiSlice";
 
 const MovieDetails = ({ media_id }) => {
     const { data, isLoading } = useGetMovieDetailsQuery(media_id.substr(4));
-    const movieId = media_id.substring(4);
+
 
     if (isLoading) return <span>Loading...</span>;
     console.log(data)
@@ -20,7 +20,7 @@ const MovieDetails = ({ media_id }) => {
                     />
                     <p className="sans-serif text-2xl my-auto inline">{data.original_title}</p>
                     <p className="sans-serif text-2xl my-auto inline">Movie: {data.runtime}min</p>
-                    <p className="sans-serif text-2xl my-auto ml-auto inline">{data.release_date}</p>
+                    <p className="sans-serif text-2xl my-auto ml-auto inline">{data.release_date.slice(0, 4)}</p>
                 </div>
             </Link>
         </div>
