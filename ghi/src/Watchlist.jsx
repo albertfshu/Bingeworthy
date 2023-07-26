@@ -17,10 +17,12 @@ const Watchlist = () => {
         Oh no! Your watchlist is empty.
         </p>}
       {watchlistItems.length > 0 && (
-        <div className="w-60 mx-auto bg-gray-800 rounded-md p-4 text-center">
+        <div className="flex flex-wrap justify-center">
           {watchlistItems.map((watchlist) => (
             (watchlist.media_id.substr(0, 4) == "mID=") ?
-              <div key={watchlist.id}>
+              <div
+              key={watchlist.id}
+              >
                 <MovieDetails
                   title={watchlist.original_title}
                   media_id={watchlist.media_id}
