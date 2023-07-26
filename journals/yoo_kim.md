@@ -43,3 +43,19 @@ added search bar to nav - not connected to search results
 tested how to connect the search bar in the nav to reflect the search bar in the home.jsx page
 
 ## DAY 14 - 7.20.23
+reviewed how to do infinite loops for movie and tv show galleries
+
+## DAY 15 - 7.21.23
+DAY OFF
+
+## DAY 16 - 7.24.23
+first adaptation of the movie gallery loop as well as front end for search bar issues in nav for home page troubleshooting
+
+## DAY 17 - 7.25.23
+home page beautification , front end for tvshow portion on home page worked on
+
+## DAY 18 - 7.26.23
+alphabetized drop down for language
+fixed search button in nav
+actually got the infinite loops working on the shows and movies
+fixed the scrolling buttons on the galleries to function properly

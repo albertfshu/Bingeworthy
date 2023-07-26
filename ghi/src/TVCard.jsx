@@ -7,14 +7,14 @@ const TVCard = ({ title, media_id, poster }) => {
     return (
       <div className="w-60 mx-auto bg-gray-800 rounded-md p-4 text-center" key={TVCard}>
         <Link to={`/tv/${media_id}`}>
-        <img
-          className="shadow-md h-60 mx-auto"
-          src={`https://image.tmdb.org/t/p/original${poster}`}
-          alt={title}
-        />
-        <h5 className="font-bold text-gray-200 mt-3">
-          {title[0].toUpperCase() + title.slice(1)}
-        </h5>
+          <img
+            className="shadow-md h-60 mx-auto"
+            src={`https://image.tmdb.org/t/p/original${poster}`}
+            alt={title}
+          />
+          <h5 className="font-bold text-gray-200 mt-3">
+            {title[0].toUpperCase() + title.slice(1)}
+          </h5>
         </Link>
       </div>
     );
@@ -23,10 +23,10 @@ const TVCard = ({ title, media_id, poster }) => {
     return (
       <div className="w-60 mx-auto bg-gray-800 rounded-md p-4">
         <Link to={`/tv/${media_id}`}>
-        <div className="shadow-md h-60 mx-auto bg-gray-600"></div>
-        <h5 className="font-bold text-gray-200 mt-3">
-          {title[0].toUpperCase() + title.slice(1)}
-        </h5>
+          <div className="shadow-md h-60 mx-auto bg-gray-600"></div>
+          <h5 className="font-bold text-gray-200 mt-3">
+            {title[0].toUpperCase() + title.slice(1)}
+          </h5>
         </Link>
       </div>
     );

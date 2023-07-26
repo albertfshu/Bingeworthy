@@ -48,7 +48,7 @@ const MovieList = () => {
   }
 
   return (
-    <div className="movie-list mt-10 mb-10 bg-cyan-800 w-full rounded-lg relative">
+    <div className="movie-list mt-3 mb-10 bg-cyan-800 w-full rounded-lg relative">
       <div className="movie-card-wrapper max-w-8xl mx-auto overflow-hidden">
         <div className="text-2xl text-white my-3 ml-5 text-center" style={{ fontFamily: "Impact" }}>TOP 20 POPULAR MOVIES</div>
         <div
