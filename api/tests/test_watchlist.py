@@ -11,7 +11,6 @@ def fake_get_current_account_data():
     return {"id": "1337", "username": "fakeuser"}
 
 
-
 class FakeWatchlistQueries:
     def create(self, watchlist_in: WatchlistIn, account_id: str):
         return {
@@ -39,7 +38,9 @@ class FakeWatchlistQueries:
 def test_list_watchlist_for_account():
     app.dependency_overrides[WatchlistQueries] = FakeWatchlistQueries
     app.dependency_overrides[authenticator.get_current_account_data] = fake_get_current_account_data
-    res = client.get("/api/accounts/{account_id}/watchlist")
+    print(fake_get_current_account_data)
+    account_id = "1337"
+    res = client.get(f"/api/accounts/{account_id}/watchlist")
     data = res.json()
     print(data)
 
@@ -81,4 +82,4 @@ def test_delete_watchlist():
     data = res.json()
 
     assert res.status_code == 200
-    assert data == {'success': True}
+    assert data == True
