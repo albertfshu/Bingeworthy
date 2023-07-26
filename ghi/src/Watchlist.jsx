@@ -28,11 +28,15 @@ const Watchlist = () => {
                 <MovieDetails
                   title={watchlist.original_title}
                   media_id={watchlist.media_id}
+                  account_id={userId}
+                  watchlist_id={watchlist.id}
                 />
               ) : (
                 <TVDetails
                   title={watchlist.original_title}
                   media_id={watchlist.media_id}
+                  account_id={userId}
+                  watchlist_id={watchlist.id}
                 />
               )}
             </div>
