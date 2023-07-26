@@ -15,23 +15,20 @@ const TVList = () => {
     console.log(search)
 
     const [pageCounter, setPageCounter] = useState(1);
-    const showsPerPage = 20;
+    const showsPerPage = 7;
+    const totalLoopedShows = 1000;
     const totalTVShows = searchCriteria ? (search?.total_results || 0) : (data?.total_results || 0);
     const totalPages = Math.ceil(totalTVShows / showsPerPage);
 
+
     const handlePageUp = () => {
-        setPageCounter((prevPage) => (prevPage % totalPages) + 1);
+        setPageCounter((prevPage) => (prevPage === totalPages ? 1 : prevPage + 1));
     };
 
     const handlePageDown = () => {
-        setPageCounter((prevPage) => {
-            if (prevPage === 1) {
-                return totalPages;
-            } else {
-                return prevPage - 1;
-            }
-        });
+        setPageCounter((prevPage) => (prevPage === 1 ? totalPages : prevPage - 1));
     };
+
 
     const filteredTVShows = () => {
         if (searchCriteria != '') {
@@ -43,10 +40,15 @@ const TVList = () => {
             return data.results;
         }
     };
-    console.log(data?.results)
+    // console.log(data?.results)
     if (isLoading || isSearchLoading) return <div>Loading...</div>;
 
-    const loopedTVShows = [...filteredTVShows(), ...filteredTVShows(), ...filteredTVShows()];
+    const loopedTVShows = []; //store looped TV shows
+    let loopCounter = 0; // loop counter
+    while (loopCounter * filteredTVShows().length < totalLoopedShows) { // loop until loopCounter * filteredTVShows().length is less than totalLoopedShows
+        loopedTVShows.push(...filteredTVShows()); // adds loops to the loopedTVShows array
+        loopCounter++; // increment loop counter
+    }
 
     return (
         <div className="tv-list mt-10 mb-10 bg-cyan-800 w-full h-full rounded-lg relative">
@@ -55,11 +57,11 @@ const TVList = () => {
                 <div
                     className="tv-card-slide-container flex transition-transform ease-in-out w-auto"
                     style={{
-                        transform: `translateX(-${(pageCounter - 1) * (100 / (showsPerPage * 8))}%)`,
+                        transform: `translateX(-${(pageCounter - 1) * (100 / showsPerPage * 2)}%)`,
                     }}
                 >
-                    {loopedTVShows.map((tv) => (
-                        <div key={tv.id} className="tv-card w-1/10 px-2">
+                    {loopedTVShows.map((tv, index) => (
+                        <div key={index} className="tv-card w-1/10 px-2">
                             <TVCard
                                 title={tv.original_name}
                                 media_id={tv.id}
