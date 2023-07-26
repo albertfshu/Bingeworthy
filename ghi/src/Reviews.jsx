@@ -82,11 +82,11 @@ const Reviews = (props) => {
   if (isCommentsLoading) { return (<div>loading...</div>) };
   return (
     <>
-      <div className="grid grid-cols-[1fr,150px] border-b">
-        <h1 className="mt-4 inline text-3xl"> Reviews </h1>
+      <div className="mt-20 grid grid-cols-[1fr,100px] border-b">
+        <h1 className="mt-4 inline text-3xl font-bold"> Reviews </h1>
         {account &&
           <button
-            className="inline bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-4 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            className="inline bg-cyan-700 h-10 w-20 ml-5 mt-2 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="button"
             onClick={() => {
               setShowModal(true);
@@ -158,24 +158,24 @@ const Reviews = (props) => {
       <div>
         <div id="reviewdisplay">
           {showComments.comments.map((r) => (
-            <div id="testReviewCard" className="bg-yellow-100 w-full p-3 text-black my-3" key={r._id}>
+            <div id="testReviewCard" className="bg-cyan-700 w-full p-3 text-black my-3 rounded" key={r._id}>
 
-              <div id="cardheader" className="bg-white w-full p-3 text-black grid grid-cols-[1fr,100px,100px]">
+              <div id="cardheader" className="rounded bg-gray-200 w-full p-3 text-black grid grid-cols-[1fr,100px,100px]">
                 <div className="grid grid-cols-[auto_1fr]">
                   <ReviewCardProfile commentor_id={r.commentor_id} post_date={r.post_date} />
                 </div>
                 {r.commentor_id == account.account?.username
                   && <>
-                    <button className="m-1 mr-1 bg-red-100" onClick={() => {
+                    <button className="text-sm m-1 mr-1 h-8 w-12 rounded-lg text-white bg-cyan-700 ml-20 mt-3 border border-black" onClick={() => {
                       handleEdit(r._id, r.comment)
                     }}>Edit</button>
-                    <button className="m-1 bg-red-100" value={r._id} onClick={handleDelete}>Delete</button>
+                    <button className="text-sm m-1 mr-1 h-8 w-12 rounded-lg text-white bg-cyan-700 ml-12 mt-3 border border-black" value={r._id} onClick={handleDelete}>Delete</button>
                   </>
                 }
               </div>
               <div className="bg-black w-7/8 h-[1px] mx-auto"></div>
               <div className="mx-6 my-5">
-                <p>{r.comment}</p>
+                <p className="text-xl text-gray-200">{r.comment}</p>
                 <div className="ml-auto h-[min-content]">
                   {r.edit_date !== r.post_date && <p>edited {handleDate(r.edit_date)}</p>}
                 </div>
