@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetUserRatingQuery } from "./store/dataSlice";
-import TVDetails from "./WatchlistTVDetails";
-import MovieDetails from "./WatchlistMovieDetails"
+import RatingTVDetails from "./RatingTVDetails";
+import RatingMovieDetails from "./RatingMovieDetails"
 
 const Ratinglist = () => {
     const { userId } = useParams();
@@ -21,14 +21,14 @@ const Ratinglist = () => {
                     (rating.page_id.substr(0, 4) == "mID=") ?
                         <div key={rating.id} className="grid grid-cols-[20px,1fr]">
                             <p className="text-3xl font-bold my-auto">{rating.value}</p>
-                            <MovieDetails
+                            <RatingMovieDetails
                                 title={rating.original_title}
                                 media_id={rating.page_id}
                             />
                         </div>
                         : <div key={rating.id} className="grid grid-cols-[20px,1fr]">
                             <p className="text-3xl font-bold my-auto">{rating.value}</p>
-                            <TVDetails
+                            <RatingTVDetails
                                 title={rating.original_title}
                                 media_id={rating.page_id}
                             />
