@@ -6,7 +6,6 @@ import ReviewCard from "./ReviewCard";
 
 const Reviews = (props) => {
   let page_id = props.page_id;
-  console.log(page_id)
   const { data: showComments, isLoading: isCommentsLoading } = useGetCommentsQuery(page_id)
   const [deleteComment] = useDeleteCommentMutation();
   const [postComment] = useCreateCommentMutation();

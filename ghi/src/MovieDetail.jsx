@@ -7,7 +7,7 @@ import SourceProviders from "./SourceProviders";
 import Reviews from "./Reviews";
 import WatchlistButton from "./WatchlistButton"
 import MovieCard from "./Moviecard";
-
+import Rating from "./Rating";
 
 const MovieDetail = () => {
     const { movie_id } = useParams();
@@ -35,16 +35,21 @@ const MovieDetail = () => {
                             ></img>
                         </div>
                         <SourceProviders />
-                        {/* fix the account_id  */}
-                        <WatchlistButton account_id={account.account.id} media_id={"mID=" + movie_id} />
+                        <WatchlistButton account_id={account?.account.id} media_id={"mID=" + movie_id} />
                     </div>
                 </div>
                 <div id="col2" className="w-full">
-                    <h2 className="text-2xl">{data.original_title}</h2>
-                    {/* <h5>rating</h5> */}
-                    <div className="my-3">
-                        <h5 className="inline">{ReleaseDate} </h5>
-                        <h5 className="inline pl-6">{data.runtime}min</h5>
+                    <div className="grid grid-cols-[1fr,200px]">
+                        <div>
+                            <h2 className="text-2xl">{data.original_title}</h2>
+                            <div className="my-3">
+                                <h5 className="inline">{ReleaseDate} </h5>
+                                <h5 className="inline pl-6">{data.runtime}min</h5>
+                            </div>
+                        </div>
+                        <div>
+                            <Rating page_id={"mID=" + movie_id} />
+                        </div>
                     </div>
                     <div>{data.overview}</div>
                 </div>
