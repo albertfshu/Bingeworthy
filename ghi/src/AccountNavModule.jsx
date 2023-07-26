@@ -48,6 +48,14 @@ const AccountNavModule = (props) => {
                     </li>
                     <li>
                         <Link
+                            to={`/profile/${props.account_id}/ratings`}
+                            className="block px-4 py-2 text-sm text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                        >
+                            Ratings
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
                             to="/login"
                             onClick={handleLogout}
                             className="block px-4 py-2 text-sm text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
