@@ -19,7 +19,7 @@ const MovieDetails = (props) => {
 
         <div className="w-full mx-auto bg-gray-800 rounded-md p-9 text-center">
             {props.account_id == account?.account.id && <button
-                className="hover:bg-red-500 ml-auto bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-2 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mx-1 my-1 ease-linear transition-all duration-150"
+                className="hover:bg-red-800 ml-auto bg-cyan-500 text-white active:bg-black-600 font-bold uppercase text-sm px-2 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mx-1 my-1 ease-linear transition-all duration-150"
 
                 onClick={handleRemoveFromWatchlist}
             >

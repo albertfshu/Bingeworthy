@@ -32,7 +32,7 @@ const WatchlistButton = (props) => {
         <>
             {!watchlist && (
                 <button
-                    className="inline bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mx-1 my-1 ease-linear transition-all duration-150"
+                    className="mt-3 ml-7 text-center h-10 w-30 inline bg-yellow-700 text-white hover:bg-red-600 font-bold uppercase text-sm px-1 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150" style={{ lineHeight: ".9rem" }}
 
                     onClick={handleAddToWatchlist}
                 >
@@ -41,7 +41,7 @@ const WatchlistButton = (props) => {
             )}
             {watchlist && (
                 <button
-                    className="inline bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mx-1 my-1 ease-linear transition-all duration-150"
+                    className="mt-2 h-10 w-30 inline bg-red-700 text-white hover:bg-red-600 font-bold uppercase text-sm px-1 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none my-1 ease-linear transition-all duration-150" style={{ lineHeight: ".9rem" }}
 
                     onClick={handleRemoveFromWatchlist}
                 >

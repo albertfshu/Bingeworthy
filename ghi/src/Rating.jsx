@@ -56,18 +56,18 @@ const Rating = (props) => {
     if (isRatingsLoading) return (<p>is Loading..</p>)
 
     return (
-        <div>
-            <p>Ratings</p>
-            <p className="inline">Average Rating:</p>
+        <div className="rounded bg-cyan-700 mr-8 mb-5 ml-7 pl-2 border">
+            <p className="text-gray-200 font-bold underline text-lg ">Ratings</p>
+            <p className="inline text-black">Average Rating :</p>
             {(avgRating == 0)
-                ? <p className="inline ml-3">No Ratings Submitted Yet!</p>
+                ? <p className="inline ml-3 text-xs">No Ratings Yet</p>
                 : <p className="inline ml-3">{avgRating}</p>}
             {/* <input type="range" min="1" max="5" step="1" value={userRating} onChange={(e) => setUserRating(e.target.value)} /> */}
             {account ? (
                 <>
                     <div>
-                        <p className="inline">Rate:</p>
-                        <select className="text-black inline ml-3" id="userRating" value={displayUserRating} onChange={(e) => { handleUserRatingChange(e.target.value); }}>
+                        <p className="inline text-black">Rate:</p>
+                        <select className="text-black inline ml-3 rounded mb-2" id="userRating" value={displayUserRating} onChange={(e) => { handleUserRatingChange(e.target.value); }}>
                             <option className="text-black" value="1">1</option>
                             <option className="text-black" value="2">2</option>
                             <option className="text-black" value="3">3</option>

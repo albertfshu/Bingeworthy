@@ -9,6 +9,7 @@ import WatchlistButton from "./WatchlistButton"
 import MovieCard from "./Moviecard";
 import Rating from "./Rating";
 
+
 const MovieDetail = () => {
     const { movie_id } = useParams();
     const { data: account, isLoading: accountLoading } = useGetAccountQuery();
@@ -33,16 +34,16 @@ const MovieDetail = () => {
                                 width="200"
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                             ></img>
+                            <WatchlistButton account_id={account?.account.id} media_id={"mID=" + movie_id} />
                         </div>
                         <SourceProviders />
-                        <WatchlistButton account_id={account?.account.id} media_id={"mID=" + movie_id} />
                     </div>
                 </div>
-                <div id="col2" className="w-full">
-                    <div className="grid grid-cols-[1fr,200px]">
+                <div id="col2" className="ml-10 w-full">
+                    <div className="grid grid-cols-[1fr,300px]">
                         <div>
-                            <h2 className="text-2xl">{data.original_title}</h2>
-                            <div className="my-3">
+                            <h2 className="text-4xl text-bold ">{data.original_title}</h2>
+                            <div className="my-3 border-b mr-5">
                                 <h5 className="inline">{ReleaseDate} </h5>
                                 <h5 className="inline pl-6">{data.runtime}min</h5>
                             </div>
@@ -51,7 +52,7 @@ const MovieDetail = () => {
                             <Rating page_id={"mID=" + movie_id} />
                         </div>
                     </div>
-                    <div>{data.overview}</div>
+                    <div className="mr-28">{data.overview}</div>
                 </div>
             </div>
             <div className="w-4/5 mx-auto">
