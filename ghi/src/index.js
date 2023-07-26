@@ -7,20 +7,23 @@ import {
 } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter } from "react-router-dom";
-import ErrorNotification from "./ErrorNotification";
 import SignUp from "./SignUp";
 import Login from "./Login";
 import Home from "./Home";
+import Search from "./Search";
 import MovieDetail from "./MovieDetail";
 import TVDetail from "./TVDetail";
-import Watchlist from "./Watchlist";
+import MovieList from "./Movielist";
+import ErrorNotification from "./ErrorNotification";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import UserProfile from "./Userprofile";
+// import Errorpage from './Errorpage'
 
 import { store } from "./store/store";
 import { Provider } from "react-redux";
+import Watchlist from "./Watchlist";
 
 const domain = /https:\/\/[^/]+/;
 const basename = process.env.PUBLIC_URL.replace(domain, "");
@@ -59,7 +62,7 @@ const router = createBrowserRouter([
         element: <UserProfile />,
       },
       {
-        path: "/profile/:userId/watchlist",
+        path: "/watchlist/:Id",
         element: <Watchlist />,
       },
     ],

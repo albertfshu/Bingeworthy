@@ -76,10 +76,11 @@ class AccountDetailsIn(BaseModel):
 
 
 class RatingOut(BaseModel):
-    media_id: str  #id starts with m or t and then TMDB api id
+    page_id: str  #id starts with m or t and then TMDB api id
     user_id: str
     value: int
 
 
 class RatingIn(BaseModel):
     value: int
+    user_id: str

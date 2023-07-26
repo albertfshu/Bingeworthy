@@ -56,7 +56,7 @@ const Nav = () => {
                                 />
                                 <button
                                     type="submit"
-                                    className="h-6 text-center py-1 px-1 text-white bg-cyan-700 rounded border border-gray-300 text-xs absolute right-0 top-0"
+                                    className="h-6 text-center py-1 px-1 text-white bg-cyan-700 rounded border border-gray-300 text-xs absolute right-0 top-1"
                                 >
                                     Search
                                 </button>

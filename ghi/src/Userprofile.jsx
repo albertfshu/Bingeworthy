@@ -1,10 +1,11 @@
 import React from "react";
-import { useState, } from "react";
+import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 // import { useGetAccountQuery } from "./store/accountSlice";
 import { useGetAccountDetailsQuery, useUpdateAccountDetailsMutation } from "./store/accountDetailsSlice";
 import { useGetAccountQuery } from "./store/accountSlice";
+import UserprofileRatings from "./UserprofileRatings";
 import AlertError from "./AlertError";
 import Reviews from "./Reviews";
 
@@ -20,11 +21,6 @@ const UserProfile = () => {
     // const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
     // const {updateAccountDetails, { }}
 
-    // useEffect(() => {
-    //     if (userId) {
-    //         dispatch(useGetAccountDetailsQuery(userId));
-    //     }
-    // }, [dispatch, userId]);
 
     const handleUpdateDetails = () => {
         // e.preventDefault();
@@ -42,8 +38,6 @@ const UserProfile = () => {
         return <AlertError message="Error getting user data" />
     }
 
-    console.log()
-    console.log(accountDetailsData)
     return (
         <div className="w-3/4 mx-auto">
             <div className="grid grid-cols-[200px,1fr] mx-8 py-8">
@@ -58,7 +52,7 @@ const UserProfile = () => {
                     </div>
 
                     <p className="text-3xl font-bold mt-3">{userId}'s Profile</p>
-                    <p>Member since: {new Date(accountDetailsData.date).toLocaleDateString()}</p>
+                    <p>Member since: {new Date(accountDetailsData?.date).toLocaleDateString()}</p>
                     <ul>
                         {accountDetailsData?.seriesRated?.map((series) => (
                             <li key={series.id}>{series.title}</li>
@@ -74,12 +68,13 @@ const UserProfile = () => {
                     </ul>
                 </div>
                 <div>
+                    <UserprofileRatings page_id={userId} />
                     <div>
                         {accountDetailsData && (
                             <>
 
-                                <div>
-                                    <p className="text-2xl font-bold inline">About Me</p>
+                                <div className="grid grid-cols-[1fr,300px] border-b">
+                                    <p className="text-3xl mt-4 inline">About Me</p>
                                     {
                                         account &&
                                         <button
@@ -99,7 +94,7 @@ const UserProfile = () => {
                         <div>STATS</div>
 
                     </div>
-                    <Reviews />
+                    <Reviews page_id={userId} />
                     {
                         showModal ? (
                             <>
@@ -125,7 +120,7 @@ const UserProfile = () => {
                                                     <label htmlFor="bio">About Me</label>
                                                     <textarea className="w-full p-2 border border-cyan-700 rounded text-black h-60" type="text" id="bio" value={bio} onChange={(e) => setBio(e.target.value)} />
                                                     <label htmlFor="profileImage">Profile Image URL  </label>
-                                                    <input type="text text-black" id="profileImage" value={profileImage} onChange={(e) => setProfileImage(e.target.value)} />
+                                                    <input type="text-black" id="profileImage" value={profileImage} onChange={(e) => setProfileImage(e.target.value)} />
                                                 </div>
 
                                                 <div className="text-black flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
