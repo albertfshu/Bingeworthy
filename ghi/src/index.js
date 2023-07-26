@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         element: <UserProfile />,
       },
       {
-        path: "/watchlist/:Id",
+        path: "/profile/:userId/watchlist",
         element: <Watchlist />,
       },
     ],
