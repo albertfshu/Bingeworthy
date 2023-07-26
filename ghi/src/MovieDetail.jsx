@@ -36,7 +36,7 @@ const MovieDetail = () => {
                         </div>
                         <SourceProviders />
                         {/* fix the account_id  */}
-                        <WatchlistButton account_id={account.account.id} media_id={movie_id} />
+                        {/* <WatchlistButton account_id={account.account.id} media_id={movie_id} /> */}
                     </div>
                 </div>
                 <div id="col2" className="w-full">
