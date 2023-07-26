@@ -8,7 +8,7 @@ export const accountDetailsApi = createApi({
   endpoints: (builder) => ({
     getAccountDetails: builder.query({
       query: (accountId) => `/api/accounts/${accountId}`,
-      invalidatesTags: ["AccountDetails"],
+      providesTags: ["AccountDetails"],
     }),
     updateAccountDetails: builder.mutation({
       query: ({ id, ...data }) => ({

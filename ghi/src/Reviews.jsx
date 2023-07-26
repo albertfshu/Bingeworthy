@@ -4,25 +4,23 @@ import { useGetAccountQuery } from "./store/accountSlice";
 import { useGetCommentsQuery, useCreateCommentMutation, useDeleteCommentMutation, useUpdateCommentMutation } from "./store/dataSlice";
 import ReviewCard from "./ReviewCard";
 
-const Reviews = () => {
-  const { movie_id } = useParams();
-  const { data: showComments, isLoading: isCommentsLoading } = useGetCommentsQuery(movie_id)
+const Reviews = (props) => {
+  let page_id = props.page_id;
+  const { data: showComments, isLoading: isCommentsLoading } = useGetCommentsQuery(page_id)
   const [deleteComment] = useDeleteCommentMutation();
   const [postComment] = useCreateCommentMutation();
   let { data: account } = useGetAccountQuery();
   const [showModal, setShowModal] = useState(false);
-  const edit = false;
+  let edit = false;
   const [editCommentID, setEditCommentID] = useState(null);
   const [commentContent, setCommentContent] = useState("");
   const [updateComment] = useUpdateCommentMutation();
-
 
 
   if (account == null) {
     account = false
   }
   console.log(showComments)
-  let page_id = movie_id
 
   const handleDelete = (e) => {
     console.log(e.target.value)
@@ -94,11 +92,11 @@ const Reviews = () => {
   if (isCommentsLoading) { return (<div>loading...</div>) };
   return (
     <>
-      <div className="grid grid-cols-[1fr,200px]">
-        <h1 className="mt-8 inline text-3xl"> Reviews </h1>
+      <div className="grid grid-cols-[1fr,150px] border-b">
+        <h1 className="mt-4 inline text-3xl"> Reviews </h1>
         {account &&
           <button
-            className="inline bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            className="inline bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-4 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="button"
             onClick={() => {
               setShowModal(true);
@@ -175,11 +173,11 @@ const Reviews = () => {
                 <div className="grid grid-cols-[auto_1fr]">
                   <img className="rounded-full bg-color-black h-12 my-auto" src="https://cdn.discordapp.com/emojis/1091215748338307173.webp?size=96&quality=lossless" />
                   <div className="ml-6">
-                    <p className="text-2xl">{r.commentor_id}</p>
+                    <Link to={`/profile/${r.commentor_id}`}><p className="hover:text-[#fec0c0] text-2xl">{r.commentor_id}</p></Link>
                     <p>{handleDate(r.post_date)}</p>
                   </div>
                 </div>
-                {r.commentor_id == account.account.username
+                {r.commentor_id == account.account?.username
                   && <>
                     <button className="m-1 mr-1 bg-red-100" onClick={() => {
                       handleEdit(r._id, r.comment)

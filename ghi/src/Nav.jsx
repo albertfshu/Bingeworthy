@@ -27,7 +27,7 @@ const Nav = () => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        // window.location.href = `./search`;
+        window.location.href = `/search/${searchQuery}`;
     }
 
     if (isLoading) return <div>Loading...</div>;
@@ -54,12 +54,12 @@ const Nav = () => {
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                 />
-                                {/* <button
+                                <button
                                     type="submit"
-                                    className="h-6 text-center py-1 px-1 text-white bg-cyan-700 rounded border border-gray-300 text-xs absolute right-0 top-0"
+                                    className="h-6 text-center py-1 px-1 text-white bg-cyan-700 rounded border border-gray-300 text-xs absolute right-0 top-1"
                                 >
                                     Search
-                                </button> */}
+                                </button>
                             </form>
                         </li>
                         {account ? (

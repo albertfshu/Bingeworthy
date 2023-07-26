@@ -7,21 +7,33 @@ export const dataApi = createApi({
   }),
   endpoints: (builder) => ({
     createRating: builder.mutation({
-      query: (body, movie_id) => ({
-        url: `/api/movie/${movie_id}/rating`,
+      query: (query) => ({
+        url: `/api/rating/${query.page_id}`,
         method: "POST",
-        body,
-        credentials: "include",
+        body: query.body,
       }),
       invalidatesTags: ["Rating"],
     }),
     getRating: builder.query({
       query: (page_id) => ({
-        url: `/api/movie/${page_id}/rating`,
+        url: `/api/rating/${page_id}`,
+      }),
+      providesTags: ["Rating"],
+    }),
+    getUserRating: builder.query({
+      query: (page_id) => ({
+        url: `/api/accounts/${page_id}/ratings`,
+      }),
+      providesTags: ["Rating"],
+    }),
+    updateRating: builder.mutation({
+      query: (query) => ({
+        url: `/api/rating/${query.page_id}/${query.body.user_id}`,
+        method: "PUT",
+        body: query.body,
         credentials: "include",
       }),
-      //   transformResponse: (response) => (response ? response.account : null),
-      providesTags: ["Rating"],
+      invalidatesTags: ["Rating"],
     }),
     createComment: builder.mutation({
       query: (query) => ({
@@ -60,6 +72,8 @@ export const dataApi = createApi({
 export const {
   useCreateRatingMutation,
   useGetRatingQuery,
+  useGetUserRatingQuery,
+  useUpdateRatingMutation,
   useCreateCommentMutation,
   useGetCommentsQuery,
   useDeleteCommentMutation,
