@@ -20,7 +20,7 @@ const TVDetails = ({ media_id }) => {
                     />
                     <p className="sans-serif text-2xl my-auto inline">{data.original_name}</p>
                     <p className="sans-serif text-2xl my-auto inline">TV: {data.number_of_seasons} Season{data.number_of_seasons > 1 && "s"}</p>
-                    <p className="sans-serif text-2xl my-auto ml-auto inline">{data.first_air_date}</p>
+                    <p className="sans-serif text-2xl my-auto ml-auto inline">{data.first_air_date.slice(0, 4)}</p>
                 </div>
             </Link>
         </div>

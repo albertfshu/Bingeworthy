@@ -14,7 +14,7 @@ const Watchlist = () => {
   if (isLoading) return <div>Loading...</div>;
   return (
     <div className="mt-8">
-      <h1 className="bold-font text-5xl text-center">{userId}'s Watchlist</h1>
+      <h1 className="watchlist-heading bold-font">{userId}'s Watchlist</h1>
       {watchlistItems.length === 0 &&
         <p className="text-center">
           Oh no! Your watchlist is empty.
