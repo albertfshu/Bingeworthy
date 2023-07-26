@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetUserWatchlistQuery } from "./store/watchlistSlice";
-import TVDetails from "./WatchlistTVcard";
-import MovieDetails from "./WatchlistMoviecard"
+import TVDetails from "./WatchlistTVDetails";
+import MovieDetails from "./WatchlistMovieDetails"
 
 const Watchlist = () => {
   const { data: watchlistData, isLoading } = useGetUserWatchlistQuery();
@@ -11,8 +11,11 @@ const Watchlist = () => {
   if (isLoading) return <div>Loading...</div>;
   return (
     <div className="mt-3">
-      <h1 className="text-center">Watchlist</h1>
-      {watchlistItems.length === 0 && <p>Oh no! Your watchlist is empty.</p>}
+      <h1 className="bold-font text-5xl text-center">Watchlist</h1>
+      {watchlistItems.length === 0 &&
+      <p className="text-center">
+        Oh no! Your watchlist is empty.
+        </p>}
       {watchlistItems.length > 0 && (
         <div className="w-60 mx-auto bg-gray-800 rounded-md p-4 text-center">
           {watchlistItems.map((watchlist) => (

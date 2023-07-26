@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetTVDetailsQuery, useGetMovieDetailsQuery } from "./store/apiSlice";
+import { useGetTVDetailsQuery } from "./store/apiSlice";
 
 const TVDetails = ({ media_id }) => {
     const { data, isLoading } = useGetTVDetailsQuery(media_id.substr(4));
