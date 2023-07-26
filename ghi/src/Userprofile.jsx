@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 // import { useGetAccountQuery } from "./store/accountSlice";
@@ -21,6 +21,12 @@ const UserProfile = () => {
     // const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
     // const {updateAccountDetails, { }}
 
+    useEffect(() => {
+        if (accountDetailsData) {
+            setBio(accountDetailsData.bio || "");
+            setProfileImage(accountDetailsData.profile_image || "");
+        }
+    }, [accountDetailsData]);
 
     const handleUpdateDetails = () => {
         // e.preventDefault();
@@ -44,6 +50,7 @@ const UserProfile = () => {
                 <div>
                     <div>
                         <img
+                            className="rounded-full bg-color-black h-12 my-auto"
                             src={accountDetailsData?.profile_image || "https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg"}
                             // Need to make one - default-profile-image
                             alt="Profile"
@@ -73,18 +80,17 @@ const UserProfile = () => {
                         {accountDetailsData && (
                             <>
 
-                                <div className="grid grid-cols-[1fr,300px] border-b">
+                                <div className="grid grid-cols-[1fr,100px] border-b">
                                     <p className="text-3xl mt-4 inline">About Me</p>
                                     {
                                         account &&
                                         <button
-                                            className=" ml-8 inline bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                            type="button"
+                                            className="ml-4 h-9 inline bg-cyan-700 text-white active:bg-pink-600 font-bold uppercase text-xs rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
                                             onClick={() => {
                                                 setShowModal(true);
                                             }}
                                         >
-                                            Update Account Details
+                                            Update Account
                                         </button>
                                     }
                                 </div>
@@ -119,7 +125,7 @@ const UserProfile = () => {
                                                     <label htmlFor="bio">About Me</label>
                                                     <textarea className="w-full p-2 border border-cyan-700 rounded text-black h-60" type="text" id="bio" value={bio} onChange={(e) => setBio(e.target.value)} />
                                                     <label htmlFor="profileImage">Profile Image URL  </label>
-                                                    <input type="text-black" id="profileImage" value={profileImage} onChange={(e) => setProfileImage(e.target.value)} />
+                                                    <input className="text-black" type="text" id="profileImage" value={profileImage} onChange={(e) => setProfileImage(e.target.value)} />
                                                 </div>
 
                                                 <div className="text-black flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

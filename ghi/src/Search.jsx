@@ -60,7 +60,7 @@ const Search = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-[1fr,minmax(100px,200px)] mx-12 py-6 " >
+        <div className="grid grid-cols-[1fr,minmax(100px,200px)] mx-12 py-6" >
           <div>
             <input
               className="form-control form-control-lg w-full text-2xl text-black rounded border border-2"
