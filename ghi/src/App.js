@@ -30,10 +30,10 @@ function App() {
   // }, []);
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-800 text-white">
       <Nav />
       <ErrorNotification error={error} />
-      <div className="min-h-screen bg-gray-800 text-white">
+      <div>
         <Outlet />
       </div>
     </div>

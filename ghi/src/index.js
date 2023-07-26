@@ -20,7 +20,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import UserProfile from "./Userprofile";
 // import Errorpage from './Errorpage'
-
+import Ratinglist from "./Ratinglist";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import Watchlist from "./Watchlist";
@@ -64,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/:userId/watchlist",
         element: <Watchlist />,
+      },
+      {
+        path: "/profile/:userId/ratings",
+        element: <Ratinglist />,
       },
     ],
   },

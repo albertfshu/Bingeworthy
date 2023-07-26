@@ -33,7 +33,7 @@ const AccountNavModule = (props) => {
                     <li>
                         <Link
                             to={`/profile/${props.account_id}`}
-                            className="block px-4 py-2 text-sm text-black hover:bg-gray-100 dark:hover:bg-gray-700"
+                            className="block px-4 py-2 text-sm text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             Profile
                         </Link>
@@ -41,7 +41,7 @@ const AccountNavModule = (props) => {
                     <li>
                         <Link
                             to={`/profile/${props.account_id}/Watchlist`}
-                            className="block px-4 py-2 text-sm text-black hover:bg-gray-100 dark:hover:bg-gray-700"
+                            className="block px-4 py-2 text-sm text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             Watchlist
                         </Link>
@@ -50,7 +50,7 @@ const AccountNavModule = (props) => {
                         <Link
                             to="/login"
                             onClick={handleLogout}
-                            className="block px-4 py-2 text-sm text-black hover:bg-gray-100 dark:hover:bg-gray-700"
+                            className="block px-4 py-2 text-sm text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
                         >
                             Sign Out
                         </Link>

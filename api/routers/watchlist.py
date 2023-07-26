@@ -12,7 +12,7 @@ def list_watchlist_for_account(
     account_data: dict = Depends(authenticator.get_current_account_data),
     queries: WatchlistQueries = Depends()
 ):
-    return queries.list_all_for_account(account_id=account_data['id'])
+    return queries.list_all_for_account(account_id=account_id)
 
 
 @router.post(
