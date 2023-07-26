@@ -20,15 +20,15 @@ const TVList = () => {
     const totalPages = Math.ceil(totalTVShows / showsPerPage);
 
     const handlePageUp = () => {
-        setPageCounter((prevPage) => (prevPage % totalPages) + 5);
+        setPageCounter((prevPage) => (prevPage % totalPages) + 1);
     };
 
     const handlePageDown = () => {
         setPageCounter((prevPage) => {
-            if (prevPage === 5) {
+            if (prevPage === 1) {
                 return totalPages;
             } else {
-                return prevPage - 5;
+                return prevPage - 1;
             }
         });
     };
@@ -49,11 +49,11 @@ const TVList = () => {
     const loopedTVShows = [...filteredTVShows(), ...filteredTVShows(), ...filteredTVShows()];
 
     return (
-        <div className="movie-list mt-10 mb-10 bg-cyan-800 w-full rounded-lg relative">
-            <div className="movie-card-wrapper max-w-8xl mx-auto overflow-hidden">
+        <div className="tv-list mt-10 mb-10 bg-cyan-800 w-full h-full rounded-lg relative">
+            <div className="tv-card-wrapper max-w-8xl mx-auto overflow-hidden">
                 <div className="text-2xl text-white my-3 ml-5 text-center" style={{ fontFamily: "Impact" }}>TOP 20 POPULAR TV SHOWS</div>
                 <div
-                    className="movie-card-slide-container flex transition-transform ease-in-out w-auto"
+                    className="tv-card-slide-container flex transition-transform ease-in-out w-auto"
                     style={{
                         transform: `translateX(-${(pageCounter - 1) * (100 / (showsPerPage * 8))}%)`,
                     }}

@@ -13,22 +13,17 @@ const MovieList = () => {
   console.log(search)
 
   const [pageCounter, setPageCounter] = useState(1);
-  const moviesPerPage = 20;
+  const moviesPerPage = 7;
+  const totalLoopedMovies = moviesPerPage * 6;
   const totalMovies = searchCriteria ? (search?.total_results || 0) : (data?.total_results || 0);
   const totalPages = Math.ceil(totalMovies / moviesPerPage);
 
   const handlePageUp = () => {
-    setPageCounter((prevPage) => (prevPage % totalPages) + 1);
+    setPageCounter((prevPage) => (prevPage === totalPages ? 1 : prevPage + 1));
   };
 
   const handlePageDown = () => {
-    setPageCounter((prevPage) => {
-      if (prevPage === 1) {
-        return totalPages;
-      } else {
-        return prevPage - 1;
-      }
-    });
+    setPageCounter((prevPage) => (prevPage === 1 ? totalPages : prevPage - 1));
   };
 
   const filteredMovies = () => {
@@ -54,7 +49,7 @@ const MovieList = () => {
         <div
           className="movie-card-slide-container flex transition-transform ease-in-out w-auto"
           style={{
-            transform: `translateX(-${(pageCounter - 1) * (100 / (moviesPerPage * 8))}%)`,
+            transform: `translateX(-${(pageCounter - 1 * 100 / totalLoopedMovies)}%)`,
           }}
         >
           {loopedMovies.map((movie, index) => (
