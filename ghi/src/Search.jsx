@@ -60,10 +60,10 @@ const Search = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-[1fr,minmax(100px,200px)] mx-12 py-6" >
+        <div className="grid grid-cols-[1fr,minmax(100px,200px)] mx-12 py-6 " >
           <div>
             <input
-              className="form-control form-control-lg w-full text-2xl text-black"
+              className="form-control form-control-lg w-full text-2xl text-black rounded border border-2"
               type="text"
               placeholder=" Search for a movie, tv show...."
               value={searchCriteria}
@@ -72,11 +72,11 @@ const Search = () => {
             />
           </div>
           <div>
-            <button className="text-white text-xl bg-teal-700 w-1/2 h-full" type="submit">
+            <button className="text-white text-xl bg-teal-700 w-20 h-9 rounded border" type="submit">
               Search
             </button>
             <button
-              className="text-white text-xl bg-red-700 w-1/2 h-full"
+              className="text-white text-xl bg-red-700 w-20 h-9 border rounded"
               type="button"
               onClick={() => {
                 dispatch(reset());
@@ -94,7 +94,7 @@ const Search = () => {
             <label htmlFor="year" className="inline text-2xl">Year:</label>
             <input
               id="year"
-              className="form-control form-control-lg w-28 text-2xl my-3 ml-8 text-black"
+              className="form-control form-control-lg w-28 text-xl my-3 ml-8 text-black border rounded border-2 border-black"
               type="text"
               placeholder=" ex. 1960"
               value={year}
@@ -102,27 +102,34 @@ const Search = () => {
             />
           </div>
           <div>
-            <label htmlFor="region" className="inline text-2xl">Language:</label>
+            <label htmlFor="region" className="inline text-xl">
+              Language:
+            </label>
             <select
-              className="form-control form-control-lg w-28 text-2xl my-3 ml-8 text-black"
+              className="form-control form-control-lg w-28 text-lg my-3 ml-4 text-black rounded border border-2 border-black"
               id="region"
               placeholder="Region"
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
             >
               <option value="">Any</option>
-              {data.map((language) => (
-                <option key={language.iso_639_1} value={language.iso_639_1}>{language.english_name}</option>
-              ))}
+              {data
+                .slice() // Create a shallow copy of the data array to avoid mutating the original array
+                .sort((a, b) => a.english_name.localeCompare(b.english_name)) // Sort the array alphabetically by English names
+                .map((language) => (
+                  <option key={language.iso_639_1} value={language.iso_639_1}>
+                    {language.english_name}
+                  </option>
+                ))}
             </select>
           </div>
           <div><div className="my-3">
-            <label htmlFor="adult" className="text-2xl">
+            <label htmlFor="adult" className="text-xl">
               Include 18+?
             </label>
             <input
               id="adult"
-              className="h-6 w-6 ml-8"
+              className="h-4 w-4 ml-8 border border-black rounded"
               type="checkbox"
               checked={checked}
               onChange={handleChange}
