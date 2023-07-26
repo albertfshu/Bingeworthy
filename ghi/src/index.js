@@ -23,6 +23,7 @@ import UserProfile from "./Userprofile";
 
 import { store } from "./store/store";
 import { Provider } from "react-redux";
+import Watchlist from "./Watchlist";
 
 const domain = /https:\/\/[^/]+/;
 const basename = process.env.PUBLIC_URL.replace(domain, "");
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/:userId",
         element: <UserProfile />,
+      },
+      {
+        path: "/watchlist/:Id",
+        element: <Watchlist />,
       },
     ],
   },

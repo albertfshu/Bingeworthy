@@ -30,3 +30,15 @@ continued to individually review redux
 Unit tests written for accounts
 
 ## DAY 11 - 7.17.23
+
+## DAY idk - 7.19.23
+Fixed the watchlist routers so they are assigned to a users ID value.
+
+## DAY idk - 7.20.23
+Worked on the watchlist button
+
+## DAY idk - 7.24.23
+Included poster paths so that the images are displayed for both movies and TV shows. Wrapped the images in a link to their respective details page. Learned how to use tailwindCSS by implementing custom fonts in the App.css file. 
+
+## DAY idk - 7.25.23
+Implementing watchlist button to the TV details and Movie details page.
