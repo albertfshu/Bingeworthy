@@ -1,8 +1,8 @@
 import React from "react";
-import {  useGetMovieDetailsQuery } from "./store/apiSlice";
+import { useGetMovieDetailsQuery } from "./store/apiSlice";
 
 const MovieDetails = ({ media_id }) => {
-    const { data, isLoading } = useGetMovieDetailsQuery(media_id);
+    const { data, isLoading } = useGetMovieDetailsQuery(media_id.substr(4));
 
     if (isLoading) return <span>Loading...</span>;
 

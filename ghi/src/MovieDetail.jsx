@@ -36,7 +36,7 @@ const MovieDetail = () => {
                         </div>
                         <SourceProviders />
                         {/* fix the account_id  */}
-                        {/* <WatchlistButton account_id={account.account.id} media_id={movie_id} /> */}
+                        <WatchlistButton account_id={account.account.id} media_id={"mID=" + movie_id} />
                     </div>
                 </div>
                 <div id="col2" className="w-full">
@@ -50,7 +50,7 @@ const MovieDetail = () => {
                 </div>
             </div>
             <div className="w-4/5 mx-auto">
-                <Reviews />
+                <Reviews page_id={"mID=" + movie_id} />
             </div>
         </div>
     );
