@@ -48,8 +48,8 @@ const MovieList = () => {
   }
 
   return (
-    <div className="movie-list mt-3 mb-10 bg-cyan-800 w-full rounded-lg relative">
-      <div className="movie-card-wrapper max-w-8xl mx-auto overflow-hidden">
+    <div className="movie-list mt-3 bg-cyan-800 w-full rounded-lg relative">
+      <div className="movie-card-wrapper max-w-8xl mx-auto overflow-hidden pb-10">
         <div className="text-2xl text-white my-3 ml-5 text-center" style={{ fontFamily: "Impact" }}>TOP 20 POPULAR MOVIES</div>
         <div
           className="movie-card-slide-container flex transition-transform ease-in-out w-auto"
@@ -97,7 +97,7 @@ const MovieList = () => {
         className="absolute w-full bottom-0 left-0 bg-cyan-800"
         style={{ height: "8px" }} // Adjust the height as needed
       ></div>
-    </div>
+    </div >
   );
 };
 

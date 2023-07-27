@@ -17,7 +17,7 @@ const SourceProviders = () => {
         <div className="text-gray-200 text-center text-xs mr-2 italic border-b ml-1">US providers</div>
         <div className="text-gray-200 font-bold text-xl ml-1">Buy</div>
         {(data.results.US.buy == undefined)
-          ? <p>Unavailable</p>
+          ? <p className="text-red-900 ml-1 italic">Unavailable</p>
           : data.results.US.buy.map((provider) => (
             <img
               src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
@@ -30,7 +30,7 @@ const SourceProviders = () => {
           ))}
         <div className="text-gray-200 font-bold text-xl ml-1 mt-2">Rent</div>
         {(data.results.US.rent == undefined)
-          ? <p>Unavailable</p>
+          ? <p className="text-red-900 ml-1 italic">Unavailable</p>
           : data.results.US.rent.map((provider) => (
             <img
               src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}

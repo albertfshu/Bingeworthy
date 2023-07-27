@@ -11,7 +11,7 @@ const MovieCard = ({ title, media_id, poster }) => {
       <div className="w-60 mx-auto tile bg-gray-800 p-3 text-center h-80 rounded-md" key={MovieCard}>
         <Link to={`/movie/${media_id}`}>
           <img
-            className="shadow-md h-60 mx-auto"
+            className="border hover:shadow-lg shadow-white rounded-md shadow-md h-60 mx-auto"
             src={`https://image.tmdb.org/t/p/original${poster}`}
             alt={title}
           />

@@ -51,8 +51,8 @@ const TVList = () => {
     }
 
     return (
-        <div className="tv-list mt-10 mb-10 bg-cyan-800 w-full h-full rounded-lg relative">
-            <div className="tv-card-wrapper max-w-8xl mx-auto overflow-hidden">
+        <div className="tv-list mt-10 bg-cyan-800 w-full h-full rounded-lg relative">
+            <div className="tv-card-wrapper max-w-8xl mx-auto overflow-hidden pb-8">
                 <div className="text-2xl text-white my-3 ml-5 text-center" style={{ fontFamily: "Impact" }}>TOP 20 POPULAR TV SHOWS</div>
                 <div
                     className="tv-card-slide-container flex transition-transform ease-in-out w-auto"

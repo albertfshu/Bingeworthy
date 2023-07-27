@@ -5,10 +5,10 @@ const TVCard = ({ title, media_id, poster }) => {
 
   if (poster) {
     return (
-      <div className="w-60 mx-auto bg-gray-800 rounded-md p-4 text-center" key={TVCard}>
+      <div className="w-60 h-80 mx-auto bg-gray-800 rounded-md p-4 text-center" key={TVCard}>
         <Link to={`/tv/${media_id}`}>
           <img
-            className="shadow-md h-60 mx-auto"
+            className="border hover:shadow-lg shadow-white rounded-md shadow-md h-60 mx-auto"
             src={`https://image.tmdb.org/t/p/original${poster}`}
             alt={title}
           />
