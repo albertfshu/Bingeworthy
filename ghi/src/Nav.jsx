@@ -105,7 +105,7 @@ const Nav = () => {
                             <li>
                                 <NavLink
                                     onClick={handleLogin}
-                                    className="block py-2 pl-3 pr-4 text-gray-200 h-6 mt-1 hover:bg-cyan-700 ml-auto flex items-center justify-center"
+                                    className="block py-2 pl-3 pr-4 text-gray-200 h-6 mt-1 rounded hover:bg-cyan-700 ml-auto flex items-center justify-center hover:shadow-sm hover:shadow-white"
                                 >
                                     Sign In
                                 </NavLink>
