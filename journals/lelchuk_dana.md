@@ -46,3 +46,6 @@ I completed the watchlist button today which handles deleting and adding both mo
 ## DAY idk - 7.26.23
 
 Today I continued working on creating the watchlist page to feature both TV shows and Movies. I faced a challenge where I was able to add tv shows and movies to the watchlist, but the watchlist wouldn't render the items in it. This happened because both TV shows and Movies were associated with the same media id when adding them, but since the TMDB API we are using has different paths for poster by media type, we had to implement a solution by adding Tid and Mid to associate if the media was a movie or tv show so the posters could render properly. After making these changes, the watchlist page now shows both the TV shows and Movies that are added by a user to their respective watchlist page.
+
+## DAY idk - 7.27.23
+I completed the unit test for the ratings, and started doing end-to-end testing 
