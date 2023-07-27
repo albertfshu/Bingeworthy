@@ -1,4 +1,3 @@
-import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import { useGetAccountQuery } from "./store/accountSlice";
 import { useGetCommentsQuery, useCreateCommentMutation, useDeleteCommentMutation, useUpdateCommentMutation } from "./store/dataSlice";
@@ -11,7 +10,6 @@ const Reviews = (props) => {
   const [postComment] = useCreateCommentMutation();
   let { data: account } = useGetAccountQuery();
   const [showModal, setShowModal] = useState(false);
-  let edit = false;
   const [editCommentID, setEditCommentID] = useState(null);
   const [commentContent, setCommentContent] = useState("");
   const [updateComment] = useUpdateCommentMutation();
@@ -20,21 +18,15 @@ const Reviews = (props) => {
   if (account == null) {
     account = false
   }
-  console.log(showComments)
 
   const handleDelete = (e) => {
-    console.log(e.target.value)
     let comment_id = e.target.value;
     let query = { page_id: page_id, comment_id: comment_id }
     deleteComment(query)
   }
 
   const handleSubmit = () => {
-    console.log(
-      "handleSubmit"
-    )
     if (editCommentID) {
-      console.log(commentContent)
       let query = {
         page_id: page_id,
         comment_id: editCommentID,
@@ -43,11 +35,8 @@ const Reviews = (props) => {
           "comment": commentContent,
         },
       };
-      console.log(query);
-      console.log(query.body);
       updateComment(query);
     } else {
-      console.log(commentContent)
       let query = {
         page_id: page_id,
         body: {
@@ -66,8 +55,6 @@ const Reviews = (props) => {
 
 
   const handleEdit = (commentId, commentContent) => {
-    console.log("handleEdit");
-    console.log(commentContent)
     setEditCommentID(commentId);
     setCommentContent(commentContent);
     setShowModal(true);
@@ -92,8 +79,6 @@ const Reviews = (props) => {
               setShowModal(true);
               setCommentContent("");
               setEditCommentID(null);
-
-              edit = false;
             }}
           >
             Add Review

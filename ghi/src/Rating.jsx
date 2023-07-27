@@ -7,7 +7,6 @@ const Rating = (props) => {
     const [updateRating] = useUpdateRatingMutation();
     const [postRating] = useCreateRatingMutation();
     let { data: account } = useGetAccountQuery();
-    // const [userRating, setUserRating] = useState(1);
     let userRating = 1;
     const [displayUserRating, setDisplayUserRating] = useState(1)
     const [avgRating, setAvgRating] = useState(0)
@@ -17,19 +16,14 @@ const Rating = (props) => {
         if (ratings?.length != 0 && ratings != undefined) {
             let tempRatings = ratings.map(({ value }) => value);
             setAvgRating(tempRatings.reduce((a, b) => a + b / tempRatings.length));
-            console.log(avgRating)
             userRating = (ratings.find((rating) => rating.user_id == account?.account.id) || 5)
         }
-        console.log(ratings)
     })
 
     const handleUserRatingChange = (e) => {
-        console.log(e)
         userRating = e;
         setDisplayUserRating(userRating)
-        console.log("ratingchanging")
         if (ratings.find((rating) => rating.user_id == account.account.id)) {
-            console.log("existing")
             let query = {
                 page_id: props.page_id,
                 body: {
@@ -40,7 +34,6 @@ const Rating = (props) => {
             updateRating(query);
         }
         else {
-            console.log("newrating")
             let query = {
                 page_id: props.page_id,
                 body: {
@@ -62,7 +55,6 @@ const Rating = (props) => {
             {(avgRating == 0)
                 ? <p className="inline ml-3 text-xs">No Ratings Yet</p>
                 : <p className="inline ml-3">{avgRating}</p>}
-            {/* <input type="range" min="1" max="5" step="1" value={userRating} onChange={(e) => setUserRating(e.target.value)} /> */}
             {account ? (
                 <>
                     <div>

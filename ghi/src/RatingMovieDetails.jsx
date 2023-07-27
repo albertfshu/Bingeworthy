@@ -7,7 +7,6 @@ const RatingMovieDetails = ({ media_id }) => {
 
 
     if (isLoading) return <span>Loading...</span>;
-    console.log(data)
     return (
 
         <div className="border-b w-full mx-auto bg-transparent rounded-md p-0 text-center">

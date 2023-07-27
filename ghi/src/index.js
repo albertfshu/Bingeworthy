@@ -1,28 +1,20 @@
+import "./index.css";
 import React from "react";
-import {
-  RouterProvider,
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
 import ReactDOM from "react-dom/client";
+import { RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
+import reportWebVitals from "./reportWebVitals";
+import { store } from "./store/store";
+import { Provider } from "react-redux";
 import SignUp from "./SignUp";
 import Login from "./Login";
 import Home from "./Home";
-import Search from "./Search";
 import MovieDetail from "./MovieDetail";
 import TVDetail from "./TVDetail";
-import MovieList from "./Movielist";
 import ErrorNotification from "./ErrorNotification";
-import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import UserProfile from "./Userprofile";
-// import Errorpage from './Errorpage'
 import Ratinglist from "./Ratinglist";
-import { store } from "./store/store";
-import { Provider } from "react-redux";
 import Watchlist from "./Watchlist";
 
 const domain = /https:\/\/[^/]+/;
@@ -78,17 +70,6 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
-      {/* <Router>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/movielist" element={<MovieList />} />
-          <Route path="/movie/:movie_id" element={<MovieDetail />} />
-        </Routes>
-      </Router> */}
     </Provider>
   </React.StrictMode>
 );

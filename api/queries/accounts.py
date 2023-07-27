@@ -13,7 +13,6 @@ class AccountQueries(Queries):
         props["id"] = str(props["_id"])
         props["hashed_password"] = props["password"]
         return AccountOutWithPassword(**props)
-        # return self.collection.find_one({"username":username})
 
     def create(self, info:  AccountIn, hashed_password: str) -> AccountOutWithPassword:
         props = info.dict()

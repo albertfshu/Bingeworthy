@@ -1,9 +1,8 @@
 import { useSignupMutation, useCreateDetailsMutation } from "./store/accountSlice";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import AlertError from './AlertError'
-import React from "react";
 import { Link } from "react-router-dom";
+import AlertError from './AlertError'
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -21,11 +20,8 @@ const SignUp = () => {
             setErrorMessage('Password does not match confirmation')
             return;
         }
-        console.log("signup")
         signup({ username, full_name, password });
         createDetails({ username, body: { "bio": "", "date": Date.now(), "profile_image": "https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg" } })
-
-        console.log("signup")
         // navigate('/');
     };
 
@@ -37,7 +33,6 @@ const SignUp = () => {
                     <h1 className="text-white text-3xl regular-font mb-4 text-center mt-4">Create Account </h1>
                 </div>
                 <div className="bg-cyan-700 px-6 py-8 rounded shadow-md text-black w-full">
-                    {/* <h1 className="mb-8 text-3xl text-center">Sign-Up</h1> */}
                     <form onSubmit={handleSubmit}>
                         {errorMessage && <AlertError>{errorMessage}</AlertError>}
                         <input

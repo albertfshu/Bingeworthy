@@ -18,7 +18,7 @@ def test_create_rating():
     rating_in = RatingIn(value=4, user_id="1337")
     res = client.post(f"/api/rating/{page_id}", json=rating_in.dict())
     data = res.json()
-    print(data)
+
 
     assert res.status_code == 200
     assert data == {

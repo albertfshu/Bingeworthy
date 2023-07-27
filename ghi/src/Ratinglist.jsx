@@ -30,6 +30,8 @@ const Ratinglist = () => {
         }
     };
 
+    if (isLoading) return (<div>is Loading...</div>);
+
     return (
         <div>
             <h1 className="pt-6 bg-cyan-700 shadow-md shadow-white p-3 text-center bold-font text-5xl mb-5">

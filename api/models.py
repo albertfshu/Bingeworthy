@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 from typing import List
-# from jwtdown_fastapi.authentication import Token
 from datetime import datetime
 
 
@@ -44,7 +43,7 @@ class CommentIn(BaseModel):
 
 
 class Comments(BaseModel):
-    page_id: str  #id starts with m, t, or p and then TMDB api id or user id
+    page_id: str  #id starts with mID=, or tID= for movies&tv shows respectively
     commentor_id: str
     comment: str
     post_date: datetime
@@ -67,16 +66,9 @@ class AccountDetailsIn(BaseModel):
     bio: str
     profile_image: str
 
-# class MediaDetails(BaseModel):
-#     _id: str #id starts with m or t and then TMDB api id
-# ->
-# pull up API info
-# check Comments
-# check Ratings
-
 
 class RatingOut(BaseModel):
-    page_id: str  #id starts with m or t and then TMDB api id
+    page_id: str  #id starts with mID=, or tID= for movies&tv shows respectively
     user_id: str
     value: int
 

@@ -1,10 +1,8 @@
 import { useGetUserRatingQuery } from "./store/dataSlice";
-import { useEffect, useState } from "react";
 
 const UserprofileRatings = (props) => {
     const { data, isLoading } = useGetUserRatingQuery(props.page_id);
 
-    console.log(data)
     if (isLoading) return (<p>is loading...</p>)
 
     return (

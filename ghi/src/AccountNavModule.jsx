@@ -1,6 +1,6 @@
 import { useGetAccountDetailsQuery } from "./store/accountDetailsSlice";
 import { useLogoutMutation } from "./store/accountSlice";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
     Link
 } from "react-router-dom";

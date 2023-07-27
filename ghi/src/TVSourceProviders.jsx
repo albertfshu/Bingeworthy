@@ -1,14 +1,11 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useGetTVProvidersQuery } from "./store/apiSlice";
 
 const TVSourceProviders = () => {
     const { tv_id } = useParams();
-    const { data, isLoading } = useGetTVProvidersQuery(tv_id); //if providerData named data instead it works, how fix.
+    const { data, isLoading } = useGetTVProvidersQuery(tv_id);
 
     if (isLoading) return <div> Loading... </div>;
-    else {
-        console.log(data);
-    }
 
     if (data.results.US) {
         return (

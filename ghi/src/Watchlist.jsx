@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 
 const Watchlist = () => {
   const { userId } = useParams();
-  const [deleteFromWatchlist] = useRemoveFromWatchlistMutation();
   const { data: watchlistData, isLoading } = useGetUserWatchlistQuery(userId);
   const watchlistItems = watchlistData?.watchlist || [];
 

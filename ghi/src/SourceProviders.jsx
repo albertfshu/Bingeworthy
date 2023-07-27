@@ -1,14 +1,10 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useGetMovieProvidersQuery } from "./store/apiSlice";
 
 const SourceProviders = () => {
   const { movie_id } = useParams();
-  // console.log(movie_id)
   const { data, isLoading } = useGetMovieProvidersQuery(movie_id);
   if (isLoading) return <div> Loading... </div>;
-  else {
-    // console.log(data);
-  }
 
   if (data.results.US) {
     return (

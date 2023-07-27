@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
     useGetMovieDetailsQuery,
 } from "./store/apiSlice";
@@ -6,7 +6,6 @@ import { useGetAccountQuery } from "./store/accountSlice";
 import SourceProviders from "./SourceProviders";
 import Reviews from "./Reviews";
 import WatchlistButton from "./WatchlistButton"
-import MovieCard from "./Moviecard";
 import Rating from "./Rating";
 
 
@@ -23,7 +22,6 @@ const MovieDetail = () => {
         day: "numeric",
     });
 
-    //   implement watchlist function
     return (
         <div className="w-4/5 sm:w-full p-8 mx-auto">
             <div className="grid grid-cols-[200px,1fr] gap-8 object-center">
@@ -34,7 +32,7 @@ const MovieDetail = () => {
                                 width="200"
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                             ></img>
-                            <WatchlistButton account_id={account?.account.id} media_id={"mID=" + movie_id} />
+                            {account && <WatchlistButton account_id={account?.account.id} media_id={"mID=" + movie_id} />}
                         </div>
                         <SourceProviders />
                     </div>

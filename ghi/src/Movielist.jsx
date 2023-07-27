@@ -8,10 +8,6 @@ const MovieList = () => {
   const { data, isLoading } = useGetPopularMoviesQuery();
   const { data: search, isLoading: isSearchLoading } = useSearchMoviesQuery(searchCriteria);
 
-
-  console.log(data)
-  console.log(search)
-
   const [pageCounter, setPageCounter] = useState(1);
   const moviesPerPage = 7;
   const totalLoopedMovies = 1000;

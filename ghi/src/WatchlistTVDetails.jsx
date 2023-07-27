@@ -10,7 +10,6 @@ const TVDetails = (props) => {
     const { data: account, isLoading: accountLoading } = useGetAccountQuery();
 
     const handleRemoveFromWatchlist = () => {
-        console.log("attempt to delete")
         deleteFromWatchlist({ account_id: account.account.id, watchlist_id: props.watchlist_id });
 
     };

@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
     useGetTVDetailsQuery,
 } from "./store/apiSlice";
@@ -6,7 +6,6 @@ import { useGetAccountQuery } from "./store/accountSlice";
 import TVSourceProviders from "./TVSourceProviders";
 import Reviews from "./Reviews";
 import WatchlistButton from "./WatchlistButton";
-import { useState, useEffect } from "react";
 import Rating from "./Rating";
 
 const TVDetail = () => {
@@ -27,7 +26,7 @@ const TVDetail = () => {
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                             ></img>
                         </div>
-                        <WatchlistButton account_id={account?.account.id} media_id={"tID=" + tv_id} />
+                        {account && <WatchlistButton account_id={account?.account.id} media_id={"tID=" + tv_id} />}
                         <TVSourceProviders />
                     </div>
                 </div>

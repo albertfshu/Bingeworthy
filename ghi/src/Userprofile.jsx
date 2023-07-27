@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-// import { useGetAccountQuery } from "./store/accountSlice";
 import { useGetAccountDetailsQuery, useUpdateAccountDetailsMutation } from "./store/accountDetailsSlice";
 import { useGetAccountQuery } from "./store/accountSlice";
 import UserprofileRatings from "./UserprofileRatings";
@@ -10,16 +8,13 @@ import AlertError from "./AlertError";
 import Reviews from "./Reviews";
 
 const UserProfile = () => {
-    // const dispatch = useDispatch()
     const { userId } = useParams();
     const { data: account, isLoading: accountLoading } = useGetAccountQuery();
     const { data: accountDetailsData, isLoading: isAccountDetailsLoading } = useGetAccountDetailsQuery(userId);
-    const [updateAccountDetails, isLoading: isUpdating] = useUpdateAccountDetailsMutation();
+    const [updateAccountDetails] = useUpdateAccountDetailsMutation();
     const [bio, setBio] = useState(accountDetailsData?.bio || "");
     const [showModal, setShowModal] = useState(false);
     const [profileImage, setProfileImage] = useState(accountDetailsData?.profile_image || "")
-    // const { data: accountData, isLoading: isAccountLoading, error: accountError } = useGetAccountQuery();
-    // const {updateAccountDetails, { }}
 
     useEffect(() => {
         if (accountDetailsData) {
@@ -29,7 +24,6 @@ const UserProfile = () => {
     }, [accountDetailsData]);
 
     const handleUpdateDetails = () => {
-        // e.preventDefault();
         const updatedDetails = {
             "bio": bio,
             "profile_image": profileImage,
@@ -37,7 +31,7 @@ const UserProfile = () => {
         updateAccountDetails({ id: userId, ...updatedDetails });
     };
 
-    if (isAccountDetailsLoading) {
+    if (isAccountDetailsLoading || accountLoading) {
         return <div> Account Loading... </div>
     }
     if (accountDetailsData?.error) {
@@ -52,7 +46,6 @@ const UserProfile = () => {
                         <img
                             className="rounded-full bg-color-black h-12 my-auto"
                             src={accountDetailsData?.profile_image || "https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg"}
-                            // Need to make one - default-profile-image
                             alt="Profile"
                             style={{ width: "125px", height: "125px" }}
                         />

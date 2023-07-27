@@ -1,8 +1,7 @@
 from fastapi.testclient import TestClient
 from main import app
 from queries.comments import CommentQueries
-from models import Comments, CommentList, CommentIn
-from authenticator import authenticator
+from models import Comments, CommentIn
 import datetime
 
 client = TestClient(app)
@@ -24,7 +23,6 @@ def test_create_comment():
     comment_in = CommentIn(commentor_id="testuser", comment="testcomment")
     res = client.post(f"/api/comments/{page_id}", json=comment_in.dict())
     data = res.json()
-    print(data)
 
     assert res.status_code == 200
     assert data == {

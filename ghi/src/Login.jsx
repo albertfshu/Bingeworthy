@@ -2,8 +2,6 @@ import { useLoginMutation } from "./store/accountSlice";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AlertError from "./AlertError";
-import SignUp from "./SignUp";
-
 
 const Login = () => {
     const navigate = useNavigate();
@@ -32,13 +30,9 @@ const Login = () => {
                 <h1 className="cursive-font text-center text-xl text-gray-300">
                     Sit back, Relax, and find your next binge
                 </h1>
-                {/* <h1 className="text-white text-2xl font-bold mb-4">Login</h1> */}
                 {errorMessage && <AlertError>{errorMessage}</AlertError>}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
-                        {/* <label htmlFor="Login__username" className="text-white">
-                            Username
-                        </label> */}
                         <input
                             type="text"
                             className="w-full p-2 border border-cyan-700 rounded text-black"
@@ -49,9 +43,6 @@ const Login = () => {
                         />
                     </div>
                     <div className="mb-3">
-                        {/* <label htmlFor="Login__password" className="text-white">
-                            Password
-                        </label> */}
                         <input
                             type="password"
                             className="w-full p-2 border border-cyan-700 rounded text-black"
