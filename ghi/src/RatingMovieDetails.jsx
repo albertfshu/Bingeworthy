@@ -19,7 +19,7 @@ const RatingMovieDetails = ({ media_id }) => {
                         alt={data.original_title}
                     />
                     <p className="ml-12 sans-serif text-xl my-auto inline">{data.original_title}</p>
-                    <p className="ml-12 sans-serif text-lg my-auto inline">Movie: {data.runtime}min</p>
+                    <p className="ml-12 sans-serif text-md my-auto inline">Movie: {data.runtime}min</p>
                 </div>
             </Link>
         </div>

@@ -19,7 +19,7 @@ const RatingTVDetails = ({ media_id }) => {
                         alt={data.original_name}
                     />
                     <p className="ml-12 sans-serif text-xl my-auto inline">{data.original_name}</p>
-                    <p className="ml-12 sans-serif text-lg my-auto inline">TV: {data.number_of_seasons} Season{data.number_of_seasons > 1 && "s"}</p>
+                    <p className="ml-12 sans-serif text-md my-auto inline">TV: {data.number_of_seasons} Season{data.number_of_seasons > 1 && "s"}</p>
                 </div>
             </Link>
         </div>
