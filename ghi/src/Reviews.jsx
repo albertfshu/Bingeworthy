@@ -82,11 +82,11 @@ const Reviews = (props) => {
   if (isCommentsLoading) { return (<div>loading...</div>) };
   return (
     <>
-      <div className="mt-20 grid grid-cols-[1fr,100px] border-b">
+      <div className="ml-5 mt-20 grid grid-cols-[1fr,100px] border-b">
         <h1 className="mt-4 inline text-3xl font-bold"> Reviews </h1>
         {account &&
           <button
-            className="inline bg-cyan-700 h-10 w-20 ml-5 mt-2 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            className="border inline bg-cyan-700 h-10 w-20 ml-5 mt-2 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="button"
             onClick={() => {
               setShowModal(true);
@@ -158,7 +158,7 @@ const Reviews = (props) => {
       <div>
         <div id="reviewdisplay">
           {showComments.comments.map((r) => (
-            <div id="testReviewCard" className="bg-cyan-700 w-full p-3 text-black my-3 rounded" key={r._id}>
+            <div id="testReviewCard" className="ml-5 bg-cyan-700 w-auto p-3 text-black my-3 rounded" key={r._id}>
 
               <div id="cardheader" className="rounded bg-gray-200 w-full p-3 text-black grid grid-cols-[1fr,100px,100px]">
                 <div className="grid grid-cols-[auto_1fr]">

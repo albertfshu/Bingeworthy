@@ -76,16 +76,15 @@ const UserProfile = () => {
                 </div>
                 <div>
                     <UserprofileRatings page_id={userId} />
-                    <div>
+                    <div className="ml-6">
                         {accountDetailsData && (
                             <>
-
                                 <div className="grid grid-cols-[1fr,100px] border-b">
                                     <p className="font-bold text-3xl mt-4 inline">About Me</p>
                                     {
                                         account &&
                                         <button
-                                            className="ml-6 h-9 mt-3 inline bg-cyan-700 text-white active:bg-pink-600 font-bold uppercase text-xs rounded shadow hover:shadow-lg outline-none focus:outline-none mb-1 ease-linear transition-all duration-150" type="button"
+                                            className="border ml-6 h-9 mt-3 inline bg-cyan-700 text-white active:bg-pink-600 font-bold uppercase text-xs rounded shadow hover:shadow-lg outline-none focus:outline-none mb-1 ease-linear transition-all duration-150" type="button"
                                             onClick={() => {
                                                 setShowModal(true);
                                             }}
