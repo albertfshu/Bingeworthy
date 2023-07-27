@@ -55,7 +55,7 @@ const MovieDetail = () => {
                     <div className="mr-28">{data.overview}</div>
                 </div>
             </div>
-            <div className="w-4/5 mx-auto">
+            <div className="w-auto md:w-4/5 mx-auto">
                 <Reviews page_id={"mID=" + movie_id} />
             </div>
         </div>

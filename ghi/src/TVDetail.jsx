@@ -21,7 +21,7 @@ const TVDetail = () => {
             <div className="grid grid-cols-[200px,1fr] gap-8 object-center">
                 <div id="col1" className="max-w-xs">
                     <div>
-                        <div >
+                        <div className="w-50">
                             <img
                                 className="w-200"
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
@@ -48,7 +48,7 @@ const TVDetail = () => {
                     <div className="mr-28">{data.overview}</div>
                 </div>
             </div>
-            <div className="w-4/5 mx-auto">
+            <div className="w-auto md:w-4/5 mx-auto">
                 <Reviews page_id={"tID=" + tv_id} />
             </div>
         </div>
