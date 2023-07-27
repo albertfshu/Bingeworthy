@@ -18,17 +18,17 @@ const Ratinglist = () => {
     const tableBodyMaxHeight = `calc(100vh - 350px)`; // Adjust the height based on your needs
 
     // Function to handle sorting by rating
-    const handleSortByRating = () => {
-        if (sortOrder === "asc") {
-            // Sort in ascending order
-            setRatingItems([...ratingItems].sort((a, b) => a.value - b.value));
-            setSortOrder("desc"); // Toggle the sorting order to descending
-        } else {
-            // Sort in descending order
-            setRatingItems([...ratingItems].sort((a, b) => b.value - a.value));
-            setSortOrder("asc"); // Toggle the sorting order to ascending
-        }
-    };
+    // const handleSortByRating = () => {
+    //     if (sortOrder === "asc") {
+    //         // Sort in ascending order
+    //         setRatingItems([...ratingItems].sort((a, b) => a.value - b.value));
+    //         setSortOrder("desc"); // Toggle the sorting order to descending
+    //     } else {
+    //         // Sort in descending order
+    //         setRatingItems([...ratingItems].sort((a, b) => b.value - a.value));
+    //         setSortOrder("asc"); // Toggle the sorting order to ascending
+    //     }
+    // };
 
     if (isLoading) return (<div>is Loading...</div>);
 
@@ -47,9 +47,9 @@ const Ratinglist = () => {
                             <tr className="grid grid-cols-[1fr,9fr,2fr]">
                                 <th className="p-2 text-xl font-bold flex items-center justify-center">
                                     Rating
-                                    <span className="ml-5 cursor-pointer" onClick={handleSortByRating}>
+                                    {/* <span className="ml-5 cursor-pointer" onClick={handleSortByRating}>
                                         {sortOrder === "asc" ? " ▲" : " ▼"}
-                                    </span>
+                                    </span> */}
                                 </th>
                                 <th className="p-2 text-xl font-bold flex items-center justify-center">
                                     Title
@@ -60,7 +60,7 @@ const Ratinglist = () => {
                             </tr>
                         </thead>
                         <tbody className="ml-5 border border-cyan-700 rounded-md">
-                            {ratingItems.map((rating) => (
+                            {data.map((rating) => (
                                 <tr key={rating.id} className="grid grid-cols-[20px,1fr] my-2">
                                     <td className="mt-5 ml-4 p-2 text-3xl font-bold">{rating.value}</td>
                                     <td className="p-2">

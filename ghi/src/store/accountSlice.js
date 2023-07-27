@@ -20,7 +20,7 @@ export const accountApi = createApi({
         url: `/token`,
         credentials: "include",
       }),
-      transformResponse: (response) => response, //   transformResponse: (response) => (response ? response.account : null),
+      transformResponse: (response) => response,
       providesTags: ["Account"],
     }),
     logout: builder.mutation({

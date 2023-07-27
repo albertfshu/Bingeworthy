@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetUserWatchlistQuery, useRemoveFromWatchlistMutation } from "./store/watchlistSlice";
+import { useGetUserWatchlistQuery } from "./store/watchlistSlice";
 import TVDetails from "./WatchlistTVDetails";
 import MovieDetails from "./WatchlistMovieDetails";
 import { useParams } from "react-router-dom";

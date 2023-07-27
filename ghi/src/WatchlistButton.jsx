@@ -17,7 +17,7 @@ const WatchlistButton = (props) => {
                 watchlistData.watchlist.find((media) => media.media_id === props.media_id) || null
             );
         }
-    });
+    }, [watchlistData, props.media_id]);
     const handleAddToWatchlist = () => {
         addToWatchlist({ account_id: props.account_id, media_id: props.media_id });
     };
@@ -42,7 +42,7 @@ const WatchlistButton = (props) => {
             )}
             {watchlist && (
                 <button
-                    className="mt-2 h-10 w-30 inline bg-red-700 text-white hover:bg-red-600 font-bold uppercase text-sm px-1 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none my-1 ease-linear transition-all duration-150" style={{ lineHeight: ".9rem" }}
+                    className="mt-3 ml-2 text-center h-10 w-30 inline bg-red-700 text-white hover:bg-red-600 font-bold uppercase text-sm px-1 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150" style={{ lineHeight: ".9rem" }}
 
                     onClick={handleRemoveFromWatchlist}
                 >

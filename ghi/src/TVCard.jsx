@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const TVCard = ({ title, media_id, poster }) => {
-
   if (poster) {
     return (
       <div className="w-60 h-80 mx-auto bg-gray-800 rounded-md p-4 text-center" key={TVCard}>

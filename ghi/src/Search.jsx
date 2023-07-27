@@ -9,7 +9,7 @@ const Search = () => {
   const [year, setYear] = useState('')
   const [language, setLanguage] = useState('')
   const [checked, setChecked] = useState(false)
-  const [searchCriteria, setSearchCriteria] = useState(searchParam);
+  const [searchCriteria, setSearchCriteria] = useState(searchParam || "");
   const { data, isLoading } = useGetLanguagesQuery();
 
 
@@ -28,7 +28,7 @@ const Search = () => {
     e.preventDefault();
     console.log("submitted", searchCriteria);
     let dispatchStr = searchCriteria;
-    if (searchCriteria == undefined) {
+    if (searchCriteria == "") {
       dispatchStr = ""
     } else {
       if (year !== "") {
