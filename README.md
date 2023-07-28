@@ -1,12 +1,20 @@
 # Module3 Project Gamma
 
 ## Team
-* Albert Shu
-* Dana Lelchuk
-* Tai Zhang
-* Yuni Kim
+
+- Albert Shu
+- Dana Lelchuk
+- Tai Zhang
+- Yuni Kim
 
 ## ![](https://media.giphy.com/media/bcKmIWkUMCjVm/giphy.gif)
+
+## Design
+
+- [API design](docs/apis.md)
+- [Data model](docs/data-model.md)
+- [GHI](docs/ghi.md)
+- [Integrations](docs/integrations.md)
 
 ## Getting started
 
