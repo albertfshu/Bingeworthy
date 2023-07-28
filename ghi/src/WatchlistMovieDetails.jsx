@@ -10,14 +10,14 @@ const MovieDetails = (props) => {
     const { data: account, isLoading: accountLoading } = useGetAccountQuery();
 
     const handleRemoveFromWatchlist = () => {
-        deleteFromWatchlist({ account_id: account.account.id, watchlist_id: props.watchlist_id });
+        deleteFromWatchlist({ account_id: account.account.username, watchlist_id: props.watchlist_id });
 
     };
     if (isLoading || accountLoading) return <span>Loading...</span>;
     return (
 
         <div className="w-full mx-auto bg-gray-800 rounded-md p-9 text-center">
-            {props.account_id == account?.account.id && <button
+            {props.account_id == account?.account.username && <button
                 className="hover:bg-red-800 ml-auto bg-cyan-500 text-white active:bg-black-600 font-bold uppercase text-sm px-2 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mx-1 my-1 ease-linear transition-all duration-150"
 
                 onClick={handleRemoveFromWatchlist}

@@ -7,8 +7,6 @@ import RatingMovieDetails from "./RatingMovieDetails";
 const Ratinglist = () => {
     const { userId } = useParams();
     const { data, isLoading } = useGetUserRatingQuery(userId);
-    const [ratingItems, setRatingItems] = useState(data);
-    const [sortOrder, setSortOrder] = useState("desc"); // Initial sorting order (descending)
 
     console.log(userId);
     console.log(data);

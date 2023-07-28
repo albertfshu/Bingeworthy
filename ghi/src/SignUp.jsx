@@ -1,8 +1,9 @@
 import { useSignupMutation, useCreateDetailsMutation } from "./store/accountSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import AlertError from './AlertError'
+import { useGetAccountQuery } from "./store/accountSlice";
+import AlertError from './AlertError';
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -14,15 +15,23 @@ const SignUp = () => {
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password !== passwordConfirmation) {
             setErrorMessage('Password does not match confirmation')
             return;
         }
-        signup({ username, full_name, password });
+        let promiseholder = signup({ username, full_name, password });
         createDetails({ username, body: { "bio": "", "date": Date.now(), "profile_image": "https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg" } })
-        navigate('/login');
+        promiseholder.then(result => {
+            if (result.error) {
+                setErrorMessage(result.error.data.detail)
+            }
+            else {
+                navigate('/')
+            }
+        })
     };
 
     return (

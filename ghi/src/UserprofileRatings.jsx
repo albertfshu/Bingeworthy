@@ -9,7 +9,7 @@ const UserprofileRatings = (props) => {
         <div className="grid grid-cols-[1fr,1fr] mb-8">
             <div className="mx-auto">
                 <p className="text-1xl font-medimum border-b px-3">Avg. Rating</p>
-                <p className="text-2xl font-bold">{Math.round((data.map(({ value }) => value).reduce((a, b) => a + b, 0) / data.length) * 100) / 100}</p>
+                <p className="text-2xl font-bold">{Math.round((data.map(({ value }) => value).reduce((a, b) => a + b, 0) / data.length) * 100) / 100 || 0}</p>
             </div>
             <div className="mx-auto">
                 <p className="text-1xl font-medimum border-b px-3">Total Ratings</p>

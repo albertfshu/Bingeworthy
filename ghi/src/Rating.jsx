@@ -16,19 +16,19 @@ const Rating = (props) => {
         if (ratings?.length != 0 && ratings != undefined) {
             let tempRatings = ratings.map(({ value }) => value);
             setAvgRating(tempRatings.reduce((a, b) => a + b / tempRatings.length));
-            userRating = (ratings.find((rating) => rating.user_id == account?.account.id) || 5)
+            userRating = (ratings.find((rating) => rating.user_id == account?.account.username) || 5)
         }
     })
 
     const handleUserRatingChange = (e) => {
         userRating = e;
         setDisplayUserRating(userRating)
-        if (ratings.find((rating) => rating.user_id == account.account.id)) {
+        if (ratings.find((rating) => rating.user_id == account.account.username)) {
             let query = {
                 page_id: props.page_id,
                 body: {
                     "value": userRating,
-                    "user_id": account.account.id
+                    "user_id": account.account.username
                 }
             };
             updateRating(query);
@@ -38,7 +38,7 @@ const Rating = (props) => {
                 page_id: props.page_id,
                 body: {
                     "value": userRating,
-                    "user_id": account.account.id
+                    "user_id": account.account.username
                 }
             };
             postRating(query);

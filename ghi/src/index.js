@@ -11,7 +11,7 @@ import Login from "./Login";
 import Home from "./Home";
 import MovieDetail from "./MovieDetail";
 import TVDetail from "./TVDetail";
-import ErrorNotification from "./ErrorNotification";
+import ErrorPage from "./Errorpage";
 import App from "./App";
 import UserProfile from "./Userprofile";
 import Ratinglist from "./Ratinglist";
@@ -23,7 +23,7 @@ const basename = process.env.PUBLIC_URL.replace(domain, "");
 const router = createBrowserRouter([
   {
     element: <App />,
-    errorElement: <ErrorNotification />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/signup",
