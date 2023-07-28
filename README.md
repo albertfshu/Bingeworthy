@@ -23,9 +23,9 @@ We are targeting TV-show and Movie enthusiasts who are looking for a seamless wa
 
 ## Functionality
 
-- Users can create an account to the website that'll allow them to save desired TV shows and movie to a watchlist, and submit ratings and reviews.
+- Users can create an account to Bingeworthy that'll allow them to save desired TV shows and movie to a watchlist, and submit ratings and reviews.
 - Search/Filter Functionality
-  Users can search and filter for Movies and TV shows
+  - Users can search and filter for Movies and TV shows
     - Filter by year of release
     - Filter by language
     - Filter by 18+
