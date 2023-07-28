@@ -1,5 +1,13 @@
 # Module3 Project Gamma
 
+## Team
+* Albert Shu
+* Dana Lelchuk
+* Tai Zhang
+* Yuni Kim
+
+## ![](https://media.giphy.com/media/bcKmIWkUMCjVm/giphy.gif)
+
 ## Getting started
 
 You have a project repository, now what? The next section
