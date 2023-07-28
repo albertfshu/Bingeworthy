@@ -9,6 +9,7 @@
 
 ## ![](https://media.giphy.com/media/bcKmIWkUMCjVm/giphy.gif)
 
+
 ## Design
 
 - [API design](docs/apis.md)
@@ -20,6 +21,7 @@
 
 We are targeting TV-show and Movie enthusiasts who are looking for a seamless way to look for the shows that they're interested in. Users are able to explore, manage, review, rate and save their TV shows and Movies to a watchlist.
 
+## ![](https://media.giphy.com/media/KZe02gpoAj4yVjxKQt/giphy.gif)
 
 ## Functionality
 
