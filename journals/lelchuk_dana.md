@@ -27,7 +27,7 @@ continued to individually review redux
 ## DAY 9 - 7.13.23
 
 ## DAY 10 - 7.14.23
-Rewatched the lecture and supplemented exploration on learn for unit tests and was able to complete the unit tests for the watchlist.
+Rewatched the lecture and supplemented exploration on learn for unit tests and was able to complete the unit tests for the rating.
 
 ## DAY 11 - 7.17.23
 
@@ -48,4 +48,4 @@ I completed the watchlist button today which handles deleting and adding both mo
 Today I continued working on creating the watchlist page to feature both TV shows and Movies. I faced a challenge where I was able to add tv shows and movies to the watchlist, but the watchlist wouldn't render the items in it. This happened because both TV shows and Movies were associated with the same media id when adding them, but since the TMDB API we are using has different paths for poster by media type, we had to implement a solution by adding Tid and Mid to associate if the media was a movie or tv show so the posters could render properly. After making these changes, the watchlist page now shows both the TV shows and Movies that are added by a user to their respective watchlist page.
 
 ## DAY idk - 7.27.23
-I completed the unit test for the ratings, and started doing end-to-end testing with Tai. This was helpful to do because we realized the ratings average was not being calculated correctly. We also were able to catch a few things, such as add to watchlist button, that were available while not being logged in to an account. This can get confusing to a user so we went ahead and restricted off a couple features for only logged in users. We also noticed that you could create multiple accounts with the same username. I have been trying to figure out a way for that to be handled, but having trouble implementing anything that would fix this issue. Hopefully we can address it by tomorrow before the project is due.
+Started doing end-to-end testing with Tai. This was helpful to do because we realized the ratings average was not being calculated correctly. We also were able to catch a few things, such as add to watchlist button, that were available while not being logged in to an account. This can get confusing to a user so we went ahead and restricted off a couple features for only logged in users. We also noticed that you could create multiple accounts with the same username. I have been trying to figure out a way for that to be handled, but having trouble implementing anything that would fix this issue. Hopefully we can address it by tomorrow before the project is due.
