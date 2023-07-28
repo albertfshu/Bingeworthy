@@ -59,3 +59,7 @@ alphabetized drop down for language
 fixed search button in nav
 actually got the infinite loops working on the shows and movies
 fixed the scrolling buttons on the galleries to function properly
+
+## DAY 19 - 7.27.23
+front end for top 20 page + css was fixed
+unit test done for account detail
