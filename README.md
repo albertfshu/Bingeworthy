@@ -18,28 +18,36 @@
 
 ## Intended Market
 
-We are targeting users who are looking for a clear way to look for the shows that they're interested. Users are able to save the shows they're interested to a watchlist, submit reviews and ratings, and look at other user's submitted information.
+We are targeting TV-show and Movie enthusiasts who are looking for a seamless way to look for the shows that they're interested in. Users are able to explore, manage, review, rate and save their TV shows and Movies to a watchlist.
+
 
 ## Functionality
 
-- Users can create an account to the website that'll allow them to save a watchlist and submit ratings and reviews.
-- Users can search from the homepage to seek the TV Shows or Movies that they're interested in.
-  - Search with year of release
-  - Search with language
-  - Search 18+
-- Media detail pages provide a variety of useful information to the user
-  - Useful information like runtime
-  - Providers for the Movie or Show
-  - User Interactable Ratings
-  - User Submittable Reviews
-  - Add to watchlist button
-- User Profiles that display related information to them
-  - Ratings Total & Ratings Avg.
-  - Comments for the user's page
-  - Links to their watchlist and ratings list
-- User-specific Watchlist page that shows all of their watchlisted movies & tv shows
-  - If it's the user's watchlist they're able to remove it
-- User-specific Ratings page that shows all of the movies & tv shows they've rated
+- Users can create an account to the website that'll allow them to save desired TV shows and movie to a watchlist, and submit ratings and reviews.
+- Search/Filter Functionality
+  Users can search and filter for Movies and TV shows
+    - Filter by year of release
+    - Filter by language
+    - Filter by 18+
+- Media Detail Pages
+  - Each Movie and TV show has a dedicated details page providing useful information such as:
+    - Streaming providers for the Movie or TV Show
+    - Run-time
+    - Release Year
+    - User Interactable Rating system
+    - User Submittable Reviews
+    - Add to watchlist button to save content
+- User Profiles
+  - Each user has a user profile page that displays relative content such as:
+    - Ratings Total & Ratings Avg.
+    - Comments for the user's page
+    - Links to their watchlist and ratings list
+- User-specific Watchlist page
+  - Each user may track their watchlisted movies & tv shows, and remove them if needed.
+
+- User-specific Ratings page
+  - Users have a dedicated page that shows all of the movies & tv shows they have rated
+
 
 ## Getting started
 
