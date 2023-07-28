@@ -16,6 +16,31 @@
 - [GHI](docs/ghi.md)
 - [Integrations](docs/integrations.md)
 
+## Intended Market
+
+We are targeting users who are looking for a clear way to look for the shows that they're interested. Users are able to save the shows they're interested to a watchlist, submit reviews and ratings, and look at other user's submitted information.
+
+## Functionality
+
+- Users can create an account to the website that'll allow them to save a watchlist and submit ratings and reviews.
+- Users can search from the homepage to seek the TV Shows or Movies that they're interested in.
+  - Search with year of release
+  - Search with language
+  - Search 18+
+- Media detail pages provide a variety of useful information to the user
+  - Useful information like runtime
+  - Providers for the Movie or Show
+  - User Interactable Ratings
+  - User Submittable Reviews
+  - Add to watchlist button
+- User Profiles that display related information to them
+  - Ratings Total & Ratings Avg.
+  - Comments for the user's page
+  - Links to their watchlist and ratings list
+- User-specific Watchlist page that shows all of their watchlisted movies & tv shows
+  - If it's the user's watchlist they're able to remove it
+- User-specific Ratings page that shows all of the movies & tv shows they've rated
+
 ## Getting started
 
 You have a project repository, now what? The next section
