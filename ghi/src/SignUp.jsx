@@ -22,7 +22,7 @@ const SignUp = () => {
         }
         signup({ username, full_name, password });
         createDetails({ username, body: { "bio": "", "date": Date.now(), "profile_image": "https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg" } })
-        // navigate('/');
+        navigate('/login');
     };
 
     return (

@@ -17,19 +17,6 @@ const Ratinglist = () => {
     // Calculate the remaining available height for the table body
     const tableBodyMaxHeight = `calc(100vh - 350px)`; // Adjust the height based on your needs
 
-    // Function to handle sorting by rating
-    // const handleSortByRating = () => {
-    //     if (sortOrder === "asc") {
-    //         // Sort in ascending order
-    //         setRatingItems([...ratingItems].sort((a, b) => a.value - b.value));
-    //         setSortOrder("desc"); // Toggle the sorting order to descending
-    //     } else {
-    //         // Sort in descending order
-    //         setRatingItems([...ratingItems].sort((a, b) => b.value - a.value));
-    //         setSortOrder("asc"); // Toggle the sorting order to ascending
-    //     }
-    // };
-
     if (isLoading) return (<div>is Loading...</div>);
 
     return (
@@ -47,9 +34,6 @@ const Ratinglist = () => {
                             <tr className="grid grid-cols-[1fr,9fr,2fr]">
                                 <th className="p-2 text-xl font-bold flex items-center justify-center">
                                     Rating
-                                    {/* <span className="ml-5 cursor-pointer" onClick={handleSortByRating}>
-                                        {sortOrder === "asc" ? " ▲" : " ▼"}
-                                    </span> */}
                                 </th>
                                 <th className="p-2 text-xl font-bold flex items-center justify-center">
                                     Title

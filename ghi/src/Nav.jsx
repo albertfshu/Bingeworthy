@@ -1,19 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
-import { useGetAccountQuery, useLogoutMutation, useLoginMutation } from "./store/accountSlice";
+import { useGetAccountQuery, useLoginMutation } from "./store/accountSlice";
 import React, { useState } from "react";
 import AccountNavModule from "./AccountNavModule";
 
 const Nav = () => {
     const { data: account, isLoading } = useGetAccountQuery();
-    const [logout] = useLogoutMutation();
     const [login] = useLoginMutation();
     const [searchQuery, setSearchQuery] = useState("");
-
-
-    const handleLogout = () => {
-        logout()
-        window.location.href = '/login';
-    }
 
     const goBackToHomePage = () => {
         window.location.href = '/';
