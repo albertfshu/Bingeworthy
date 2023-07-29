@@ -63,3 +63,7 @@ fixed the scrolling buttons on the galleries to function properly
 ## DAY 19 - 7.27.23
 front end for top 20 page + css was fixed
 unit test done for account detail
+
+## DAY 20 - FINISHED!!
+end to end testing
+issue with CORS backend wasn't allowing front end to make requests. Adjusted backend for queries , front end wanted username when creating account -- backend wanted _id. problem was fixed!
