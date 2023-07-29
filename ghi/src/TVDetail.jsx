@@ -26,7 +26,7 @@ const TVDetail = () => {
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                             ></img>
                         </div>
-                        {account && <WatchlistButton account_id={account?.account.id} media_id={"tID=" + tv_id} />}
+                        {account && <WatchlistButton account_id={account?.account.username} media_id={"tID=" + tv_id} />}
                         <TVSourceProviders />
                     </div>
                 </div>

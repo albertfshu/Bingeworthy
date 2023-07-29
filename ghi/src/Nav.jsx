@@ -54,7 +54,7 @@ const Nav = () => {
                             </form>
                         </li>
                         {account ? (
-                            <AccountNavModule account_id={account.account.id} />
+                            <AccountNavModule account_id={account.account.username} />
                         ) : (
                             <li>
                                 <NavLink

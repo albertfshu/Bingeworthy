@@ -75,3 +75,5 @@ Created comment test case for create. Added remove button to watchlist list of a
 Re-added old grid style of search results for movie & tv list and simplifying popular movie & tv lists for smoother performance. Removed ratings sort by rating within table as it was unfortuantely inconsistent from it. Cleaned up most files for unused imports, prints, console.logs, etc.
 
 ## 7/28 DAY 19 - Last Day, Final Checks
+
+Got the sign up page working. Finalized documentation and code clean up.

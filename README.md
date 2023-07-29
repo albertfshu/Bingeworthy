@@ -9,12 +9,47 @@
 
 ## ![](https://media.giphy.com/media/bcKmIWkUMCjVm/giphy.gif)
 
+
 ## Design
 
 - [API design](docs/apis.md)
 - [Data model](docs/data-model.md)
 - [GHI](docs/ghi.md)
 - [Integrations](docs/integrations.md)
+
+## Intended Market
+
+We are targeting TV-show and Movie enthusiasts who are looking for a seamless way to look for the shows that they're interested in. Users are able to explore, manage, review, rate and save their TV shows and Movies to a watchlist.
+
+## ![](https://media.giphy.com/media/KZe02gpoAj4yVjxKQt/giphy.gif)
+
+## Functionality
+
+- Users can create an account to Bingeworthy that'll allow them to save desired TV shows and movie to a watchlist, and submit ratings and reviews.
+- Search/Filter Functionality
+  - Users can search and filter for Movies and TV shows
+    - Filter by year of release
+    - Filter by language
+    - Filter by 18+
+- Media Detail Pages
+  - Each Movie and TV show has a dedicated details page providing useful information such as:
+    - Streaming providers for the Movie or TV Show
+    - Run-time
+    - Release Year
+    - User Interactable Rating system
+    - User Submittable Reviews
+    - Add to watchlist button to save content
+- User Profiles
+  - Each user has a user profile page that displays relative content such as:
+    - Ratings Total & Ratings Avg.
+    - Comments for the user's page
+    - Links to their watchlist and ratings list
+- User-specific Watchlist page
+  - Each user may track their watchlisted movies & tv shows, and remove them if needed.
+
+- User-specific Ratings page
+  - Users have a dedicated page that shows all of the movies & tv shows they have rated
+
 
 ## Getting started
 

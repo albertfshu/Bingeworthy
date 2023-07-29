@@ -32,7 +32,7 @@ const MovieDetail = () => {
                                 width="200"
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                             ></img>
-                            {account && <WatchlistButton account_id={account?.account.id} media_id={"mID=" + movie_id} />}
+                            {account && <WatchlistButton account_id={account?.account.username} media_id={"mID=" + movie_id} />}
                         </div>
                         <SourceProviders />
                     </div>

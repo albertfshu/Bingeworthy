@@ -36,11 +36,12 @@ Creating an account creates an account detail that saves an id, bio, and profile
 
 Input:
 
-````json
+```json
 {
     "commentor_id": string,
     "comment": string,
 }
+```
 
 Output:
 
@@ -53,7 +54,7 @@ Output:
     "edit_date": datetime,
 }
 
-````
+```
 
 Creating a Comment saves a page_id, commentor_id, and a comment. This adds a new Comment to the database which can edited or deleted by the user who's \_id matches. As well as being able to be read on media detail pages / user pages for display.
 
@@ -64,11 +65,12 @@ Creating a Comment saves a page_id, commentor_id, and a comment. This adds a new
 
 Input:
 
-````json
+```json
 {
     "value": integer,
     "user_id": string,
 }
+```
 
 Output:
 
@@ -79,7 +81,7 @@ Output:
     "value": integer,
 }
 
-````
+```
 
 Creating a Rating saves a value, user_id, and page_id. This adds a new Rating to the database which can be edited by the user who's user_id matches. This is able to be read and updated on media detail pages and read on the rating list page.
 
@@ -90,10 +92,11 @@ Creating a Rating saves a value, user_id, and page_id. This adds a new Rating to
 
 Input:
 
-````json
+```json
 {
     "media_id": string,
 }
+```
 
 Output:
 
@@ -104,6 +107,6 @@ Output:
     "media_id": string,
 }
 
-````
+```
 
 Creating a Watchlist saves a media_id and user_id. This adds a new Watchlist to the database which can be deleted by the user who's user_id matches. This is able to be read and deleted on the media detail pages and read on the watchlist list page.
