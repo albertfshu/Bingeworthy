@@ -31,7 +31,7 @@ class FakeWatchlistQueries:
         }
 
     def delete(self, watchlist_id: str, account_id: str):
-        return True
+        return {"success": True}
 
 
 def test_list_watchlist_for_account():
@@ -82,4 +82,4 @@ def test_delete_watchlist():
     data = res.json()
 
     assert res.status_code == 200
-    assert data == True
+    assert data == {"success": True}
