@@ -1,4 +1,9 @@
-from models import AccountIn, AccountOut, AccountOutWithPassword, DuplicateAccountError
+from models import (
+    AccountIn,
+    AccountOut,
+    AccountOutWithPassword,
+    DuplicateAccountError,
+)
 from .client import Queries
 from pymongo.errors import DuplicateKeyError
 
@@ -13,11 +18,13 @@ class AccountQueries(Queries):
         props["hashed_password"] = props["password"]
         return AccountOutWithPassword(**props)
 
-    def create(self, info:  AccountIn, hashed_password: str) -> AccountOutWithPassword:
+    def create(
+        self, info: AccountIn, hashed_password: str
+    ) -> AccountOutWithPassword:
         props = info.dict()
         props["password"] = hashed_password
         try:
-            if(self.collection.find_one({"username": props["username"]})):
+            if self.collection.find_one({"username": props["username"]}):
                 raise DuplicateAccountError()
             self.collection.insert_one(props)
         except DuplicateKeyError:

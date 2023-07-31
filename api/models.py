@@ -43,7 +43,7 @@ class CommentIn(BaseModel):
 
 
 class Comments(BaseModel):
-    page_id: str  #id starts with mID=, or tID= for movies&tv shows respectively
+    page_id: str
     commentor_id: str
     comment: str
     post_date: datetime
@@ -54,7 +54,7 @@ class CommentList(BaseModel):
     comment_list: List[Comments]
 
 
-class AccountDetailsOut (BaseModel):
+class AccountDetailsOut(BaseModel):
     _id: str
     bio: str
     date: datetime
@@ -68,7 +68,7 @@ class AccountDetailsIn(BaseModel):
 
 
 class RatingOut(BaseModel):
-    page_id: str  #id starts with mID=, or tID= for movies&tv shows respectively
+    page_id: str
     user_id: str
     value: int
 

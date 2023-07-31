@@ -26,6 +26,10 @@ class RatingQueries(Queries):
 
     def update(self, info: RatingIn, page_id: str, user_id: str) -> RatingOut:
         props = info.dict()
-        self.collection.update_one({"page_id": page_id, "user_id": user_id}, {"$set": props})
-        details = self.collection.find_one({"page_id": page_id, "user_id": user_id})
+        self.collection.update_one(
+            {"page_id": page_id, "user_id": user_id}, {"$set": props}
+        )
+        details = self.collection.find_one(
+            {"page_id": page_id, "user_id": user_id}
+        )
         return details

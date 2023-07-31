@@ -1,9 +1,12 @@
 {
   "editor.formatOnPaste": true,
-  "python.formatting.provider": "black",
+  "python.formatting.provider": "none",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
   }
 }

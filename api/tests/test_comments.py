@@ -8,7 +8,6 @@ client = TestClient(app)
 
 
 class FakeCommentQueries:
-
     def create(self, info: CommentIn, page_id: str) -> Comments:
         props = info.dict()
         props["page_id"] = page_id
@@ -27,8 +26,8 @@ def test_create_comment():
     assert res.status_code == 200
     assert data == {
         "page_id": "1",
-        "commentor_id":"testuser",
-        "comment":"testcomment",
-        "post_date":data["post_date"],
-        "edit_date":data["edit_date"]
+        "commentor_id": "testuser",
+        "comment": "testcomment",
+        "post_date": data["post_date"],
+        "edit_date": data["edit_date"],
     }
