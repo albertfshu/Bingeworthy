@@ -13,7 +13,7 @@ const TVSourceProviders = () => {
                 <p className="text-xl font-bold text-gray-200 mr-2 text-center ml-1">Providers</p>
                 <div className="text-gray-200 text-center text-xs mr-2 italic border-b ml-1">US providers</div>
                 <div className="text-gray-200 font-bold text-lg ml-1 ">Watch</div>
-                {(data.results.US.flatrate == undefined)
+                {(data.results.US.flatrate === undefined)
                     ? <p className="text-red-900 ml-1 italic">Unavailable</p>
                     : data.results.US.flatrate.map((provider) => (
                         <img
@@ -27,7 +27,7 @@ const TVSourceProviders = () => {
                     ))}
                 <br></br>
                 <div className="text-gray-200 font-bold text-lg ml-1">Ads</div>
-                {(data.results.US.ads == undefined)
+                {(data.results.US.ads === undefined)
                     ? <p className="text-red-900 ml-1 italic">Unavailable</p>
                     : data.results.US.ads.map((provider) => (
                         <img
@@ -42,7 +42,7 @@ const TVSourceProviders = () => {
                     )}
                 <br></br>
                 <div className="text-gray-200 font-bold text-lg ml-1">Buy</div>
-                {(data.results.US.buy == undefined)
+                {(data.results.US.buy === undefined)
                     ? <p className="text-red-900 ml-1 italic">Unavailable</p>
                     : data.results.US.buy.map((provider) => (
                         <img

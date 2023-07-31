@@ -13,6 +13,7 @@ const TVDetail = () => {
     const { data: account } = useGetAccountQuery();
     const { data, isLoading } = useGetTVDetailsQuery(tv_id);
 
+
     if (isLoading) return <div> Loading... </div>;
 
     return (
@@ -24,6 +25,7 @@ const TVDetail = () => {
                             <img
                                 className="w-200"
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
+                                alt={`Poster for ${data.original_name}`}
                             ></img>
                         </div>
                         {account && <WatchlistButton account_id={account?.account.username} media_id={"tID=" + tv_id} />}

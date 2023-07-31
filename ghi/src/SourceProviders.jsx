@@ -12,7 +12,7 @@ const SourceProviders = () => {
         <p className="text-xl font-bold text-gray-200 mr-2 text-center ml-1">Providers</p>
         <div className="text-gray-200 text-center text-xs mr-2 italic border-b ml-1">US providers</div>
         <div className="text-gray-200 font-bold text-xl ml-1">Buy</div>
-        {(data.results.US.buy == undefined)
+        {(data.results.US.buy === undefined)
           ? <p className="text-red-900 ml-1 italic">Unavailable</p>
           : data.results.US.buy.map((provider) => (
             <img
@@ -25,7 +25,7 @@ const SourceProviders = () => {
             ></img>
           ))}
         <div className="text-gray-200 font-bold text-xl ml-1 mt-2">Rent</div>
-        {(data.results.US.rent == undefined)
+        {(data.results.US.rent === undefined)
           ? <p className="text-red-900 ml-1 italic">Unavailable</p>
           : data.results.US.rent.map((provider) => (
             <img

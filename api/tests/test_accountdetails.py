@@ -23,10 +23,9 @@ def test_create_account_details():
         bio="test bio",
         profile_image="",
         date=datetime.datetime.now(),
-        )
+    )
     res = client.post(f"/api/accounts/{test_id}", json=test_info.dict())
     data = res.json()
-    print(data)
 
     assert res.status_code == 200
     assert data == {

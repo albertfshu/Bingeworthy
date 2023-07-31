@@ -12,7 +12,7 @@ const TVList = () => {
     const [pageCounter, setPageCounter] = useState(1);
     const [pageScroll, setPageScroll] = useState(0);
     let fullSearch = searchCriteria;
-    console.log(searchCriteria);
+
     if (searchCriteria[0] !== '') {
         fullSearch += "&page=" + pageCounter;
     }
@@ -37,9 +37,11 @@ const TVList = () => {
     };
 
 
+    console.log(search)
+    console.log(searchCriteria)
     const filteredTVShows = () => {
-        if (searchCriteria != '') {
-            if (search == undefined) {
+        if (searchCriteria[0] !== '') {
+            if (search === undefined) {
                 return data.results;
             }
             return search.results;
@@ -48,7 +50,6 @@ const TVList = () => {
         }
     };
 
-    console.log(data)
     if (isLoading || isSearchLoading) return <div>Loading...</div>;
 
     const loopedTVShows = [...filteredTVShows(), ...filteredTVShows(), ...filteredTVShows()]; //store looped TV shows

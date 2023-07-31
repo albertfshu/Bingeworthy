@@ -24,7 +24,7 @@ def create_watchlist(
     account_data: dict = Depends(authenticator.get_current_account_data),
     queries: WatchlistQueries = Depends(),
 ):
-    return queries.create(watchlist_in, account_id=account_data["id"])
+    return queries.create(watchlist_in, account_id=account_data["username"])
 
 
 @router.delete("/api/accounts/{account_id}/watchlist/{watchlist_id}")
@@ -35,5 +35,5 @@ def delete_watchlist(
     queries: WatchlistQueries = Depends(),
 ):
     return queries.delete(
-        watchlist_id=watchlist_id, account_id=account_data["id"]
+        watchlist_id=watchlist_id, account_id=account_data["username"]
     )

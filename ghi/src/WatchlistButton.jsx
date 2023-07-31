@@ -11,6 +11,7 @@ const WatchlistButton = (props) => {
     const [deleteFromWatchlist] = useRemoveFromWatchlistMutation();
     const [addToWatchlist] = useAddToWatchlistMutation();
     const { data: watchlistData, isLoading } = useGetUserWatchlistQuery(props.account_id);
+
     useEffect(() => {
         if (watchlistData) {
             setWatchlist(

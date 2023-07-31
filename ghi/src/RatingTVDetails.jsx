@@ -1,11 +1,9 @@
 import React from "react";
 import { useGetTVDetailsQuery } from "./store/apiSlice";
 import { Link } from "react-router-dom";
-import TVCard from "./TVCard";
 
 const RatingTVDetails = ({ media_id }) => {
     const { data, isLoading } = useGetTVDetailsQuery(media_id.substr(4));
-    const tvId = media_id.substring(4);
 
     if (isLoading) return <span>Loading...</span>;
     return (

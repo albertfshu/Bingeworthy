@@ -13,17 +13,16 @@ const Rating = (props) => {
 
 
     useEffect(() => {
-        if (ratings?.length != 0 && ratings != undefined) {
+        if (ratings?.length !== 0 && ratings !== undefined) {
             let tempRatings = ratings.map(({ value }) => value);
             setAvgRating(tempRatings.reduce((a, b) => a + b / tempRatings.length));
-            userRating = (ratings.find((rating) => rating.user_id == account?.account.username) || 5)
         }
-    })
+    }, [setAvgRating, ratings])
 
     const handleUserRatingChange = (e) => {
         userRating = e;
         setDisplayUserRating(userRating)
-        if (ratings.find((rating) => rating.user_id == account.account.username)) {
+        if (ratings.find((rating) => rating.user_id === account.account.username)) {
             let query = {
                 page_id: props.page_id,
                 body: {
@@ -52,7 +51,7 @@ const Rating = (props) => {
         <div className="rounded bg-cyan-700 mr-8 mb-5 ml-7 pl-2 border">
             <p className="text-gray-200 font-bold underline text-lg ">Ratings</p>
             <p className="inline text-black">Average Rating :</p>
-            {(avgRating == 0)
+            {(avgRating === 0)
                 ? <p className="inline ml-3 text-xs">No Ratings Yet</p>
                 : <p className="inline ml-3">{avgRating}</p>}
             {account ? (

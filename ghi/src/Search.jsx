@@ -1,5 +1,5 @@
 import { reset, filter } from "./store/searchSlice";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useGetLanguagesQuery } from "./store/apiSlice";
@@ -11,6 +11,7 @@ const Search = () => {
   const [checked, setChecked] = useState(false)
   const [searchCriteria, setSearchCriteria] = useState(searchParam || "");
   const { data, isLoading } = useGetLanguagesQuery();
+  let searchHolder = (searchParam || "");
 
 
 
@@ -21,14 +22,14 @@ const Search = () => {
   }
 
   useEffect(() => {
-    dispatch(filter([searchCriteria]))
-  }, [])
+    dispatch(filter([searchHolder]))
+  }, [dispatch, searchHolder])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted", searchCriteria);
+    searchHolder = searchCriteria;
     let dispatchStr = searchCriteria;
-    if (searchCriteria == "") {
+    if (searchCriteria === "") {
       dispatchStr = ""
     } else {
       if (year !== "") {
@@ -37,12 +38,10 @@ const Search = () => {
       if (language !== "") {
         dispatchStr += "&language=" + language
       }
-      if (checked == true) {
+      if (checked === true) {
         dispatchStr += "&include_adult=true"
       }
     }
-
-    console.log(dispatchStr)
     dispatch(filter([searchCriteria, dispatchStr]));
     resetSearch();
   };

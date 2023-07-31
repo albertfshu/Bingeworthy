@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import React from "react";
+import { useParams } from "react-router-dom";
 import { useGetUserRatingQuery } from "./store/dataSlice";
 import RatingTVDetails from "./RatingTVDetails";
 import RatingMovieDetails from "./RatingMovieDetails";
@@ -8,8 +8,6 @@ const Ratinglist = () => {
     const { userId } = useParams();
     const { data, isLoading } = useGetUserRatingQuery(userId);
 
-    console.log(userId);
-    console.log(data);
     if (isLoading) return <div>Loading...</div>;
 
     // Calculate the remaining available height for the table body

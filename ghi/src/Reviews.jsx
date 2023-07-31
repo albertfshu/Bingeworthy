@@ -15,7 +15,7 @@ const Reviews = (props) => {
   const [updateComment] = useUpdateCommentMutation();
 
 
-  if (account == null) {
+  if (account === null) {
     account = false
   }
 
@@ -149,7 +149,7 @@ const Reviews = (props) => {
                 <div className="grid grid-cols-[auto_1fr]">
                   <ReviewCardProfile commentor_id={r.commentor_id} post_date={r.post_date} />
                 </div>
-                {r.commentor_id == account.account?.username
+                {r.commentor_id === account.account?.username
                   && <>
                     <button className="text-sm m-1 mr-1 h-8 w-12 rounded-lg text-white bg-cyan-700 ml-20 mt-3 border border-black" onClick={() => {
                       handleEdit(r._id, r.comment)

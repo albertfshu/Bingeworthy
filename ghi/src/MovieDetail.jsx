@@ -31,6 +31,7 @@ const MovieDetail = () => {
                             <img
                                 width="200"
                                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
+                                alt={`Poster for ${data.original_title}`}
                             ></img>
                             {account && <WatchlistButton account_id={account?.account.username} media_id={"mID=" + movie_id} />}
                         </div>
