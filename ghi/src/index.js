@@ -17,9 +17,6 @@ import UserProfile from "./Userprofile";
 import Ratinglist from "./Ratinglist";
 import Watchlist from "./Watchlist";
 
-const domain = /https:\/\/[^/]+/;
-const basename = process.env.PUBLIC_URL.replace(domain, "");
-
 const router = createBrowserRouter([
   {
     element: <App />,

@@ -16,7 +16,7 @@ const Login = () => {
             }
         }
         if (loginResult.isSuccess) navigate("/");
-    }, [loginResult]);
+    }, [loginResult, navigate]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
