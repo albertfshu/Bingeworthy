@@ -20,53 +20,55 @@ import Watchlist from "./Watchlist";
 const domain = /https:\/\/[^/]+/;
 const basename = process.env.PUBLIC_URL.replace(domain, "");
 
-const router = createBrowserRouter([
-  {
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/signup",
-        element: <SignUp />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/search/:searchParam",
-        element: <Home />,
-      },
-      {
-        path: "/movie/:movie_id",
-        element: <MovieDetail />,
-      },
-      {
-        path: "/tv/:tv_id",
-        element: <TVDetail />,
-      },
-      {
-        path: "/profile/:userId",
-        element: <UserProfile />,
-      },
-      {
-        path: "/profile/:userId/watchlist",
-        element: <Watchlist />,
-      },
-      {
-        path: "/profile/:userId/ratings",
-        element: <Ratinglist />,
-      },
-    ],
-  },
+const router = createBrowserRouter(
+  [
+    {
+      element: <App />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: "/signup",
+          element: <SignUp />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/search/:searchParam",
+          element: <Home />,
+        },
+        {
+          path: "/movie/:movie_id",
+          element: <MovieDetail />,
+        },
+        {
+          path: "/tv/:tv_id",
+          element: <TVDetail />,
+        },
+        {
+          path: "/profile/:userId",
+          element: <UserProfile />,
+        },
+        {
+          path: "/profile/:userId/watchlist",
+          element: <Watchlist />,
+        },
+        {
+          path: "/profile/:userId/ratings",
+          element: <Ratinglist />,
+        },
+      ],
+    },
+  ],
   {
     basename: basename,
-  },
-]);
+  }
+);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
