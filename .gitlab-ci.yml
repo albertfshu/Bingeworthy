@@ -22,6 +22,8 @@ variables:
 api-unit-tests-job:
   image: python:3-bullseye
   stage: test
+  variables:
+    MONGO_URL: mongodb://example_user:example_password@mongo/admin
   needs:
     - lint-test-job
   script:

@@ -39,7 +39,8 @@ def test_list_watchlist_for_account():
     app.dependency_overrides[
         authenticator.get_current_account_data
     ] = fake_get_current_account_data
-    res = client.get("/api/accounts/{account_id}/watchlist")
+    account_id = "fakeuser"
+    res = client.get(f"/api/accounts/{account_id}/watchlist")
     data = res.json()
 
     assert res.status_code == 200
@@ -47,7 +48,7 @@ def test_list_watchlist_for_account():
     assert data["watchlist"] == [
         {
             "id": "watchlist_id",
-            "account_id": "1337",
+            "account_id": "fakeuser",
             "media_id": "1",
         }
     ]
@@ -67,7 +68,7 @@ def test_create_watchlist():
     data = res.json()
 
     assert res.status_code == 200
-    assert data["account_id"] == "1337"
+    assert data["account_id"] == "fakeuser"
     assert data["media_id"] == "1"
 
 
@@ -81,4 +82,4 @@ def test_delete_watchlist():
     data = res.json()
 
     assert res.status_code == 200
-    assert data == {"success": True}
+    assert data == True
