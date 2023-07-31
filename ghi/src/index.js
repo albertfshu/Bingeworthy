@@ -2,7 +2,7 @@ import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
-import { createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, createBrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
@@ -16,6 +16,9 @@ import App from "./App";
 import UserProfile from "./Userprofile";
 import Ratinglist from "./Ratinglist";
 import Watchlist from "./Watchlist";
+
+const domain = /https:\/\/[^/]+/;
+const basename = process.env.PUBLIC_URL.replace(domain, "");
 
 const router = createBrowserRouter([
   {
@@ -59,6 +62,9 @@ const router = createBrowserRouter([
         element: <Ratinglist />,
       },
     ],
+  },
+  {
+    basename: basename,
   },
 ]);
 
